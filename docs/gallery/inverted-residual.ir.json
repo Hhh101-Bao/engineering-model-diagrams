@@ -1,0 +1,153 @@
+{
+  "schema": "paper-model/1",
+  "title": "Inverted residual · stride1",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1801.04381",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.3; Table1",
+      "statement": "Expansion factor t, depthwise spatial filtering, linear projection. Identity is shown only for stride1 and equal input/output channels.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Input",
+      "label": "Input",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "expand",
+      "op": "conv",
+      "meaning": "1×1 expand / BN + ReLU6",
+      "label": "1×1 expand / BN + ReLU6",
+      "shape": [
+        "tC",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "dw",
+      "op": "conv",
+      "meaning": "3×3 depthwise / BN + ReLU6",
+      "label": "3×3 depthwise / BN + ReLU6",
+      "shape": [
+        "tC",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "project",
+      "op": "conv",
+      "meaning": "1×1 linear / BN",
+      "label": "1×1 linear / BN",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "add",
+      "op": "add",
+      "meaning": "Add",
+      "label": "Add",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "expand",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "expand",
+      "to": "dw",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "dw",
+      "to": "project",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "project",
+      "to": "add",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "x",
+      "to": "add",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Expansion factor t, depthwise spatial filtering, linear projection. Identity is shown only for stride1 and equal input/output channels.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "base": "lib.typ",
+  "derived": "placed.typ",
+  "extensions": [
+    "at: explicit layer origin and projected center axis",
+    "direct connections with named volume anchors and optional waypoints",
+    "font-scale to retain physical typography when geometry is resized",
+    "Physical label spacing follows font-scale; Sum name and tensor are separated",
+    "label-at for explicit side captions",
+    "Correct projected north/south volume boundary anchors",
+    "Correct Sum sphere cardinal anchors",
+    "Legend line spacing follows physical font scale",
+    "Correct sphere positions with explicit at",
+    "Geometric plus symbol contained in sphere",
+    "Corner anchors follow visible contour",
+    "Explicit Pool and Unpool coordinates",
+    "west_upper/west_lower visible front-face ports",
+    "direct route orthogonal with lane-x/lane-y",
+    "Explicit from-point/to-point for generated surface ports",
+    "GAP/FC/Pool honor explicit width while preserving upstream defaults",
+    "Multiply symbol within Sum sphere for broadcast channel gates",
+    "Separated repeat cuboids with real slice-gap and internal arrows",
+    "First/last solid surface ports for separated groups",
+    "One arrowhead per direct route to avoid elbow clutter",
+    "Physical label hierarchy: bold module name, regular description/dimensions"
+  ],
+  "sourceSha256": "9c14d4288834ba6d31a56154637a0ce442c870ab46afc603355aa768febc1418",
+  "derivedSha256": "069a4e846c147ee9c495aa871b28af8aae71942be3991d82b95662cfe40925e3"
+}

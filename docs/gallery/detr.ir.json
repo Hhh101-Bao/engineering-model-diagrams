@@ -1,0 +1,171 @@
+{
+  "schema": "paper-model/1",
+  "title": "DETR",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/2005.12872",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.2; §3",
+      "statement": "Inference architecture: CNN features+position feed encoder; learned object queries feed decoder. Class and box heads operate in parallel. Bipartite matching loss is a training objective and is omitted.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Image",
+      "label": "Image",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "cnn",
+      "op": "conv",
+      "meaning": "CNN backbone / 1×1 projection",
+      "label": "CNN backbone / 1×1 projection",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "enc",
+      "op": "attention",
+      "meaning": "Position + / Transformer encoder",
+      "label": "Position + / Transformer encoder",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "queries",
+      "op": "linear",
+      "meaning": "Learned object / queries",
+      "label": "Learned object / queries",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "dec",
+      "op": "attention",
+      "meaning": "Transformer / decoder",
+      "label": "Transformer / decoder",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "cls",
+      "op": "linear",
+      "meaning": "Class head",
+      "label": "Class head",
+      "shape": [
+        "N",
+        "K+1"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "box",
+      "op": "linear",
+      "meaning": "Box MLP",
+      "label": "Box MLP",
+      "shape": [
+        "N",
+        4
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "cnn",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "cnn",
+      "to": "enc",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "enc",
+      "to": "dec",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "queries",
+      "to": "dec",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "dec",
+      "to": "cls",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "dec",
+      "to": "box",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Inference architecture: CNN features+position feed encoder; learned object queries feed decoder. Class and box heads operate in parallel. Bipartite matching loss is a training objective and is omitted.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

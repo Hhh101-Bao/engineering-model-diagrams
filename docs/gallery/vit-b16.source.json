@@ -1,0 +1,275 @@
+{
+  "backend": "neural-netz",
+  "title": "ViT-B/16",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Image",
+        "3 × 224 × 224"
+      ],
+      "labelAt": [
+        0.506,
+        -3.851635347452935
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        224,
+        224
+      ],
+      "sourceShape": [
+        3,
+        224,
+        224
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "patch",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1.1591767875292167
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "16×16 patches",
+        "Linear embedding",
+        "196 × 768"
+      ],
+      "labelAt": [
+        6.155588393764608,
+        -3.584453021179402
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        196,
+        768
+      ],
+      "sourceShape": [
+        196,
+        768
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "pos",
+      "type": "custom",
+      "semanticOp": "custom",
+      "widths": [
+        1.1597641455565102
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Class token",
+        "+ position",
+        "197 × 768"
+      ],
+      "labelAt": [
+        11.555882072778257,
+        -3.584453021179402
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        197,
+        768
+      ],
+      "sourceShape": [
+        197,
+        768
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "enc",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.1597641455565102
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Transformer",
+        "encoder ×12",
+        "197 × 768"
+      ],
+      "labelAt": [
+        16.95588207277826,
+        -3.584453021179402
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        197,
+        768
+      ],
+      "sourceShape": [
+        197,
+        768
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "cls",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Select CLS",
+        "+ MLP head",
+        "K"
+      ],
+      "labelAt": [
+        22.276,
+        -3.584453021179402
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null
+      ],
+      "sourceShape": [
+        "K"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "patch",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        1.012,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "patch",
+      "to": "pos",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.91118,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "pos",
+      "to": "enc",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.31176,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e3",
+      "from": "enc",
+      "to": "cls",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.71176,
+        0
+      ],
+      "toPoint": [
+        21.6,
+        0
+      ],
+      "via": []
+    }
+  ]
+}

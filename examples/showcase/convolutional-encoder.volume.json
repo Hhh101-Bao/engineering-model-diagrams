@@ -1,0 +1,448 @@
+{
+  "backend": "neural-netz",
+  "title": "Hierarchical convolutional encoder | schematic",
+  "widthMm": 280,
+  "minFontPt": 8.3,
+  "palette": "cold",
+  "showRelu": true,
+  "showLegend": false,
+  "depthMultiplier": 0.23,
+  "layers": [
+    {
+      "type": "custom",
+      "name": "input",
+      "widths": [
+        0.08
+      ],
+      "height": 5.4,
+      "depth": 5.4,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        256,
+        256
+      ],
+      "label": [
+        "Input",
+        "3 × 256 × 256"
+      ],
+      "fill": "#CBD3DC",
+      "show-connection": false,
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "at": [
+        0,
+        0
+      ],
+      "labelAt": [
+        0.6610000000000001,
+        -4.921
+      ]
+    },
+    {
+      "type": "conv",
+      "name": "stage1",
+      "widths": [
+        0.45,
+        0.45
+      ],
+      "height": 5.4,
+      "depth": 5.4,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        32,
+        256,
+        256
+      ],
+      "label": [
+        "Conv stage 1",
+        "32 × 256 × 256"
+      ],
+      "offset": 1.5,
+      "fill": "#8FAAC4",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "sliceGap": 1.7920000000000003,
+      "at": [
+        5.2,
+        0
+      ],
+      "labelAt": [
+        7.167,
+        -4.921
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "pool",
+      "name": "pool1",
+      "widths": [
+        0.14
+      ],
+      "height": 4.3,
+      "depth": 4.3,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        32,
+        128,
+        128
+      ],
+      "label": [
+        "Max pool",
+        "32 × 128 × 128"
+      ],
+      "offset": 0.28,
+      "fill": "#D8BC80",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "at": [
+        11.134,
+        0
+      ],
+      "labelAt": [
+        11.698500000000001,
+        -4.2445
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "conv",
+      "name": "stage2",
+      "widths": [
+        0.6,
+        0.6
+      ],
+      "height": 4.3,
+      "depth": 4.3,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        128,
+        128
+      ],
+      "label": [
+        "Conv stage 2",
+        "64 × 128 × 128"
+      ],
+      "offset": 1.2,
+      "fill": "#8FAAC4",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "sliceGap": 1.5390000000000001,
+      "at": [
+        16.334,
+        0
+      ],
+      "labelAt": [
+        18.198,
+        -4.2445
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "pool",
+      "name": "pool2",
+      "widths": [
+        0.14
+      ],
+      "height": 3.4,
+      "depth": 3.4,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": [
+        "Max pool",
+        "64 × 64 × 64"
+      ],
+      "offset": 0.28,
+      "fill": "#D8BC80",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "at": [
+        22.061999999999998,
+        0
+      ],
+      "labelAt": [
+        22.522999999999996,
+        -3.6910000000000003
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "conv",
+      "name": "stage3",
+      "widths": [
+        0.85,
+        0.85,
+        0.85
+      ],
+      "height": 3.4,
+      "depth": 3.4,
+      "channels": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "label": [
+        "Conv stage 3",
+        "128 × 64 × 64"
+      ],
+      "offset": 1.2,
+      "fill": "#8FAAC4",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "sliceGap": 1.332,
+      "at": [
+        27.261999999999997,
+        0
+      ],
+      "labelAt": [
+        30.259999999999998,
+        -3.6910000000000003
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "pool",
+      "name": "pool3",
+      "widths": [
+        0.14
+      ],
+      "height": 2.5,
+      "depth": 2.5,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        128,
+        32,
+        32
+      ],
+      "label": [
+        "Max pool",
+        "128 × 32 × 32"
+      ],
+      "offset": 0.28,
+      "fill": "#D8BC80",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "at": [
+        35.257999999999996,
+        0
+      ],
+      "labelAt": [
+        35.6155,
+        -3.1375
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "conv",
+      "name": "stage4",
+      "widths": [
+        1.1,
+        1.1,
+        1.1
+      ],
+      "height": 2.5,
+      "depth": 2.5,
+      "channels": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        32,
+        32
+      ],
+      "label": [
+        "Conv stage 4",
+        "256 × 32 × 32"
+      ],
+      "offset": 1.2,
+      "fill": "#8FAAC4",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "sliceGap": 1.125,
+      "at": [
+        40.458,
+        0
+      ],
+      "labelAt": [
+        43.5205,
+        -3.1375
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "gap",
+      "name": "gap",
+      "widths": [
+        0.5
+      ],
+      "height": 0.8,
+      "depth": 0.8,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        1,
+        1
+      ],
+      "label": [
+        "GAP",
+        "256 × 1 × 1"
+      ],
+      "offset": 1.4,
+      "fill": "#D8BC80",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "at": [
+        48.583,
+        0
+      ],
+      "labelAt": [
+        48.925,
+        -2.092
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "fc",
+      "name": "classifier",
+      "widths": [
+        0.25
+      ],
+      "height": 1.9,
+      "depth": 0.2,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        10,
+        1,
+        1
+      ],
+      "label": [
+        "Classifier",
+        "10 × 1 × 1"
+      ],
+      "offset": 1.2,
+      "fill": "#B3A4C5",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "at": [
+        53.783,
+        0
+      ],
+      "labelAt": [
+        53.931000000000004,
+        -2.573
+      ],
+      "show-connection": false
+    }
+  ],
+  "connections": [
+    {
+      "from": "input",
+      "to": "stage1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "stage1",
+      "to": "pool1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "pool1",
+      "to": "stage2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "stage2",
+      "to": "pool2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "pool2",
+      "to": "stage3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "stage3",
+      "to": "pool3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "pool3",
+      "to": "stage4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "stage4",
+      "to": "gap",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "gap",
+      "to": "classifier",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    }
+  ],
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "strokeThickness": 0.8
+}

@@ -1,0 +1,349 @@
+{
+  "backend": "neural-netz",
+  "title": "Siamese feature differencing",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "t1",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Date1"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -2.590222911475637
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "t2",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        -6.8
+      ],
+      "label": [
+        "Date2"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -9.390222911475636
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "f1",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Shared backbone"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -2.590222911475637
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "f2",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        -6.8
+      ],
+      "label": [
+        "Shared backbone"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -9.390222911475636
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "d",
+      "type": "custom",
+      "semanticOp": "custom",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        -3.4
+      ],
+      "label": [
+        "Absolute difference"
+      ],
+      "labelAt": [
+        11.476,
+        -5.9902229114756365
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "y",
+      "type": "custom",
+      "semanticOp": "output",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        16.200000000000003,
+        -3.4
+      ],
+      "label": [
+        "Prediction head"
+      ],
+      "labelAt": [
+        16.486000000000004,
+        -5.9902229114756365
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "t1",
+      "to": "f1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "t2",
+      "to": "f2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        -6.8
+      ],
+      "toPoint": [
+        5.4,
+        -6.8
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "f1",
+      "to": "d",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        -3.55
+      ],
+      "via": [
+        [
+          10.25,
+          0
+        ],
+        [
+          10.25,
+          -3.55
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "f2",
+      "to": "d",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        -6.8
+      ],
+      "toPoint": [
+        10.8,
+        -3.25
+      ],
+      "via": [
+        [
+          7.302,
+          -6.8
+        ],
+        [
+          7.302,
+          -3.25
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "d",
+      "to": "y",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        -3.4
+      ],
+      "toPoint": [
+        16.2,
+        -3.4
+      ],
+      "via": []
+    }
+  ]
+}

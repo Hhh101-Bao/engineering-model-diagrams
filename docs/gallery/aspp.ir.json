@@ -1,0 +1,201 @@
+{
+  "schema": "paper-model/1",
+  "title": "ASPP · output stride16",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1802.02611",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.2; §3.1",
+      "statement": "Five parallel branches:1×1, three atrous3×3 at rates6/12/18, image pooling with projection+resize. Concatenation followed by1×1 projection. Branch internals folded into labeled volumes.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Features",
+      "label": "Features",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b0",
+      "op": "conv",
+      "meaning": "1×1 Conv / 256 channels",
+      "label": "1×1 Conv / 256 channels",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b1",
+      "op": "conv",
+      "meaning": "3×3 rate6 / 256 channels",
+      "label": "3×3 rate6 / 256 channels",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b2",
+      "op": "conv",
+      "meaning": "3×3 rate12 / 256 channels",
+      "label": "3×3 rate12 / 256 channels",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b3",
+      "op": "conv",
+      "meaning": "3×3 rate18 / 256 channels",
+      "label": "3×3 rate18 / 256 channels",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b4",
+      "op": "gap",
+      "meaning": "Image pooling / project + resize",
+      "label": "Image pooling / project + resize",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "cat",
+      "op": "concat",
+      "meaning": "Concatenate / 5 branches",
+      "label": "Concatenate / 5 branches",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "proj",
+      "op": "conv",
+      "meaning": "1×1 projection",
+      "label": "1×1 projection",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "b0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "b0",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "x",
+      "to": "b1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "b1",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "x",
+      "to": "b2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "b2",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "x",
+      "to": "b3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "b3",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "x",
+      "to": "b4",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "b4",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "cat",
+      "to": "proj",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Five parallel branches:1×1, three atrous3×3 at rates6/12/18, image pooling with projection+resize. Concatenation followed by1×1 projection. Branch internals folded into labeled volumes.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

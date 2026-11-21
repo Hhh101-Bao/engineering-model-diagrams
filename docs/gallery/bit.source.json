@@ -1,0 +1,766 @@
+{
+  "backend": "neural-netz",
+  "title": "BIT · bitemporal transformer",
+  "widthMm": 242,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "t1",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Image t1"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -2.689082214082214
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "t2",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        -6.8
+      ],
+      "label": [
+        "Image t2"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -9.489082214082213
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "f1",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Shared backbone"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -2.689082214082214
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "f2",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        -6.8
+      ],
+      "label": [
+        "Shared backbone"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -9.489082214082213
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s1",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Semantic tokens"
+      ],
+      "labelAt": [
+        11.476,
+        -2.689082214082214
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s2",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        -6.8
+      ],
+      "label": [
+        "Semantic tokens"
+      ],
+      "labelAt": [
+        11.476,
+        -9.489082214082213
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "tr",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        16.200000000000003,
+        -3.4
+      ],
+      "label": [
+        "Joint token",
+        "Transformer"
+      ],
+      "labelAt": [
+        16.876,
+        -6.552164428164428
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "d1",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Decoder t1"
+      ],
+      "labelAt": [
+        22.276,
+        -2.689082214082214
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "d2",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        21.6,
+        -6.8
+      ],
+      "label": [
+        "Decoder t2"
+      ],
+      "labelAt": [
+        22.276,
+        -9.489082214082213
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "diff",
+      "type": "custom",
+      "semanticOp": "custom",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        27,
+        -3.4
+      ],
+      "label": [
+        "Absolute",
+        "feature difference"
+      ],
+      "labelAt": [
+        27.676,
+        -6.552164428164428
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "y",
+      "type": "custom",
+      "semanticOp": "output",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        32.400000000000006,
+        -3.4
+      ],
+      "label": [
+        "Upsample + CNN",
+        "change prediction"
+      ],
+      "labelAt": [
+        32.68600000000001,
+        -6.552164428164428
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "t1",
+      "to": "f1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "t2",
+      "to": "f2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        -6.8
+      ],
+      "toPoint": [
+        5.4,
+        -6.8
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "f1",
+      "to": "s1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        -0.15
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": [
+        [
+          10.25,
+          -0.15
+        ],
+        [
+          10.25,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "f2",
+      "to": "s2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        -6.95
+      ],
+      "toPoint": [
+        10.8,
+        -6.8
+      ],
+      "via": [
+        [
+          10.25,
+          -6.95
+        ],
+        [
+          10.25,
+          -6.8
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "s1",
+      "to": "tr",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        -3.55
+      ],
+      "via": [
+        [
+          15.65,
+          0
+        ],
+        [
+          15.65,
+          -3.55
+        ]
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "s2",
+      "to": "tr",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        -6.8
+      ],
+      "toPoint": [
+        16.2,
+        -3.25
+      ],
+      "via": [
+        [
+          12.702,
+          -6.8
+        ],
+        [
+          12.702,
+          -3.25
+        ]
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "tr",
+      "to": "d1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.552,
+        -3.55
+      ],
+      "toPoint": [
+        21.6,
+        -0.15
+      ],
+      "via": [
+        [
+          18.102,
+          -3.55
+        ],
+        [
+          18.102,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "tr",
+      "to": "d2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.552,
+        -3.25
+      ],
+      "toPoint": [
+        21.6,
+        -6.95
+      ],
+      "via": [
+        [
+          21.05,
+          -3.25
+        ],
+        [
+          21.05,
+          -6.95
+        ]
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "f1",
+      "to": "d1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        0.15
+      ],
+      "toPoint": [
+        21.6,
+        0.15
+      ],
+      "via": [
+        [
+          7.302,
+          0.15
+        ],
+        [
+          7.302,
+          -1.474
+        ],
+        [
+          21.05,
+          -1.474
+        ],
+        [
+          21.05,
+          0.15
+        ]
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "f2",
+      "to": "d2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        -6.65
+      ],
+      "toPoint": [
+        21.6,
+        -6.65
+      ],
+      "via": [
+        [
+          7.302,
+          -6.65
+        ],
+        [
+          7.302,
+          -5.326
+        ],
+        [
+          20.73,
+          -5.326
+        ],
+        [
+          20.73,
+          -6.65
+        ]
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "d1",
+      "to": "diff",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        22.952,
+        0
+      ],
+      "toPoint": [
+        27,
+        -3.55
+      ],
+      "via": [
+        [
+          26.45,
+          0
+        ],
+        [
+          26.45,
+          -3.55
+        ]
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "d2",
+      "to": "diff",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        22.952,
+        -6.8
+      ],
+      "toPoint": [
+        27,
+        -3.25
+      ],
+      "via": [
+        [
+          23.502,
+          -6.8
+        ],
+        [
+          23.502,
+          -3.25
+        ]
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "diff",
+      "to": "y",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.352,
+        -3.4
+      ],
+      "toPoint": [
+        32.4,
+        -3.4
+      ],
+      "via": []
+    }
+  ]
+}

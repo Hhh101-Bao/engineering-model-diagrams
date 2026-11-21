@@ -1,0 +1,223 @@
+{
+  "schema": "paper-model/1",
+  "title": "SegFormer All-MLP decoder",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/NVlabs/SegFormer/blob/master/mmseg/models/decode_heads/segformer_head.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "SegFormerHead.forward",
+      "statement": "Four feature levels are linearly embedded and aligned to the finest stride. Concatenation and1×1 fusion precede class prediction. Decoder embedding width is configurable.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "f0",
+      "op": "input",
+      "meaning": "Feature F1",
+      "label": "Feature F1",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f1",
+      "op": "input",
+      "meaning": "Feature F2",
+      "label": "Feature F2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f2",
+      "op": "input",
+      "meaning": "Feature F3",
+      "label": "Feature F3",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f3",
+      "op": "input",
+      "meaning": "Feature F4",
+      "label": "Feature F4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p0",
+      "op": "linear",
+      "meaning": "Linear embed / + resize to /4",
+      "label": "Linear embed / + resize to /4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p1",
+      "op": "linear",
+      "meaning": "Linear embed / + resize to /4",
+      "label": "Linear embed / + resize to /4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p2",
+      "op": "linear",
+      "meaning": "Linear embed / + resize to /4",
+      "label": "Linear embed / + resize to /4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p3",
+      "op": "linear",
+      "meaning": "Linear embed / + resize to /4",
+      "label": "Linear embed / + resize to /4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "c",
+      "op": "concat",
+      "meaning": "Concatenate",
+      "label": "Concatenate",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f",
+      "op": "conv",
+      "meaning": "1×1 fuse",
+      "label": "1×1 fuse",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Class prediction",
+      "label": "Class prediction",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "f0",
+      "to": "p0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "p0",
+      "to": "c",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "f1",
+      "to": "p1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "p1",
+      "to": "c",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "f2",
+      "to": "p2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "p2",
+      "to": "c",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "f3",
+      "to": "p3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "p3",
+      "to": "c",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "c",
+      "to": "f",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "f",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Four feature levels are linearly embedded and aligned to the finest stride. Concatenation and1×1 fusion precede class prediction. Decoder embedding width is configurable.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "schema": "paper-model/1",
+  "title": "U-Net · original valid-padding",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1505.04597",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.1; §2",
+      "statement": "Original572 input and388 output; valid3×3 convolutions. Each encoder stage includes the following pooling operation only on outgoing main paths; skip edges include crop. Decoder stages group up-conv, crop-concat and double-conv.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Input",
+      "label": "Input",
+      "shape": [
+        1,
+        572,
+        572
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "op": "conv",
+      "meaning": "Encoder1 / 2×3×3 Conv",
+      "label": "Encoder1 / 2×3×3 Conv",
+      "shape": [
+        64,
+        568,
+        568
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "op": "conv",
+      "meaning": "Encoder2",
+      "label": "Encoder2",
+      "shape": [
+        128,
+        280,
+        280
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "op": "conv",
+      "meaning": "Encoder3",
+      "label": "Encoder3",
+      "shape": [
+        256,
+        136,
+        136
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "op": "conv",
+      "meaning": "Encoder4",
+      "label": "Encoder4",
+      "shape": [
+        512,
+        64,
+        64
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b",
+      "op": "attention",
+      "meaning": "Bottleneck",
+      "label": "Bottleneck",
+      "shape": [
+        1024,
+        28,
+        28
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d4",
+      "op": "conv",
+      "meaning": "Up + crop-concat / double-conv",
+      "label": "Up + crop-concat / double-conv",
+      "shape": [
+        512,
+        52,
+        52
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d3",
+      "op": "conv",
+      "meaning": "Decoder3",
+      "label": "Decoder3",
+      "shape": [
+        256,
+        100,
+        100
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d2",
+      "op": "conv",
+      "meaning": "Decoder2",
+      "label": "Decoder2",
+      "shape": [
+        128,
+        196,
+        196
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d1",
+      "op": "conv",
+      "meaning": "Decoder1",
+      "label": "Decoder1",
+      "shape": [
+        64,
+        388,
+        388
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "1×1 output",
+      "label": "1×1 output",
+      "shape": [
+        2,
+        388,
+        388
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "e1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "e1",
+      "to": "e2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "e2",
+      "to": "e3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "e3",
+      "to": "e4",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "e4",
+      "to": "b",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "b",
+      "to": "d4",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "d4",
+      "to": "d3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "d3",
+      "to": "d2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "d2",
+      "to": "d1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "d1",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "e1",
+      "to": "d1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "e2",
+      "to": "d2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "e3",
+      "to": "d3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e13",
+      "from": "e4",
+      "to": "d4",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Original572 input and388 output; valid3×3 convolutions. Each encoder stage includes the following pooling operation only on outgoing main paths; skip edges include crop. Decoder stages group up-conv, crop-concat and double-conv.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 340
+  }
+}

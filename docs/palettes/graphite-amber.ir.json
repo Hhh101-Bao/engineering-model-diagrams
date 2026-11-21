@@ -1,0 +1,153 @@
+{
+  "schema": "paper-model/1",
+  "title": "Residual BasicBlock",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1512.03385",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.2; torchvision BasicBlock.forward",
+      "statement": "Stride1, matching-channel identity path. Downsampling projection is not used in this particular block.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Input",
+      "label": "Input",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "c1",
+      "op": "conv",
+      "meaning": "3×3 Conv / BN + ReLU",
+      "label": "3×3 Conv / BN + ReLU",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "c2",
+      "op": "conv",
+      "meaning": "3×3 Conv / BN",
+      "label": "3×3 Conv / BN",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "add",
+      "op": "add",
+      "meaning": "Add",
+      "label": "Add",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "r",
+      "op": "output",
+      "meaning": "ReLU",
+      "label": "ReLU",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "c1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "c1",
+      "to": "c2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "c2",
+      "to": "add",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "add",
+      "to": "r",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "x",
+      "to": "add",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Stride1, matching-channel identity path. Downsampling projection is not used in this particular block.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "graphite-amber",
+    "widthMm": 180
+  }
+}

@@ -1,0 +1,586 @@
+{
+  "nodes": [
+    {
+      "id": "input",
+      "x": 0,
+      "y": 36.643050176468144,
+      "w": 10.249647170283945,
+      "h": 13.441391725489382
+    },
+    {
+      "id": "stem",
+      "x": 12.449647170283946,
+      "y": 36.85045017646814,
+      "w": 13.332862893711926,
+      "h": 13.026591725489382
+    },
+    {
+      "id": "pool",
+      "x": 27.982510063995868,
+      "y": 37.05785017646814,
+      "w": 13.800016791201015,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "stage1",
+      "x": 43.98252685519688,
+      "y": 37.05785017646814,
+      "w": 12.305124319235933,
+      "h": 15.601576669419547
+    },
+    {
+      "id": "project1",
+      "x": 119.59136417480455,
+      "y": 0,
+      "w": 13.332862893711926,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "stage2",
+      "x": 58.48765117443281,
+      "y": 37.49255517646814,
+      "w": 12.305124319235933,
+      "h": 15.18677666941955
+    },
+    {
+      "id": "project2",
+      "x": 72.99277549366874,
+      "y": 11.37829172548938,
+      "w": 13.332862893711926,
+      "h": 12.196991725489381
+    },
+    {
+      "id": "up2",
+      "x": 104.57237056833061,
+      "y": 11.170891725489382,
+      "w": 12.305124319235933,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "stage3",
+      "x": 73.67793454331941,
+      "y": 37.89853017646814,
+      "w": 12.305124319235933,
+      "h": 14.771976669419548
+    },
+    {
+      "id": "project3",
+      "x": 88.52563838738068,
+      "y": 22.75658345097876,
+      "w": 13.332862893711926,
+      "h": 11.782191725489382
+    },
+    {
+      "id": "up3",
+      "x": 120.10523346204255,
+      "y": 22.34178345097876,
+      "w": 12.305124319235933,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "stage4",
+      "x": 89.03950767461868,
+      "y": 38.275775176468144,
+      "w": 12.305124319235933,
+      "h": 14.357176669419548
+    },
+    {
+      "id": "project4",
+      "x": 104.05850128109262,
+      "y": 38.275775176468144,
+      "w": 13.332862893711926,
+      "h": 11.36739172548938
+    },
+    {
+      "id": "up4",
+      "x": 120.10523346204255,
+      "y": 37.65357517646814,
+      "w": 12.305124319235933,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "concat",
+      "x": 135.1242270685165,
+      "y": 21.932634450978757,
+      "w": 10.249647170283945,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "conv3",
+      "x": 147.57387423880044,
+      "y": 21.932634450978757,
+      "w": 13.332862893711926,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "conv1",
+      "x": 163.10673713251236,
+      "y": 21.932634450978757,
+      "w": 13.332862893711926,
+      "h": 12.61179172548938
+    },
+    {
+      "id": "output",
+      "x": 178.6396000262243,
+      "y": 21.932634450978757,
+      "w": 12.305124319235933,
+      "h": 12.61179172548938
+    }
+  ],
+  "edges": [
+    {
+      "id": "input__stem",
+      "from": "input",
+      "to": "stem",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        5.5855,
+        -38.7988
+      ],
+      "toPoint": [
+        18.3228,
+        -38.7988
+      ],
+      "via": [],
+      "evidence": [
+        "stages"
+      ]
+    },
+    {
+      "id": "stem__pool",
+      "from": "stem",
+      "to": "pool",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        19.9094,
+        -38.7988
+      ],
+      "toPoint": [
+        34.1266,
+        -38.7988
+      ],
+      "via": [],
+      "evidence": [
+        "stages"
+      ]
+    },
+    {
+      "id": "pool__stage1",
+      "from": "pool",
+      "to": "stage1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        35.6384,
+        -38.7988
+      ],
+      "toPoint": [
+        48.2983,
+        -38.7988
+      ],
+      "via": [],
+      "evidence": [
+        "stages"
+      ]
+    },
+    {
+      "id": "stage1__project1",
+      "from": "stage1",
+      "to": "project1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        51.9719,
+        -38.5714
+      ],
+      "toPoint": [
+        125.4668,
+        -1.7409
+      ],
+      "via": [
+        [
+          56.6877,
+          -38.5714
+        ],
+        [
+          56.6877,
+          -1.7409
+        ]
+      ],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "stage1__stage2",
+      "from": "stage1",
+      "to": "stage2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        51.9719,
+        -39.0261
+      ],
+      "toPoint": [
+        62.7582,
+        -39.0261
+      ],
+      "via": [],
+      "evidence": [
+        "stages"
+      ]
+    },
+    {
+      "id": "stage2__project2",
+      "from": "stage2",
+      "to": "project2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        66.5222,
+        -38.8275
+      ],
+      "toPoint": [
+        78.9056,
+        -12.9118
+      ],
+      "via": [
+        [
+          71.1928,
+          -38.8275
+        ],
+        [
+          71.1928,
+          -12.9118
+        ]
+      ],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "project2__up2",
+      "from": "project2",
+      "to": "up2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        80.4128,
+        -12.9118
+      ],
+      "toPoint": [
+        109.9339,
+        -12.9118
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "stage2__stage3",
+      "from": "stage2",
+      "to": "stage3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        66.5222,
+        -39.2246
+      ],
+      "toPoint": [
+        77.9033,
+        -39.2246
+      ],
+      "via": [],
+      "evidence": [
+        "stages"
+      ]
+    },
+    {
+      "id": "stage3__project3",
+      "from": "stage3",
+      "to": "project3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        81.7577,
+        -39.0548
+      ],
+      "toPoint": [
+        94.4759,
+        -24.0827
+      ],
+      "via": [
+        [
+          86.7256,
+          -39.0548
+        ],
+        [
+          86.7256,
+          -24.0827
+        ]
+      ],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "project3__up3",
+      "from": "project3",
+      "to": "up3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        95.9083,
+        -24.0827
+      ],
+      "toPoint": [
+        125.4668,
+        -24.0827
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "stage3__stage4",
+      "from": "stage3",
+      "to": "stage4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        81.7577,
+        -39.3945
+      ],
+      "toPoint": [
+        92.071,
+        -39.3945
+      ],
+      "via": [],
+      "evidence": [
+        "stages"
+      ]
+    },
+    {
+      "id": "stage4__project4",
+      "from": "stage4",
+      "to": "project4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        98.3132,
+        -39.3945
+      ],
+      "toPoint": [
+        110.0461,
+        -39.3945
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "project4__up4",
+      "from": "project4",
+      "to": "up4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        111.4037,
+        -39.3945
+      ],
+      "toPoint": [
+        125.4668,
+        -39.3945
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "up4__concat",
+      "from": "up4",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        127.0488,
+        -39.3945
+      ],
+      "toPoint": [
+        139.3381,
+        -23.2644
+      ],
+      "via": [
+        [
+          133.4242,
+          -39.3945
+        ],
+        [
+          133.4242,
+          -23.2644
+        ]
+      ],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "project1__concat",
+      "from": "project1",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        127.0488,
+        -1.7409
+      ],
+      "toPoint": [
+        139.3381,
+        -23.5372
+      ],
+      "via": [
+        [
+          133.5242,
+          -1.7409
+        ],
+        [
+          133.5242,
+          -23.5372
+        ]
+      ],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "up2__concat",
+      "from": "up2",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        111.5159,
+        -12.9118
+      ],
+      "toPoint": [
+        139.3381,
+        -23.8099
+      ],
+      "via": [
+        [
+          133.3242,
+          -12.9118
+        ],
+        [
+          133.3242,
+          -23.8099
+        ]
+      ],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "up3__concat",
+      "from": "up3",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        127.0488,
+        -24.0827
+      ],
+      "toPoint": [
+        139.3381,
+        -24.0827
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "concat__conv3",
+      "from": "concat",
+      "to": "conv3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        141.16,
+        -23.6735
+      ],
+      "toPoint": [
+        153.3644,
+        -23.6735
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "conv3__conv1",
+      "from": "conv3",
+      "to": "conv1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        155.1162,
+        -23.6735
+      ],
+      "toPoint": [
+        169.0173,
+        -23.6735
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    },
+    {
+      "id": "conv1__output",
+      "from": "conv1",
+      "to": "output",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        170.5291,
+        -23.6735
+      ],
+      "toPoint": [
+        184.4063,
+        -23.6735
+      ],
+      "via": [],
+      "evidence": [
+        "extract"
+      ]
+    }
+  ]
+}

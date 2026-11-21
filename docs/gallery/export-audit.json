@@ -1,0 +1,336 @@
+{
+  "pass": true,
+  "results": [
+    {
+      "id": "aspp",
+      "file": "docs\\gallery\\aspp.pdf",
+      "widthMm": 179.902,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "bit",
+      "file": "docs\\gallery\\bit.pdf",
+      "widthMm": 241.877,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "cbam",
+      "file": "docs\\gallery\\cbam.pdf",
+      "widthMm": 179.837,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "changeformer",
+      "file": "docs\\gallery\\changeformer.pdf",
+      "widthMm": 209.93,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "clip",
+      "file": "docs\\gallery\\clip.pdf",
+      "widthMm": 179.885,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "deeplabv3plus",
+      "file": "docs\\gallery\\deeplabv3plus.pdf",
+      "widthMm": 241.97,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "detr",
+      "file": "docs\\gallery\\detr.pdf",
+      "widthMm": 179.883,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "feature-refinement",
+      "file": "docs\\gallery\\feature-refinement.pdf",
+      "widthMm": 180.108,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "global-local-attention",
+      "file": "docs\\gallery\\global-local-attention.pdf",
+      "widthMm": 179.875,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "inverted-residual",
+      "file": "docs\\gallery\\inverted-residual.pdf",
+      "widthMm": 179.846,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "mobilenetv2",
+      "file": "docs\\gallery\\mobilenetv2.pdf",
+      "widthMm": 340.231,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "residual-basic",
+      "file": "docs\\gallery\\residual-basic.pdf",
+      "widthMm": 179.843,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "resnet18",
+      "file": "docs\\gallery\\resnet18.pdf",
+      "widthMm": 274.099,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "sam",
+      "file": "docs\\gallery\\sam.pdf",
+      "widthMm": 179.784,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "se",
+      "file": "docs\\gallery\\se.pdf",
+      "widthMm": 179.834,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "segformer-b0",
+      "file": "docs\\gallery\\segformer-b0.pdf",
+      "widthMm": 273.943,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "segformer-mlp",
+      "file": "docs\\gallery\\segformer-mlp.pdf",
+      "widthMm": 179.839,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "semantic-tokenizer",
+      "file": "docs\\gallery\\semantic-tokenizer.pdf",
+      "widthMm": 179.921,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "siamese-difference",
+      "file": "docs\\gallery\\siamese-difference.pdf",
+      "widthMm": 179.911,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "stanet-extractor",
+      "file": "docs\\gallery\\stanet-extractor.pdf",
+      "widthMm": 242.022,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "stanet-pam",
+      "file": "docs\\gallery\\stanet-pam.pdf",
+      "widthMm": 259.917,
+      "minimumTextPt": 10.929,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "stanet",
+      "file": "docs\\gallery\\stanet.pdf",
+      "widthMm": 320.061,
+      "minimumTextPt": 10.929,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "swin-pair",
+      "file": "docs\\gallery\\swin-pair.pdf",
+      "widthMm": 179.875,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "swin-t",
+      "file": "docs\\gallery\\swin-t.pdf",
+      "widthMm": 338.031,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "unet-original",
+      "file": "docs\\gallery\\unet-original.pdf",
+      "widthMm": 340.168,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "unetformer",
+      "file": "docs\\gallery\\unetformer.pdf",
+      "widthMm": 180.06,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "vit-b16",
+      "file": "docs\\gallery\\vit-b16.pdf",
+      "widthMm": 179.849,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "vit-encoder",
+      "file": "docs\\gallery\\vit-encoder.pdf",
+      "widthMm": 241.977,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "graphite-amber",
+      "file": "docs\\palettes\\graphite-amber.pdf",
+      "widthMm": 179.843,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "ocean-sand",
+      "file": "docs\\palettes\\ocean-sand.pdf",
+      "widthMm": 179.843,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "plum-slate",
+      "file": "docs\\palettes\\plum-slate.pdf",
+      "widthMm": 179.843,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "sage-earth",
+      "file": "docs\\palettes\\sage-earth.pdf",
+      "widthMm": 179.843,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    },
+    {
+      "id": "steel-teal",
+      "file": "docs\\palettes\\steel-teal.pdf",
+      "widthMm": 179.843,
+      "minimumTextPt": 10.321,
+      "pdfRasterImages": 0,
+      "svgImageElements": 0,
+      "labelCollisionCandidates": [],
+      "pass_": true
+    }
+  ],
+  "method": "Actual PDF text positions and approximate Helvetica/Arial advances identify collision candidates; actual PNG inspection is separately required."
+}

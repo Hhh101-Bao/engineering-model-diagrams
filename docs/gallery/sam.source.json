@@ -1,0 +1,443 @@
+{
+  "backend": "neural-netz",
+  "title": "Segment Anything · SAM",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Image"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -2.590222911475637
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "enc",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.19
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "ViT image",
+        "encoder",
+        "256 × 64 × 64"
+      ],
+      "labelAt": [
+        6.3349,
+        -3.7275687344269106
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        64,
+        64
+      ],
+      "sourceShape": [
+        256,
+        64,
+        64
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "p",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        -6.8
+      ],
+      "label": [
+        "Points / boxes",
+        "optional mask"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -9.754445822951274
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "pe",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        -6.8
+      ],
+      "label": [
+        "Prompt encoder"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -9.390222911475636
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "dec",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Two-way",
+        "mask decoder"
+      ],
+      "labelAt": [
+        11.476,
+        -2.9544458229512736
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "m",
+      "type": "custom",
+      "semanticOp": "output",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Candidate masks"
+      ],
+      "labelAt": [
+        16.486000000000004,
+        -2.590222911475637
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "q",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        16.200000000000003,
+        -6.8
+      ],
+      "label": [
+        "Mask-quality",
+        "prediction"
+      ],
+      "labelAt": [
+        16.876,
+        -9.754445822951274
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "enc",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "enc",
+      "to": "dec",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        7.2698,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        -0.15
+      ],
+      "via": [
+        [
+          10.25,
+          0
+        ],
+        [
+          10.25,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "dec",
+      "to": "m",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        -0.15
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": [
+        [
+          15.65,
+          -0.15
+        ],
+        [
+          15.65,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "p",
+      "to": "pe",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        -6.8
+      ],
+      "toPoint": [
+        5.4,
+        -6.8
+      ],
+      "via": []
+    },
+    {
+      "id": "e4",
+      "from": "pe",
+      "to": "dec",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        -6.8
+      ],
+      "toPoint": [
+        10.8,
+        0.15
+      ],
+      "via": [
+        [
+          9.06503,
+          -6.8
+        ],
+        [
+          9.06503,
+          0.15
+        ]
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "dec",
+      "to": "q",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        0.15
+      ],
+      "toPoint": [
+        16.2,
+        -6.8
+      ],
+      "via": [
+        [
+          12.702,
+          0.15
+        ],
+        [
+          12.702,
+          -2.1849
+        ],
+        [
+          8.93537,
+          -2.1849
+        ],
+        [
+          8.93537,
+          -6.48
+        ],
+        [
+          15.65,
+          -6.48
+        ],
+        [
+          15.65,
+          -6.8
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,450 @@
+{
+  "backend": "neural-netz",
+  "title": "ResNet-18",
+  "widthMm": 274,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Input",
+        "3 × 224 × 224"
+      ],
+      "labelAt": [
+        0.506,
+        -3.8753198285893307
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        224,
+        224
+      ],
+      "sourceShape": [
+        3,
+        224,
+        224
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "stem",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.03
+      ],
+      "height": 3.034132927396705,
+      "depth": 3.034132927396705,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Stem",
+        "7×7, s2 + pool",
+        "64 × 56 × 56"
+      ],
+      "labelAt": [
+        6.248754622013638,
+        -3.994800828595986
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        56,
+        56
+      ],
+      "sourceShape": [
+        64,
+        56,
+        56
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s0",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.03
+      ],
+      "height": 3.034132927396705,
+      "depth": 3.034132927396705,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Stage 1",
+        "BasicBlock ×2",
+        "64 × 56 × 56"
+      ],
+      "labelAt": [
+        11.648754622013637,
+        -3.994800828595986
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        56,
+        56
+      ],
+      "sourceShape": [
+        64,
+        56,
+        56
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s1",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.11
+      ],
+      "height": 2.744132927396705,
+      "depth": 2.744132927396705,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Stage 2",
+        "BasicBlock ×2",
+        "128 × 28 × 28"
+      ],
+      "labelAt": [
+        17.056854622013642,
+        -3.817900828595986
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        128,
+        28,
+        28
+      ],
+      "sourceShape": [
+        128,
+        28,
+        28
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s2",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.19
+      ],
+      "height": 2.454132927396705,
+      "depth": 2.454132927396705,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Stage 3",
+        "BasicBlock ×2",
+        "256 × 14 × 14"
+      ],
+      "labelAt": [
+        22.46495462201364,
+        -3.641000828595986
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        14,
+        14
+      ],
+      "sourceShape": [
+        256,
+        14,
+        14
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s3",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.27
+      ],
+      "height": 2.164132927396705,
+      "depth": 2.164132927396705,
+      "at": [
+        27,
+        0
+      ],
+      "label": [
+        "Stage 4",
+        "BasicBlock ×2",
+        "512 × 7 × 7"
+      ],
+      "labelAt": [
+        27.873054622013637,
+        -3.464100828595986
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        512,
+        7,
+        7
+      ],
+      "sourceShape": [
+        512,
+        7,
+        7
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "gap",
+      "type": "gap",
+      "semanticOp": "gap",
+      "widths": [
+        1.27
+      ],
+      "height": 1.35,
+      "depth": 1.35,
+      "at": [
+        32.400000000000006,
+        0
+      ],
+      "label": [
+        "Global avg pool",
+        "512 × 1 × 1"
+      ],
+      "labelAt": [
+        33.18350000000001,
+        -2.5028198285893306
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        512,
+        1,
+        1
+      ],
+      "sourceShape": [
+        512,
+        1,
+        1
+      ],
+      "fill": "#D7B584",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "fc",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1.3472627427729669
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        37.800000000000004,
+        0
+      ],
+      "label": [
+        "Classifier",
+        "1000"
+      ],
+      "labelAt": [
+        38.64963137138649,
+        -3.1553198285893305
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1000
+      ],
+      "sourceShape": [
+        1000
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "stem",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        1.012,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "stem",
+      "to": "s0",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        7.09751,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "s0",
+      "to": "s1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.49751,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e3",
+      "from": "s1",
+      "to": "s2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.91371,
+        0
+      ],
+      "toPoint": [
+        21.6,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e4",
+      "from": "s2",
+      "to": "s3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        23.32991,
+        0
+      ],
+      "toPoint": [
+        27,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e5",
+      "from": "s3",
+      "to": "gap",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.74611,
+        0
+      ],
+      "toPoint": [
+        32.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e6",
+      "from": "gap",
+      "to": "fc",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        33.967,
+        0
+      ],
+      "toPoint": [
+        37.8,
+        0
+      ],
+      "via": []
+    }
+  ]
+}

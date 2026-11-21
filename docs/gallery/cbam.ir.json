@@ -1,0 +1,161 @@
+{
+  "schema": "paper-model/1",
+  "title": "CBAM · sequential attention",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1807.06521",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.1; Eqs.1–3",
+      "statement": "Channel attention followed by spatial attention; both maps gate their current features. Pool/MLP and spatial7×7 details are grouped inside the named attention modules.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Feature",
+      "label": "Feature",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "ca",
+      "op": "attention",
+      "meaning": "Channel attention / avg/max + MLP",
+      "label": "Channel attention / avg/max + MLP",
+      "shape": [
+        "C",
+        1,
+        1
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "m1",
+      "op": "multiply",
+      "meaning": "Channel gate",
+      "label": "Channel gate",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "sa",
+      "op": "attention",
+      "meaning": "Spatial attention / avg/max +7×7",
+      "label": "Spatial attention / avg/max +7×7",
+      "shape": [
+        1,
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "multiply",
+      "meaning": "Spatial gate",
+      "label": "Spatial gate",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "ca",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "ca",
+      "to": "m1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "m1",
+      "to": "sa",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "sa",
+      "to": "m2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "x",
+      "to": "m1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "m1",
+      "to": "m2",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Channel attention followed by spatial attention; both maps gate their current features. Pool/MLP and spatial7×7 details are grouped inside the named attention modules.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

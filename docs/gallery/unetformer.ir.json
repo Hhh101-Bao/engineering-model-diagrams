@@ -1,0 +1,283 @@
+{
+  "schema": "paper-model/1",
+  "title": "UNetFormer",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/WangLibo1995/GeoSeg/blob/main/geoseg/models/UNetFormer.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Decoder.forward inference path; UNetFormer class",
+      "statement": "ResNet18 encoder and64-channel decoder. Three global-local blocks at1/32,1/16,1/8; weighted fusion includes upsampling. Feature-refinement head uses1/4 skip; auxiliary training head omitted.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Remote-sensing / image",
+      "label": "Remote-sensing / image",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "op": "conv",
+      "meaning": "ResNet18 /4",
+      "label": "ResNet18 /4",
+      "shape": [
+        64,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "op": "conv",
+      "meaning": "ResNet18 /8",
+      "label": "ResNet18 /8",
+      "shape": [
+        128,
+        "H/8",
+        "W/8"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "op": "conv",
+      "meaning": "ResNet18 /16",
+      "label": "ResNet18 /16",
+      "shape": [
+        256,
+        "H/16",
+        "W/16"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "op": "conv",
+      "meaning": "ResNet18 /32",
+      "label": "ResNet18 /32",
+      "shape": [
+        512,
+        "H/32",
+        "W/32"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "g4",
+      "op": "attention",
+      "meaning": "Project + GLTB",
+      "label": "Project + GLTB",
+      "shape": [
+        64,
+        "H/32",
+        "W/32"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "g3",
+      "op": "attention",
+      "meaning": "Weighted fusion / + GLTB",
+      "label": "Weighted fusion / + GLTB",
+      "shape": [
+        64,
+        "H/16",
+        "W/16"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "g2",
+      "op": "attention",
+      "meaning": "Weighted fusion / + GLTB",
+      "label": "Weighted fusion / + GLTB",
+      "shape": [
+        64,
+        "H/8",
+        "W/8"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "frh",
+      "op": "custom",
+      "meaning": "Feature refinement",
+      "label": "Feature refinement",
+      "shape": [
+        64,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Head + resize",
+      "label": "Head + resize",
+      "shape": [
+        "K",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "e1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "e1",
+      "to": "e2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "e2",
+      "to": "e3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "e3",
+      "to": "e4",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "e4",
+      "to": "g4",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "g4",
+      "to": "g3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "g3",
+      "to": "g2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "g2",
+      "to": "frh",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "frh",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "e3",
+      "to": "g3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "e2",
+      "to": "g2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "e1",
+      "to": "frh",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "ResNet18 encoder and64-channel decoder. Three global-local blocks at1/32,1/16,1/8; weighted fusion includes upsampling. Feature-refinement head uses1/4 skip; auxiliary training head omitted.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

@@ -1,0 +1,801 @@
+{
+  "backend": "neural-netz",
+  "title": "STANet PAM | official-code inference redraw",
+  "widthMm": 320,
+  "minFontPt": 9,
+  "depthMultiplier": 0.22,
+  "palette": "cold",
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "imageA",
+      "type": "custom",
+      "semanticOp": "input",
+      "meaning": "input",
+      "widths": [
+        0.18
+      ],
+      "height": 3.37,
+      "depth": 3.37,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        256,
+        256
+      ],
+      "label": [
+        "Date A / RGB",
+        "3×256×256"
+      ],
+      "labelAt": [
+        4.0215,
+        -7.0259
+      ],
+      "at": [
+        3.5608,
+        -2.1557
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "evidence": [
+        "sample",
+        "shared"
+      ],
+      "sourceShape": [
+        3,
+        256,
+        256
+      ]
+    },
+    {
+      "name": "imageB",
+      "type": "custom",
+      "semanticOp": "input",
+      "meaning": "input",
+      "widths": [
+        0.18
+      ],
+      "height": 3.37,
+      "depth": 3.37,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        256,
+        256
+      ],
+      "label": [
+        "Date B / RGB",
+        "3×256×256"
+      ],
+      "labelAt": [
+        4.0215,
+        -19.2512
+      ],
+      "at": [
+        3.5608,
+        -14.381
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "evidence": [
+        "sample",
+        "shared"
+      ],
+      "sourceShape": [
+        3,
+        256,
+        256
+      ]
+    },
+    {
+      "name": "featureA",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "The same netF weights process both dates: ResNet-18 based backbone and multi-scale decoder, expanded in extractor companion.",
+      "widths": [
+        0.9199999999999999
+      ],
+      "height": 2.69,
+      "depth": 2.69,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": [
+        "Shared FCN",
+        "64×64×64"
+      ],
+      "labelAt": [
+        13.6775,
+        -6.6111
+      ],
+      "at": [
+        12.9216,
+        -2.1557
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "shared",
+        "extract",
+        "backbone",
+        "trace"
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "featureB",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "Same netF instance and weights as featureA; not a second independently trained network.",
+      "widths": [
+        0.9199999999999999
+      ],
+      "height": 2.69,
+      "depth": 2.69,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": [
+        "Shared FCN",
+        "64×64×64"
+      ],
+      "labelAt": [
+        13.6775,
+        -18.8364
+      ],
+      "at": [
+        12.9216,
+        -14.381
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "shared",
+        "extract",
+        "backbone",
+        "trace"
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "stack",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "Concatenate dates along width (CHW axis 2); channel count remains 64. Kept as custom macro because the current volume backend concat checker assumes a channel-axis concat.",
+      "widths": [
+        0.9199999999999999
+      ],
+      "height": 2.69,
+      "depth": 3.0300000000000002,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        128
+      ],
+      "label": [
+        "Concat width",
+        "64×64×128"
+      ],
+      "labelAt": [
+        23.3336,
+        -6.8677
+      ],
+      "at": [
+        22.5403,
+        -2.3749
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "temporal"
+      ],
+      "sourceShape": [
+        64,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "pam",
+      "type": "custom",
+      "semanticOp": "attention",
+      "meaning": "Four regionwise scaled dot-product attention branches, channel concatenation and 1x1 projection. No residual add in selected code.",
+      "widths": [
+        0.9199999999999999
+      ],
+      "height": 2.69,
+      "depth": 3.0300000000000002,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        128
+      ],
+      "label": [
+        "PAM 1,2,4,8",
+        "64×64×128"
+      ],
+      "labelAt": [
+        33.4164,
+        -6.8677
+      ],
+      "at": [
+        32.6231,
+        -2.3749
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "temporal",
+        "regions",
+        "aggregate"
+      ],
+      "sourceShape": [
+        64,
+        64,
+        128
+      ]
+    },
+    {
+      "name": "splitA",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "Left W columns of the attention output.",
+      "widths": [
+        0.9199999999999999
+      ],
+      "height": 2.69,
+      "depth": 2.69,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": [
+        "Split date A",
+        "64×64×64"
+      ],
+      "labelAt": [
+        43.4993,
+        -6.6111
+      ],
+      "at": [
+        42.7434,
+        -2.1557
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "temporal"
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "splitB",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "Right W columns of the attention output.",
+      "widths": [
+        0.9199999999999999
+      ],
+      "height": 2.69,
+      "depth": 2.69,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": [
+        "Split date B",
+        "64×64×64"
+      ],
+      "labelAt": [
+        43.4993,
+        -18.0068
+      ],
+      "at": [
+        42.7434,
+        -13.5514
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "temporal"
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "distance",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "Per-pixel Euclidean distance between the two updated feature vectors.",
+      "widths": [
+        0.35
+      ],
+      "height": 2.69,
+      "depth": 2.69,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1,
+        64,
+        64
+      ],
+      "label": [
+        "L2 distance",
+        "1×64×64"
+      ],
+      "labelAt": [
+        53.4488,
+        -6.8384
+      ],
+      "at": [
+        52.9779,
+        -2.383
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "shared"
+      ],
+      "sourceShape": [
+        1,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "resize",
+      "type": "custom",
+      "semanticOp": "upsample",
+      "meaning": "upsample",
+      "widths": [
+        0.35
+      ],
+      "height": 3.37,
+      "depth": 3.37,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1,
+        256,
+        256
+      ],
+      "label": [
+        "Bilinear x4",
+        "1×256×256"
+      ],
+      "labelAt": [
+        63.1049,
+        -7.2532
+      ],
+      "at": [
+        62.5592,
+        -2.383
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "shared"
+      ],
+      "sourceShape": [
+        1,
+        256,
+        256
+      ]
+    },
+    {
+      "name": "threshold",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "Predict change=1 when the resized distance is greater than 1; otherwise unchanged=0.",
+      "widths": [
+        0.35
+      ],
+      "height": 3.37,
+      "depth": 3.37,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1,
+        256,
+        256
+      ],
+      "label": [
+        "Threshold >1",
+        "1×256×256"
+      ],
+      "labelAt": [
+        73.0544,
+        -7.2532
+      ],
+      "at": [
+        72.5087,
+        -2.383
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "evidence": [
+        "shared",
+        "paper_metric"
+      ],
+      "sourceShape": [
+        1,
+        256,
+        256
+      ]
+    },
+    {
+      "name": "prediction",
+      "type": "custom",
+      "semanticOp": "output",
+      "meaning": "output",
+      "widths": [
+        0.18
+      ],
+      "height": 3.37,
+      "depth": 3.37,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1,
+        256,
+        256
+      ],
+      "label": [
+        "Change mask",
+        "1×256×256"
+      ],
+      "labelAt": [
+        83.0039,
+        -7.2532
+      ],
+      "at": [
+        82.5432,
+        -2.383
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "evidence": [
+        "shared"
+      ],
+      "sourceShape": [
+        1,
+        256,
+        256
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "imageA__featureA",
+      "from": "imageA",
+      "to": "featureA",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        4.4822,
+        -2.1557
+      ],
+      "toPoint": [
+        12.9216,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "imageB__featureB",
+      "from": "imageB",
+      "to": "featureB",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        4.4822,
+        -14.381
+      ],
+      "toPoint": [
+        12.9216,
+        -14.381
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "featureA__stack",
+      "from": "featureA",
+      "to": "stack",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        14.4334,
+        -2.1557
+      ],
+      "toPoint": [
+        22.5403,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "featureB__stack",
+      "from": "featureB",
+      "to": "stack",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        14.4334,
+        -14.381
+      ],
+      "toPoint": [
+        22.5403,
+        -2.5941
+      ],
+      "via": [
+        [
+          17.5121,
+          -14.381
+        ],
+        [
+          17.5121,
+          -2.5941
+        ]
+      ],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "stack__pam",
+      "from": "stack",
+      "to": "pam",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        24.1269,
+        -2.3749
+      ],
+      "toPoint": [
+        32.6231,
+        -2.3749
+      ],
+      "via": [],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "pam__splitA",
+      "from": "pam",
+      "to": "splitA",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        34.2097,
+        -2.1557
+      ],
+      "toPoint": [
+        42.7434,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "pam__splitB",
+      "from": "pam",
+      "to": "splitB",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        34.2097,
+        -2.5941
+      ],
+      "toPoint": [
+        42.7434,
+        -13.5514
+      ],
+      "via": [
+        [
+          37.6779,
+          -2.5941
+        ],
+        [
+          37.6779,
+          -13.5514
+        ]
+      ],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "splitA__distance",
+      "from": "splitA",
+      "to": "distance",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        44.2552,
+        -2.1557
+      ],
+      "toPoint": [
+        52.9779,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "splitB__distance",
+      "from": "splitB",
+      "to": "distance",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        44.2552,
+        -13.5514
+      ],
+      "toPoint": [
+        52.9779,
+        -2.6103
+      ],
+      "via": [
+        [
+          47.9208,
+          -13.5514
+        ],
+        [
+          47.9208,
+          -2.6103
+        ]
+      ],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "distance__resize",
+      "from": "distance",
+      "to": "resize",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        53.9197,
+        -2.383
+      ],
+      "toPoint": [
+        62.5592,
+        -2.383
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "resize__threshold",
+      "from": "resize",
+      "to": "threshold",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        63.6506,
+        -2.383
+      ],
+      "toPoint": [
+        72.5087,
+        -2.383
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "threshold__prediction",
+      "from": "threshold",
+      "to": "prediction",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        73.6001,
+        -2.383
+      ],
+      "toPoint": [
+        82.5432,
+        -2.383
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    }
+  ]
+}

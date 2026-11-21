@@ -1,0 +1,157 @@
+{
+  "schema": "paper-model/1",
+  "title": "Segment Anything · SAM",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/2304.02643",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.4; AppendixA; official segment_anything/modeling",
+      "statement": "SAM1 inference macro view: image encoder, sparse/dense prompt encoder, mask decoder, mask outputs and quality scores. Prompt types are grouped; automatic mask generation is not an extra neural stage.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Image",
+      "label": "Image",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "enc",
+      "op": "attention",
+      "meaning": "ViT image / encoder",
+      "label": "ViT image / encoder",
+      "shape": [
+        256,
+        64,
+        64
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p",
+      "op": "input",
+      "meaning": "Points / boxes / optional mask",
+      "label": "Points / boxes / optional mask",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "pe",
+      "op": "linear",
+      "meaning": "Prompt encoder",
+      "label": "Prompt encoder",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "dec",
+      "op": "attention",
+      "meaning": "Two-way / mask decoder",
+      "label": "Two-way / mask decoder",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "m",
+      "op": "output",
+      "meaning": "Candidate masks",
+      "label": "Candidate masks",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "q",
+      "op": "linear",
+      "meaning": "Mask-quality / prediction",
+      "label": "Mask-quality / prediction",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "enc",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "enc",
+      "to": "dec",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "dec",
+      "to": "m",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "p",
+      "to": "pe",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "pe",
+      "to": "dec",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "dec",
+      "to": "q",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "SAM1 inference macro view: image encoder, sparse/dense prompt encoder, mask decoder, mask outputs and quality scores. Prompt types are grouped; automatic mask generation is not an extra neural stage.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

@@ -1,0 +1,846 @@
+{
+  "backend": "neural-netz",
+  "title": "SegFormer-B0",
+  "widthMm": 274,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Image"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -2.6906599142946654
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "e0",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        0.9500000000000001
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "MiT stage1",
+        "32 × H/4 × W/4"
+      ],
+      "labelAt": [
+        6.1775,
+        3.3568198285893307
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        32,
+        null,
+        null
+      ],
+      "sourceShape": [
+        32,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "e1",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.03
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "MiT stage2",
+        "64 × H/8 × W/8"
+      ],
+      "labelAt": [
+        11.617500000000001,
+        3.3568198285893307
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        null,
+        null
+      ],
+      "sourceShape": [
+        64,
+        "H/8",
+        "W/8"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "e2",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.135754247590989
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "MiT stage3",
+        "160 × H/16 × W/16"
+      ],
+      "labelAt": [
+        17.0703771237955,
+        3.3568198285893307
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        160,
+        null,
+        null
+      ],
+      "sourceShape": [
+        160,
+        "H/16",
+        "W/16"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "e3",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "MiT stage4",
+        "256 × H/32 × W/32"
+      ],
+      "labelAt": [
+        22.497500000000002,
+        3.3568198285893307
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/32",
+        "W/32"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "p0",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        5.4,
+        -6.8
+      ],
+      "label": [
+        "Linear + resize",
+        "256 × H/4 × W/4"
+      ],
+      "labelAt": [
+        6.2975,
+        -10.15681982858933
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "p1",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        10.8,
+        -6.8
+      ],
+      "label": [
+        "Linear + resize",
+        "256 × H/4 × W/4"
+      ],
+      "labelAt": [
+        11.697500000000002,
+        -10.15681982858933
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "p2",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        16.200000000000003,
+        -6.8
+      ],
+      "label": [
+        "Linear + resize",
+        "256 × H/4 × W/4"
+      ],
+      "labelAt": [
+        17.097500000000004,
+        -10.15681982858933
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "p3",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        21.6,
+        -6.8
+      ],
+      "label": [
+        "Linear + resize",
+        "256 × H/4 × W/4"
+      ],
+      "labelAt": [
+        22.497500000000002,
+        -10.15681982858933
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "cat",
+      "type": "custom",
+      "semanticOp": "concat",
+      "widths": [
+        1.35
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        27,
+        -6.8
+      ],
+      "label": [
+        "Concatenate",
+        "1024 × H/4 × W/4"
+      ],
+      "labelAt": [
+        27.9775,
+        -10.15681982858933
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1024,
+        null,
+        null
+      ],
+      "sourceShape": [
+        1024,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#D8BC80",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "fuse",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        32.400000000000006,
+        -6.8
+      ],
+      "label": [
+        "1×1 fusion",
+        "256 × H/4 × W/4"
+      ],
+      "labelAt": [
+        33.29750000000001,
+        -10.15681982858933
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "y",
+      "type": "custom",
+      "semanticOp": "output",
+      "widths": [
+        0.22
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        37.800000000000004,
+        -6.8
+      ],
+      "label": [
+        "Predict + resize",
+        "K × H × W"
+      ],
+      "labelAt": [
+        38.212500000000006,
+        -10.15681982858933
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "K",
+        "H",
+        "W"
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "e0",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "e0",
+      "to": "e1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.955,
+        -0.15
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": [
+        [
+          10.25,
+          -0.15
+        ],
+        [
+          10.25,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "e1",
+      "to": "e2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.435,
+        -0.15
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": [
+        [
+          15.65,
+          -0.15
+        ],
+        [
+          15.65,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "e2",
+      "to": "e3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.94075,
+        -0.15
+      ],
+      "toPoint": [
+        21.6,
+        0
+      ],
+      "via": [
+        [
+          21.05,
+          -0.15
+        ],
+        [
+          21.05,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "e0",
+      "to": "p0",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        6.025,
+        -1.6775
+      ],
+      "toPoint": [
+        6.6,
+        -5.1225
+      ],
+      "via": [
+        [
+          6.025,
+          -2.2275
+        ],
+        [
+          6.6,
+          -2.2275
+        ]
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "p0",
+      "to": "cat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        7.195,
+        -6.8
+      ],
+      "toPoint": [
+        27,
+        -7.07
+      ],
+      "via": [
+        [
+          7.745,
+          -6.8
+        ],
+        [
+          7.745,
+          -8.7775
+        ],
+        [
+          26.45,
+          -8.7775
+        ],
+        [
+          26.45,
+          -7.07
+        ]
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "e1",
+      "to": "p1",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        11.465,
+        -1.6775
+      ],
+      "toPoint": [
+        12,
+        -5.1225
+      ],
+      "via": [
+        [
+          11.465,
+          -2.2275
+        ],
+        [
+          12,
+          -2.2275
+        ]
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "p1",
+      "to": "cat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.595,
+        -6.8
+      ],
+      "toPoint": [
+        27,
+        -6.89
+      ],
+      "via": [
+        [
+          13.145,
+          -6.8
+        ],
+        [
+          13.145,
+          -4.6725
+        ],
+        [
+          26.45,
+          -4.6725
+        ],
+        [
+          26.45,
+          -6.89
+        ]
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "e2",
+      "to": "p2",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        16.91788,
+        -1.6775
+      ],
+      "toPoint": [
+        17.4,
+        -5.1225
+      ],
+      "via": [
+        [
+          16.91788,
+          -2.2275
+        ],
+        [
+          17.4,
+          -2.2275
+        ]
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "p2",
+      "to": "cat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.995,
+        -6.8
+      ],
+      "toPoint": [
+        27,
+        -6.71
+      ],
+      "via": [
+        [
+          18.545,
+          -6.8
+        ],
+        [
+          18.545,
+          -4.9925
+        ],
+        [
+          26.35045,
+          -4.9925
+        ],
+        [
+          26.35045,
+          -6.71
+        ]
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "e3",
+      "to": "p3",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        22.195,
+        -1.6775
+      ],
+      "toPoint": [
+        22.8,
+        -5.1225
+      ],
+      "via": [
+        [
+          22.195,
+          -2.2275
+        ],
+        [
+          22.8,
+          -2.2275
+        ]
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "p3",
+      "to": "cat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        23.395,
+        -6.8
+      ],
+      "toPoint": [
+        27,
+        -6.53
+      ],
+      "via": [
+        [
+          23.945,
+          -6.8
+        ],
+        [
+          23.945,
+          -6.53
+        ]
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "cat",
+      "to": "fuse",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.955,
+        -6.8
+      ],
+      "toPoint": [
+        32.4,
+        -6.8
+      ],
+      "via": []
+    },
+    {
+      "id": "e13",
+      "from": "fuse",
+      "to": "y",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        34.195,
+        -6.8
+      ],
+      "toPoint": [
+        37.8,
+        -6.8
+      ],
+      "via": []
+    }
+  ]
+}

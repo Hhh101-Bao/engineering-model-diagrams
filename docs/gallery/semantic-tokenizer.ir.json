@@ -1,0 +1,127 @@
+{
+  "schema": "paper-model/1",
+  "title": "BIT semantic tokenizer",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/justchenhao/BIT_CD/blob/master/models/networks.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "_forward_semantic_tokens",
+      "statement": "A learned1×1 projection creates L spatial attention maps; softmax is over flattened spatial positions. Weighted aggregation of the original features produces L×C tokens.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Feature F",
+      "label": "Feature F",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p",
+      "op": "conv",
+      "meaning": "1×1 Conv / L maps",
+      "label": "1×1 Conv / L maps",
+      "shape": [
+        "L",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s",
+      "op": "custom",
+      "meaning": "Spatial softmax",
+      "label": "Spatial softmax",
+      "shape": [
+        "L",
+        "HW"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "agg",
+      "op": "custom",
+      "meaning": "Weighted / aggregation",
+      "label": "Weighted / aggregation",
+      "shape": [
+        "L",
+        "C"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "p",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "p",
+      "to": "s",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "s",
+      "to": "agg",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "x",
+      "to": "agg",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "A learned1×1 projection creates L spatial attention maps; softmax is over flattened spatial positions. Weighted aggregation of the original features produces L×C tokens.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

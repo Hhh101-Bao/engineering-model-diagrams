@@ -1,0 +1,491 @@
+{
+  "backend": "neural-netz",
+  "title": "ViT encoder block",
+  "widthMm": 242,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Token sequence",
+        "N × D"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -3.1521644281644283
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "n1",
+      "type": "custom",
+      "semanticOp": "norm",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Layer norm",
+        "N × D"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -3.1521644281644283
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "a",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Multi-head",
+        "self-attention",
+        "N × D"
+      ],
+      "labelAt": [
+        11.476,
+        -3.6152466422466425
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s1",
+      "type": "sum",
+      "semanticOp": "add",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Add",
+        "N × D"
+      ],
+      "labelAt": [
+        16.650000000000002,
+        -2.1261644281644285
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false,
+      "radius": 0.45,
+      "symbol": "+",
+      "broadcast": true
+    },
+    {
+      "name": "n2",
+      "type": "custom",
+      "semanticOp": "norm",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Layer norm",
+        "N × D"
+      ],
+      "labelAt": [
+        22.276,
+        -3.1521644281644283
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "mlp",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        27,
+        0
+      ],
+      "label": [
+        "MLP",
+        "Dense–GELU–Dense",
+        "N × D"
+      ],
+      "labelAt": [
+        27.676,
+        -3.6152466422466425
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s2",
+      "type": "sum",
+      "semanticOp": "add",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "at": [
+        32.400000000000006,
+        0
+      ],
+      "label": [
+        "Add",
+        "N × D"
+      ],
+      "labelAt": [
+        32.85000000000001,
+        -2.1261644281644285
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false,
+      "radius": 0.45,
+      "symbol": "+",
+      "broadcast": true
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "n1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        -0.044
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": [
+        [
+          4.85,
+          -0.044
+        ],
+        [
+          4.85,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "a",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "a",
+      "to": "s1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        0
+      ],
+      "toPoint": [
+        16.22574,
+        -0.15
+      ],
+      "via": [
+        [
+          12.702,
+          0
+        ],
+        [
+          12.702,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "s1",
+      "to": "n2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.07426,
+        -0.15
+      ],
+      "toPoint": [
+        21.6,
+        0
+      ],
+      "via": [
+        [
+          21.05,
+          -0.15
+        ],
+        [
+          21.05,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "n2",
+      "to": "mlp",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        22.952,
+        0
+      ],
+      "toPoint": [
+        27,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e5",
+      "from": "mlp",
+      "to": "s2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.352,
+        0
+      ],
+      "toPoint": [
+        32.42574,
+        -0.15
+      ],
+      "via": [
+        [
+          28.902,
+          0
+        ],
+        [
+          28.902,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "x",
+      "to": "s1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        0.044
+      ],
+      "toPoint": [
+        16.22574,
+        0.15
+      ],
+      "via": [
+        [
+          1.122,
+          0.044
+        ],
+        [
+          1.122,
+          1.926
+        ],
+        [
+          15.67574,
+          1.926
+        ],
+        [
+          15.67574,
+          0.15
+        ]
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "s1",
+      "to": "s2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.07426,
+        0.15
+      ],
+      "toPoint": [
+        32.42574,
+        0.15
+      ],
+      "via": [
+        [
+          17.62426,
+          0.15
+        ],
+        [
+          17.62426,
+          1.606
+        ],
+        [
+          31.87574,
+          1.606
+        ],
+        [
+          31.87574,
+          0.15
+        ]
+      ]
+    }
+  ]
+}

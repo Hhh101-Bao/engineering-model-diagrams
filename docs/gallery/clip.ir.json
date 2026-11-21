@@ -1,0 +1,184 @@
+{
+  "schema": "paper-model/1",
+  "title": "CLIP · contrastive pretraining",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/2103.00020",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.1; §2.3",
+      "statement": "Training representation view: paired image/text encoders produce normalized embeddings and an all-pairs similarity matrix. Symmetric contrastive objective shown as a distinct endpoint; this is not a single-image segmentation pipeline.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "i",
+      "op": "input",
+      "meaning": "Image batch",
+      "label": "Image batch",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "t",
+      "op": "input",
+      "meaning": "Text batch",
+      "label": "Text batch",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "ie",
+      "op": "attention",
+      "meaning": "Image encoder",
+      "label": "Image encoder",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "te",
+      "op": "attention",
+      "meaning": "Text encoder",
+      "label": "Text encoder",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "in",
+      "op": "linear",
+      "meaning": "Projection / + normalize",
+      "label": "Projection / + normalize",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "tn",
+      "op": "linear",
+      "meaning": "Projection / + normalize",
+      "label": "Projection / + normalize",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "sim",
+      "op": "custom",
+      "meaning": "Pairwise cosine / similarities",
+      "label": "Pairwise cosine / similarities",
+      "shape": [
+        "N",
+        "N"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "loss",
+      "op": "output",
+      "meaning": "Symmetric / contrastive objective",
+      "label": "Symmetric / contrastive objective",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "i",
+      "to": "ie",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "ie",
+      "to": "in",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "in",
+      "to": "sim",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "sim",
+      "to": "loss",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "t",
+      "to": "te",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "te",
+      "to": "tn",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "tn",
+      "to": "sim",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Training representation view: paired image/text encoders produce normalized embeddings and an all-pairs similarity matrix. Symmetric contrastive objective shown as a distinct endpoint; this is not a single-image segmentation pipeline.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

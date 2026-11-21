@@ -1,0 +1,44 @@
+{
+  "project": "PlotNeuralNet",
+  "url": "https://github.com/HarisIqbal88/PlotNeuralNet",
+  "commit": "e96bc852189c2089dd500527a0a01a5a36e8977e",
+  "license": "MIT",
+  "files": {
+    "layers/init.tex": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/layers/init.tex",
+      "sha256": "484f1bd8137f1beaa71fca4cffabeab9009cf395027b867eb8b60485c1e45bc3"
+    },
+    "layers/Box.sty": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/layers/Box.sty",
+      "sha256": "0a83d6f0bde2e627a585d9b7459e6e5c72de4cb381307bb088116b7fef2e49f0"
+    },
+    "layers/RightBandedBox.sty": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/layers/RightBandedBox.sty",
+      "sha256": "248851bbfad50888a7c95107a3eb7989aee645d5bd42072af121ecd7504f2fc4"
+    },
+    "layers/Ball.sty": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/layers/Ball.sty",
+      "sha256": "152f087b80de2884b776aeeebce223c59ca1945054ad2252d43b0d4e5b5d677a"
+    },
+    "pycore/tikzeng.py": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/pycore/tikzeng.py",
+      "sha256": "f4ac898eab2f45935771ac7d3af2f4e6089d23259c359b3d8c89ef401fde43e6"
+    },
+    "pycore/blocks.py": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/pycore/blocks.py",
+      "sha256": "e60f124e7aa3374d3e5e4b7d636b65b0d5c7a9212cd6d7efa11621e9d973da31"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/LICENSE",
+      "sha256": "3d19c9bba01d03baedb9e5868ebdc835a2d4a2e44128c070a9d431b2e1b20302"
+    },
+    "examples/fcn8s/fcn8.tex": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/examples/fcn8s/fcn8.tex",
+      "sha256": "1b8fe1141f7e69921ec22a92cc3db71b6b04b03f6332c0731be4aaf021bda886"
+    },
+    "examples/fcn8s/cats.jpg": {
+      "url": "https://raw.githubusercontent.com/HarisIqbal88/PlotNeuralNet/e96bc852189c2089dd500527a0a01a5a36e8977e/examples/fcn8s/cats.jpg",
+      "sha256": "dfaa3581df2388df3c004cfd496dfbc32a1e07aee301677b1948580b9f977bb7"
+    }
+  }
+}

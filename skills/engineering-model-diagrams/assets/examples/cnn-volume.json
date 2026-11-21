@@ -1,0 +1,250 @@
+{
+  "backend": "plotneuralnet",
+  "title": "层级卷积特征提取",
+  "widthMm": 200,
+  "fontSize": 14,
+  "legend": "金色分段：Conv + ReLU    红色薄层：MaxPool    几何非等比例示意",
+  "layers": [
+    {
+      "id": "image",
+      "type": "input",
+      "tensor": [
+        3,
+        128,
+        128
+      ],
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "widths": [
+        0.5
+      ],
+      "caption": "输入"
+    },
+    {
+      "id": "conv1",
+      "type": "convrelu",
+      "tensor": [
+        32,
+        128,
+        128
+      ],
+      "repeat": 2,
+      "widths": [
+        1.5,
+        1.5
+      ],
+      "to": "image-east",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "caption": "Conv1"
+    },
+    {
+      "id": "pool1",
+      "type": "pool",
+      "tensor": [
+        32,
+        64,
+        64
+      ],
+      "to": "conv1-east",
+      "offset": [
+        0.2,
+        0,
+        0
+      ],
+      "widths": [
+        0.8
+      ],
+      "caption": "Pool",
+      "labelOffset": [
+        1,
+        -3,
+        1.9798989873223332
+      ],
+      "showChannels": false
+    },
+    {
+      "id": "conv2",
+      "type": "convrelu",
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "repeat": 2,
+      "widths": [
+        2,
+        2
+      ],
+      "to": "pool1-east",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "caption": "Conv2"
+    },
+    {
+      "id": "pool2",
+      "type": "pool",
+      "tensor": [
+        64,
+        32,
+        32
+      ],
+      "to": "conv2-east",
+      "offset": [
+        0.2,
+        0,
+        0
+      ],
+      "widths": [
+        0.8
+      ],
+      "caption": "Pool",
+      "labelOffset": [
+        1,
+        -3,
+        1.4000000000000001
+      ],
+      "showChannels": false
+    },
+    {
+      "id": "conv3",
+      "type": "convrelu",
+      "tensor": [
+        128,
+        32,
+        32
+      ],
+      "repeat": 2,
+      "widths": [
+        2.8,
+        2.8
+      ],
+      "to": "pool2-east",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "caption": "Conv3"
+    },
+    {
+      "id": "pool3",
+      "type": "pool",
+      "tensor": [
+        128,
+        16,
+        16
+      ],
+      "to": "conv3-east",
+      "offset": [
+        0.2,
+        0,
+        0
+      ],
+      "widths": [
+        0.8
+      ],
+      "caption": "Pool",
+      "labelOffset": [
+        1,
+        -3,
+        0.9899494936611666
+      ],
+      "showChannels": false
+    },
+    {
+      "id": "conv4",
+      "type": "convrelu",
+      "tensor": [
+        256,
+        16,
+        16
+      ],
+      "repeat": 2,
+      "widths": [
+        3.6,
+        3.6
+      ],
+      "to": "pool3-east",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "caption": "Conv4"
+    },
+    {
+      "id": "output",
+      "type": "output",
+      "tensor": [
+        256,
+        16,
+        16
+      ],
+      "to": "conv4-east",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "widths": [
+        3.6
+      ],
+      "caption": "输出特征"
+    }
+  ],
+  "edges": [
+    {
+      "id": "in",
+      "from": "image",
+      "to": "conv1"
+    },
+    {
+      "id": "stage12",
+      "from": "pool1",
+      "to": "conv2"
+    },
+    {
+      "id": "stage23",
+      "from": "pool2",
+      "to": "conv3"
+    },
+    {
+      "id": "stage34",
+      "from": "pool3",
+      "to": "conv4"
+    },
+    {
+      "id": "out",
+      "from": "conv4",
+      "to": "output"
+    },
+    {
+      "id": "conv1_pool",
+      "from": "conv1",
+      "to": "pool1",
+      "draw": false
+    },
+    {
+      "id": "conv2_pool",
+      "from": "conv2",
+      "to": "pool2",
+      "draw": false
+    },
+    {
+      "id": "conv3_pool",
+      "from": "conv3",
+      "to": "pool3",
+      "draw": false
+    }
+  ]
+}

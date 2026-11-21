@@ -1,0 +1,263 @@
+{
+  "schema": "paper-model/1",
+  "title": "Swin-T",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/2103.14030",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.3; Microsoft configs/swin/swin_tiny_patch4_window7_224.yaml",
+      "statement": "224 input,patch4,window7,stage depths2/2/6/2. Patch merging is a distinct operation. Layer norms and final pooling/classifier are grouped.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Image",
+      "label": "Image",
+      "shape": [
+        3,
+        224,
+        224
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p",
+      "op": "linear",
+      "meaning": "Patch partition / + linear embed",
+      "label": "Patch partition / + linear embed",
+      "shape": [
+        96,
+        56,
+        56
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s1",
+      "op": "attention",
+      "meaning": "Swin blocks ×2",
+      "label": "Swin blocks ×2",
+      "shape": [
+        96,
+        56,
+        56
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "m1",
+      "op": "pool",
+      "meaning": "Patch merge",
+      "label": "Patch merge",
+      "shape": [
+        192,
+        28,
+        28
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s2",
+      "op": "attention",
+      "meaning": "Swin blocks ×2",
+      "label": "Swin blocks ×2",
+      "shape": [
+        192,
+        28,
+        28
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "m2",
+      "op": "pool",
+      "meaning": "Patch merge",
+      "label": "Patch merge",
+      "shape": [
+        384,
+        14,
+        14
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s3",
+      "op": "attention",
+      "meaning": "Swin blocks ×6",
+      "label": "Swin blocks ×6",
+      "shape": [
+        384,
+        14,
+        14
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "m3",
+      "op": "pool",
+      "meaning": "Patch merge",
+      "label": "Patch merge",
+      "shape": [
+        768,
+        7,
+        7
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s4",
+      "op": "attention",
+      "meaning": "Swin blocks ×2",
+      "label": "Swin blocks ×2",
+      "shape": [
+        768,
+        7,
+        7
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "h",
+      "op": "linear",
+      "meaning": "Norm, pool / classifier",
+      "label": "Norm, pool / classifier",
+      "shape": [
+        "K"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "p",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "p",
+      "to": "s1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "s1",
+      "to": "m1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "m1",
+      "to": "s2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "s2",
+      "to": "m2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "m2",
+      "to": "s3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "s3",
+      "to": "m3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "m3",
+      "to": "s4",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "s4",
+      "to": "h",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "224 input,patch4,window7,stage depths2/2/6/2. Patch merging is a distinct operation. Layer norms and final pooling/classifier are grouped.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 338
+  }
+}

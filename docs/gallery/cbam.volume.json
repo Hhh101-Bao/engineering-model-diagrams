@@ -1,0 +1,393 @@
+{
+  "backend": "neural-netz",
+  "title": "CBAM · sequential attention",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Feature",
+        "C × H × W"
+      ],
+      "labelAt": [
+        0.4125,
+        -3.333135347452935
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "ca",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 1.35,
+      "depth": 1.35,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Channel attention",
+        "avg/max + MLP",
+        "C × 1 × 1"
+      ],
+      "labelAt": [
+        6.048500000000001,
+        -2.9319530211794023
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        1,
+        1
+      ],
+      "sourceShape": [
+        "C",
+        1,
+        1
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "m1",
+      "type": "sum",
+      "semanticOp": "multiply",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Channel gate",
+        "C × H × W"
+      ],
+      "labelAt": [
+        11.25,
+        -2.105635347452935
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false,
+      "radius": 0.45,
+      "symbol": "×",
+      "broadcast": true
+    },
+    {
+      "name": "sa",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        0.63
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Spatial attention",
+        "avg/max +7×7",
+        "1 × H × W"
+      ],
+      "labelAt": [
+        16.817500000000003,
+        -3.7859530211794024
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1,
+        null,
+        null
+      ],
+      "sourceShape": [
+        1,
+        "H",
+        "W"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "m2",
+      "type": "sum",
+      "semanticOp": "multiply",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Spatial gate",
+        "C × H × W"
+      ],
+      "labelAt": [
+        22.05,
+        -2.105635347452935
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false,
+      "radius": 0.45,
+      "symbol": "×",
+      "broadcast": true
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "ca",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.825,
+        -0.044
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": [
+        [
+          4.85,
+          -0.044
+        ],
+        [
+          4.85,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "ca",
+      "to": "m1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.697,
+        0
+      ],
+      "toPoint": [
+        10.82574,
+        -0.15
+      ],
+      "via": [
+        [
+          7.247,
+          0
+        ],
+        [
+          7.247,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "m1",
+      "to": "sa",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        11.67426,
+        -0.15
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": [
+        [
+          12.22426,
+          -0.15
+        ],
+        [
+          12.22426,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "sa",
+      "to": "m2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.435,
+        0
+      ],
+      "toPoint": [
+        21.62574,
+        -0.15
+      ],
+      "via": [
+        [
+          21.07574,
+          0
+        ],
+        [
+          21.07574,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "x",
+      "to": "m1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.825,
+        0.044
+      ],
+      "toPoint": [
+        10.82574,
+        0.15
+      ],
+      "via": [
+        [
+          1.375,
+          0.044
+        ],
+        [
+          1.375,
+          0.9
+        ],
+        [
+          10.27574,
+          0.9
+        ],
+        [
+          10.27574,
+          0.15
+        ]
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "m1",
+      "to": "m2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        11.67426,
+        0.15
+      ],
+      "toPoint": [
+        21.62574,
+        0.15
+      ],
+      "via": [
+        [
+          12.22426,
+          0.15
+        ],
+        [
+          12.22426,
+          2.1275
+        ],
+        [
+          21.07574,
+          2.1275
+        ],
+        [
+          21.07574,
+          0.15
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version":1,
+  "title":"Encoder–decoder with skip connections",
+  "subtitle":"分层编码、跨层融合与解码重建",
+  "widthMm":180,"minFontPt":7.5,"theme":"paper",
+  "layout":{"mode":"fixed"},
+  "groups":[{"id":"encoder","label":"Encoder"},{"id":"decoder","label":"Decoder"}],
+  "nodes":[
+    {"id":"image","type":"input","label":"Input","tensor":[1,128,128],"x":0,"y":0},
+    {"id":"enc1","type":"convblock","label":"Encoder 1","tensor":[64,128,128],"x":180,"y":0,"width":148,"group":"encoder"},
+    {"id":"enc2","type":"convblock","label":"Encoder 2","tensor":[128,64,64],"x":180,"y":190,"width":148,"group":"encoder"},
+    {"id":"bridge","type":"convblock","label":"Bottleneck","tensor":[256,32,32],"x":400,"y":380,"width":148},
+    {"id":"dec2","type":"upsample","label":"Decoder 2","tensor":[128,64,64],"x":620,"y":190,"width":148,"group":"decoder"},
+    {"id":"dec1","type":"upsample","label":"Decoder 1","tensor":[64,128,128],"x":620,"y":0,"width":148,"group":"decoder"},
+    {"id":"output","type":"output","label":"Prediction","tensor":[1,128,128],"x":820,"y":0}
+  ],
+  "edges":[
+    {"id":"input","from":"image","to":"enc1","fromSide":"E","toSide":"W"},
+    {"id":"down1","from":"enc1","to":"enc2","fromSide":"S","toSide":"N"},
+    {"id":"down2","from":"enc2","to":"bridge","fromSide":"S","toSide":"N"},
+    {"id":"up2","from":"bridge","to":"dec2","fromSide":"E","toSide":"S"},
+    {"id":"up1","from":"dec2","to":"dec1","fromSide":"N","toSide":"S"},
+    {"id":"skip2","from":"enc2","to":"dec2","fromSide":"E","toSide":"W","kind":"skip","label":"skip 128"},
+    {"id":"skip1","from":"enc1","to":"dec1","fromSide":"E","toSide":"W","kind":"skip","label":"skip 64"},
+    {"id":"out","from":"dec1","to":"output","fromSide":"E","toSide":"W"}
+  ],
+  "legend":[{"label":"Encoder: Conv blocks + downsample","type":"conv"},{"label":"Decoder: upsample + concat + Conv","type":"upsample"}]
+}

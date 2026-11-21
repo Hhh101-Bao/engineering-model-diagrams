@@ -1,0 +1,10 @@
+tmp/
+output/
+__pycache__/
+*.pyc
+**/.cache/
+*.log
+skills/engineering-model-diagrams/scripts/vendor/typst/typst.exe
+**/*.compile.json
+**/*.workflow.json
+**/*.review.json

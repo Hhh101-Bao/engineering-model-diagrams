@@ -1,0 +1,1246 @@
+{
+  "backend": "neural-netz",
+  "title": "STANet shared feature extractor",
+  "widthMm": 242,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "input",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "RGB input",
+        "3 × 256 × 256"
+      ],
+      "labelAt": [
+        0.506,
+        -3.8721644281644285
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        256,
+        256
+      ],
+      "sourceShape": [
+        3,
+        256,
+        256
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "stem",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.03
+      ],
+      "height": 3.38,
+      "depth": 3.38,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Conv7x7 / s2",
+        "64 × 128 × 128"
+      ],
+      "labelAt": [
+        6.2868,
+        -3.737964428164428
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        128,
+        128
+      ],
+      "sourceShape": [
+        64,
+        128,
+        128
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "pool",
+      "type": "pool",
+      "semanticOp": "pool",
+      "widths": [
+        1.03
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "MaxPool / s2",
+        "64 × 64 × 64"
+      ],
+      "labelAt": [
+        11.654900000000001,
+        -3.5610644281644284
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ],
+      "fill": "#D7B584",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "stage1",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.03
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Res stage 1",
+        "BasicBlock ×2",
+        "64 × 64 × 64"
+      ],
+      "labelAt": [
+        17.054900000000004,
+        4.0241466422466425
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "project1",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        16.200000000000003,
+        -10.2
+      ],
+      "label": [
+        "Conv1x1 / 96",
+        "96 × 64 × 64"
+      ],
+      "labelAt": [
+        17.07829850002885,
+        -6.638935571835571
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        64,
+        64
+      ],
+      "sourceShape": [
+        96,
+        64,
+        64
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "stage2",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.11
+      ],
+      "height": 2.8,
+      "depth": 2.8,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Res stage 2",
+        "BasicBlock ×2",
+        "128 × 32 × 32"
+      ],
+      "labelAt": [
+        22.463,
+        3.8472466422466427
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        128,
+        32,
+        32
+      ],
+      "sourceShape": [
+        128,
+        32,
+        32
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "project2",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 2.8,
+      "depth": 2.8,
+      "at": [
+        21.6,
+        -10.2
+      ],
+      "label": [
+        "Conv1x1 / 96",
+        "96 × 32 × 32"
+      ],
+      "labelAt": [
+        22.44639850002885,
+        -6.815835571835571
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        32,
+        32
+      ],
+      "sourceShape": [
+        96,
+        32,
+        32
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "up2",
+      "type": "custom",
+      "semanticOp": "upsample",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        21.6,
+        -20.4
+      ],
+      "label": [
+        "Bilinear x2",
+        "96 × 64 × 64"
+      ],
+      "labelAt": [
+        22.47829850002885,
+        -23.961064428164427
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        64,
+        64
+      ],
+      "sourceShape": [
+        96,
+        64,
+        64
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "stage3",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.19
+      ],
+      "height": 2.51,
+      "depth": 2.51,
+      "at": [
+        27,
+        0
+      ],
+      "label": [
+        "Res stage 3",
+        "BasicBlock ×2",
+        "256 × 16 × 16"
+      ],
+      "labelAt": [
+        27.8711,
+        3.6703466422466424
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        16,
+        16
+      ],
+      "sourceShape": [
+        256,
+        16,
+        16
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "project3",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 2.51,
+      "depth": 2.51,
+      "at": [
+        27,
+        -10.2
+      ],
+      "label": [
+        "Conv1x1 / 96",
+        "96 × 16 × 16"
+      ],
+      "labelAt": [
+        27.814498500028847,
+        -6.992735571835571
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        16,
+        16
+      ],
+      "sourceShape": [
+        96,
+        16,
+        16
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "up3",
+      "type": "custom",
+      "semanticOp": "upsample",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        27,
+        -20.4
+      ],
+      "label": [
+        "Bilinear x4",
+        "96 × 64 × 64"
+      ],
+      "labelAt": [
+        27.878298500028848,
+        -23.961064428164427
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        64,
+        64
+      ],
+      "sourceShape": [
+        96,
+        64,
+        64
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "stage4",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.27
+      ],
+      "height": 2.2199999999999998,
+      "depth": 2.2199999999999998,
+      "at": [
+        32.400000000000006,
+        0
+      ],
+      "label": [
+        "Res stage 4",
+        "BasicBlock ×3",
+        "512 × 8 × 8"
+      ],
+      "labelAt": [
+        33.2792,
+        3.493446642246642
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        512,
+        8,
+        8
+      ],
+      "sourceShape": [
+        512,
+        8,
+        8
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "project4",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 2.2199999999999998,
+      "depth": 2.2199999999999998,
+      "at": [
+        32.400000000000006,
+        -10.2
+      ],
+      "label": [
+        "Conv1x1 / 96",
+        "96 × 8 × 8"
+      ],
+      "labelAt": [
+        33.18259850002885,
+        -7.16963557183557
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        8,
+        8
+      ],
+      "sourceShape": [
+        96,
+        8,
+        8
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "up4",
+      "type": "custom",
+      "semanticOp": "upsample",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        32.400000000000006,
+        -20.4
+      ],
+      "label": [
+        "Bilinear x8",
+        "96 × 64 × 64"
+      ],
+      "labelAt": [
+        33.27829850002885,
+        -23.961064428164427
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        64,
+        64
+      ],
+      "sourceShape": [
+        96,
+        64,
+        64
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "concat",
+      "type": "custom",
+      "semanticOp": "concat",
+      "widths": [
+        1.2367970000576927
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        16.200000000000003,
+        -30.599999999999998
+      ],
+      "label": [
+        "Concat C",
+        "384 × 64 × 64"
+      ],
+      "labelAt": [
+        17.15829850002885,
+        -34.16106442816442
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        384,
+        64,
+        64
+      ],
+      "sourceShape": [
+        384,
+        64,
+        64
+      ],
+      "fill": "#D8BC80",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "conv3",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.19
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        21.6,
+        -30.599999999999998
+      ],
+      "label": [
+        "Conv3x3 /256",
+        "256 × 64 × 64"
+      ],
+      "labelAt": [
+        22.5349,
+        -34.16106442816442
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        64,
+        64
+      ],
+      "sourceShape": [
+        256,
+        64,
+        64
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "conv1",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1.03
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        27,
+        -30.599999999999998
+      ],
+      "label": [
+        "Conv1x1 / 64",
+        "64 × 64 × 64"
+      ],
+      "labelAt": [
+        27.8549,
+        -34.16106442816442
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "output",
+      "type": "custom",
+      "semanticOp": "output",
+      "widths": [
+        0.22
+      ],
+      "height": 3.09,
+      "depth": 3.09,
+      "at": [
+        32.400000000000006,
+        -30.599999999999998
+      ],
+      "label": [
+        "Feature map",
+        "64 × 64 × 64"
+      ],
+      "labelAt": [
+        32.849900000000005,
+        -34.16106442816442
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "sourceShape": [
+        64,
+        64,
+        64
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "input",
+      "to": "stem",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        1.012,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "stem",
+      "to": "pool",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        7.1736,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "pool",
+      "to": "stage1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.5098,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e3",
+      "from": "stage1",
+      "to": "project1",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "west",
+      "fromPoint": [
+        16.565,
+        -1.8849
+      ],
+      "toPoint": [
+        16.2,
+        -10.2
+      ],
+      "via": [
+        [
+          16.565,
+          -5.61657
+        ],
+        [
+          14.05646,
+          -5.61657
+        ],
+        [
+          14.05646,
+          -10.2
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "stage1",
+      "to": "stage2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.9098,
+        0.15
+      ],
+      "toPoint": [
+        21.6,
+        0
+      ],
+      "via": [
+        [
+          21.05,
+          0.15
+        ],
+        [
+          21.05,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "stage2",
+      "to": "project2",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "west",
+      "fromPoint": [
+        22.005,
+        -1.708
+      ],
+      "toPoint": [
+        21.6,
+        -10.2
+      ],
+      "via": [
+        [
+          22.005,
+          -2.258
+        ],
+        [
+          14.37646,
+          -2.258
+        ],
+        [
+          14.37646,
+          -8.2189
+        ],
+        [
+          21.05,
+          -8.2189
+        ],
+        [
+          21.05,
+          -10.2
+        ]
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "project2",
+      "to": "up2",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        22.1384,
+        -11.908
+      ],
+      "toPoint": [
+        22.8182,
+        -18.5151
+      ],
+      "via": [
+        [
+          22.1384,
+          -12.458
+        ],
+        [
+          22.8182,
+          -12.458
+        ]
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "stage2",
+      "to": "stage3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        23.326,
+        0.15
+      ],
+      "toPoint": [
+        27,
+        0
+      ],
+      "via": [
+        [
+          26.45,
+          0.15
+        ],
+        [
+          26.45,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "stage3",
+      "to": "project3",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "west",
+      "fromPoint": [
+        27.445,
+        -1.5311
+      ],
+      "toPoint": [
+        27,
+        -10.2
+      ],
+      "via": [
+        [
+          27.445,
+          -2.0811
+        ],
+        [
+          35.87173,
+          -2.0811
+        ],
+        [
+          35.87173,
+          -8.5458
+        ],
+        [
+          26.45,
+          -8.5458
+        ],
+        [
+          26.45,
+          -10.2
+        ]
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "project3",
+      "to": "up3",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        27.5384,
+        -11.7311
+      ],
+      "toPoint": [
+        28.2182,
+        -18.5151
+      ],
+      "via": [
+        [
+          27.5384,
+          -12.2811
+        ],
+        [
+          28.2182,
+          -12.2811
+        ]
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "stage3",
+      "to": "stage4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.7422,
+        0.15
+      ],
+      "toPoint": [
+        32.4,
+        0
+      ],
+      "via": [
+        [
+          31.85,
+          0.15
+        ],
+        [
+          31.85,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "stage4",
+      "to": "project4",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "west",
+      "fromPoint": [
+        33.035,
+        -1.3542
+      ],
+      "toPoint": [
+        32.4,
+        -10.2
+      ],
+      "via": [
+        [
+          33.035,
+          -1.9042
+        ],
+        [
+          36.19173,
+          -1.9042
+        ],
+        [
+          36.19173,
+          -8.5389
+        ],
+        [
+          31.85,
+          -8.5389
+        ],
+        [
+          31.85,
+          -10.2
+        ]
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "project4",
+      "to": "up4",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        32.9384,
+        -11.5542
+      ],
+      "toPoint": [
+        33.6182,
+        -18.5151
+      ],
+      "via": [
+        [
+          32.9384,
+          -12.1042
+        ],
+        [
+          33.6182,
+          -12.1042
+        ]
+      ]
+    },
+    {
+      "id": "e13",
+      "from": "up4",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "west",
+      "toPort": "east",
+      "fromPoint": [
+        32.4,
+        -20.4
+      ],
+      "toPoint": [
+        18.1166,
+        -30.84736
+      ],
+      "via": [
+        [
+          31.85,
+          -20.4
+        ],
+        [
+          31.85,
+          -22.7349
+        ],
+        [
+          18.6666,
+          -22.7349
+        ],
+        [
+          18.6666,
+          -30.84736
+        ]
+      ]
+    },
+    {
+      "id": "e14",
+      "from": "project1",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "fromPoint": [
+        16.7384,
+        -12.0849
+      ],
+      "toPoint": [
+        17.41575,
+        -28.7151
+      ],
+      "via": [
+        [
+          16.7384,
+          -12.6349
+        ],
+        [
+          17.41575,
+          -12.6349
+        ]
+      ]
+    },
+    {
+      "id": "e15",
+      "from": "up2",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "west",
+      "toPort": "east",
+      "fromPoint": [
+        21.6,
+        -20.4
+      ],
+      "toPoint": [
+        18.1166,
+        -30.51755
+      ],
+      "via": [
+        [
+          18.9866,
+          -20.4
+        ],
+        [
+          18.9866,
+          -30.51755
+        ]
+      ]
+    },
+    {
+      "id": "e16",
+      "from": "up3",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "west",
+      "toPort": "east",
+      "fromPoint": [
+        27,
+        -20.4
+      ],
+      "toPoint": [
+        18.1166,
+        -30.35264
+      ],
+      "via": [
+        [
+          26.45,
+          -20.4
+        ],
+        [
+          26.45,
+          -22.5849
+        ],
+        [
+          19.27685,
+          -22.5849
+        ],
+        [
+          19.27685,
+          -30.35264
+        ]
+      ]
+    },
+    {
+      "id": "e17",
+      "from": "concat",
+      "to": "conv3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        18.1166,
+        -30.6
+      ],
+      "toPoint": [
+        21.6,
+        -30.6
+      ],
+      "via": []
+    },
+    {
+      "id": "e18",
+      "from": "conv3",
+      "to": "conv1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        23.4698,
+        -30.6
+      ],
+      "toPoint": [
+        27,
+        -30.6
+      ],
+      "via": []
+    },
+    {
+      "id": "e19",
+      "from": "conv1",
+      "to": "output",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.7098,
+        -30.6
+      ],
+      "toPoint": [
+        32.4,
+        -30.6
+      ],
+      "via": []
+    }
+  ]
+}

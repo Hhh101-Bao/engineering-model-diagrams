@@ -1,0 +1,308 @@
+{
+  "backend": "neural-netz",
+  "title": "双流编码与注意力残差融合",
+  "widthMm": 200,
+  "minFontPt": 8,
+  "palette": "cold",
+  "showRelu": true,
+  "showLegend": false,
+  "depthMultiplier": 0.22,
+  "layers": [
+    {
+      "type": "custom",
+      "name": "rgb",
+      "widths": [
+        0.06
+      ],
+      "height": 4.6,
+      "depth": 4.6,
+      "channels": [
+        3,
+        128
+      ],
+      "tensor": [
+        3,
+        128,
+        128
+      ],
+      "label": "RGB 输入",
+      "fill": "#B7C2CC",
+      "at": [
+        -2.5,
+        4.1
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "custom",
+      "name": "depth",
+      "widths": [
+        0.06
+      ],
+      "height": 4.6,
+      "depth": 4.6,
+      "channels": [
+        1,
+        128
+      ],
+      "tensor": [
+        1,
+        128,
+        128
+      ],
+      "label": "深度输入",
+      "fill": "#B7C2CC",
+      "at": [
+        -2.5,
+        -4.1
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "conv",
+      "name": "rgb_enc",
+      "widths": [
+        0.5,
+        0.5
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "channels": [
+        "",
+        64,
+        64
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": "视觉编码器",
+      "at": [
+        0.5,
+        4.1
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "conv",
+      "name": "depth_enc",
+      "widths": [
+        0.5,
+        0.5
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "channels": [
+        "",
+        64,
+        64
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": "深度编码器",
+      "at": [
+        0.5,
+        -4.1
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "concat",
+      "name": "concat",
+      "widths": [
+        1
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "channels": [
+        128,
+        64
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "label": "通道拼接",
+      "at": [
+        5,
+        0
+      ],
+      "show-connection": false,
+      "fill": "#E6C58C"
+    },
+    {
+      "type": "conv",
+      "name": "projection",
+      "widths": [
+        1
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "channels": [
+        128,
+        64
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "label": "1×1 特征映射",
+      "at": [
+        8,
+        0
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "custom",
+      "name": "attention",
+      "widths": [
+        1
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "channels": [
+        128,
+        64
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "label": "注意力",
+      "at": [
+        11.2,
+        0
+      ],
+      "fill": "#B9A4D2",
+      "show-connection": false
+    },
+    {
+      "type": "sum",
+      "name": "sum",
+      "widths": [
+        0.5
+      ],
+      "height": 1,
+      "depth": 1,
+      "channels": [
+        128,
+        64
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "label": "残差相加",
+      "at": [
+        15,
+        0
+      ],
+      "show-connection": false
+    },
+    {
+      "type": "custom",
+      "name": "fused",
+      "widths": [
+        1
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "channels": [
+        128,
+        64
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "label": "融合特征",
+      "at": [
+        17.6,
+        0
+      ],
+      "fill": "#A8C8AF",
+      "show-connection": false
+    }
+  ],
+  "connections": [
+    {
+      "from": "rgb",
+      "to": "rgb_enc",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "depth",
+      "to": "depth_enc",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "rgb_enc",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west_upper",
+      "route": "orthogonal",
+      "laneX": 4
+    },
+    {
+      "from": "depth_enc",
+      "to": "concat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west_lower",
+      "route": "orthogonal",
+      "laneX": 4
+    },
+    {
+      "from": "concat",
+      "to": "projection",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "projection",
+      "to": "attention",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "attention",
+      "to": "sum",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "projection",
+      "to": "sum",
+      "type": "direct",
+      "fromPort": "north",
+      "toPort": "north",
+      "route": "orthogonal",
+      "laneY": 3.2
+    },
+    {
+      "from": "sum",
+      "to": "fused",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    }
+  ]
+}

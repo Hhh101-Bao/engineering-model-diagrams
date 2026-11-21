@@ -1,0 +1,30 @@
+{
+  "neural-netz": {
+    "version": "0.3.0",
+    "commit": "1c4e728c4703b77577a7761839154b0fa2232685",
+    "repository": "https://github.com/edgaremy/neural-netz",
+    "archiveSha256": "2767a96daa2ae5e6c306ab925d3db41954418f294817abba23ff0ae56b402ec4",
+    "license": "MIT-0"
+  },
+  "typst": {
+    "version": "0.15.1",
+    "url": "https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-pc-windows-msvc.zip",
+    "sha256": "19ce3551153c2fe7ee9fa2f95208310c8f4d3209fedb699e0333faf8913f6736",
+    "binaryBundledInSkill": true,
+    "binarySha256": "081217a463adb006f8894b44227fe4b9c9e91fc85f5463d5948e8370db9bb31e"
+  },
+  "dependencies": [
+    {
+      "name": "cetz",
+      "version": "0.4.2",
+      "url": "https://packages.typst.org/preview/cetz-0.4.2.tar.gz",
+      "sha256": "e1d2f121b166f1520fc529cad834e2ca5e0b6bcab6816e1d0e07d70836aa0b59"
+    },
+    {
+      "name": "oxifmt",
+      "version": "1.0.0",
+      "url": "https://packages.typst.org/preview/oxifmt-1.0.0.tar.gz",
+      "sha256": "7d17a1fc8ad01740ec3cb2b03c7360a4225ff9318e5710765fa98ea6fd59594f"
+    }
+  ]
+}

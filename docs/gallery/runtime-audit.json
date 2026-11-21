@@ -1,0 +1,273 @@
+{
+  "pass": true,
+  "separatedRepeatDepthAndGap": true,
+  "downPortsTouchActualFirstAndLastSolids": true,
+  "widthAxisConcatPreservedAndCompiled": true,
+  "fiveThemesPreserveGeometry": true,
+  "meshes": [
+    {
+      "file": "docs/gallery/aspp.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 19,
+      "triangles": 360,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/bit.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 24,
+      "triangles": 444,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/cbam.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 15,
+      "triangles": 1188,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/changeformer.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 27,
+      "triangles": 516,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/clip.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 15,
+      "triangles": 264,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/deeplabv3plus.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 16,
+      "triangles": 288,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/detr.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 13,
+      "triangles": 228,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/feature-refinement.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 15,
+      "triangles": 276,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/global-local-attention.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 14,
+      "triangles": 708,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/inverted-residual.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/mobilenetv2.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 21,
+      "triangles": 372,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/residual-basic.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/resnet18.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 15,
+      "triangles": 264,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/sam.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 13,
+      "triangles": 228,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/se.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/segformer-b0.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 26,
+      "triangles": 480,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/segformer-mlp.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 21,
+      "triangles": 372,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/semantic-tokenizer.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 8,
+      "triangles": 144,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/siamese-difference.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 11,
+      "triangles": 192,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/stanet-extractor.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 38,
+      "triangles": 696,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/stanet-pam.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 18,
+      "triangles": 336,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/stanet.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 24,
+      "triangles": 432,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/swin-pair.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 7,
+      "triangles": 120,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/swin-t.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 19,
+      "triangles": 336,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/unet-original.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 25,
+      "triangles": 468,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/unetformer.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 22,
+      "triangles": 408,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/vit-b16.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 9,
+      "triangles": 156,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/gallery/vit-encoder.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 19,
+      "triangles": 1260,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/palettes/graphite-amber.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/palettes/ocean-sand.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/palettes/plum-slate.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/palettes/sage-earth.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/palettes/steel-teal.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 12,
+      "triangles": 672,
+      "imageTextures": 0
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "elkjs": {
+    "version": "0.12.1",
+    "url": "https://github.com/kieler/elkjs",
+    "tarball": "https://registry.npmjs.org/elkjs/-/elkjs-0.12.1.tgz",
+    "integrity": "sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==",
+    "license": "EPL-2.0",
+    "vendored": "scripts/vendor/elk.bundled.cjs"
+  },
+  "drawio-components": {
+    "url": "https://github.com/HuanPP/NN-Models-drawio-library",
+    "commit": "17ba3ee38bf8862250594096b30782fe5efcbf84",
+    "file": "nn_components.xml",
+    "sha256": "ad537bf00458f960a8ef38c017e23cd1aeb7695c32529ff30c4db895d7598817",
+    "selectedTitles": [
+      "Input Tensor",
+      "Conv Layer",
+      "Pooling Layer",
+      "Deconv Layer",
+      "FC Layer",
+      "Output Tensor",
+      "Feature Map",
+      "BatchNorm",
+      "Add",
+      "Multiply",
+      "Concat"
+    ],
+    "license": "MIT",
+    "vendored": "assets/upstream/nn-components.json"
+  }
+}

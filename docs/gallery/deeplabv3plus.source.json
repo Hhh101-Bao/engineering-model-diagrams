@@ -1,0 +1,526 @@
+{
+  "backend": "neural-netz",
+  "title": "DeepLabv3+",
+  "widthMm": 242,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Image"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -2.689082214082214
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "back",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "CNN backbone"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -2.689082214082214
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "aspp",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "ASPP",
+        "256 × H/16 × W/16"
+      ],
+      "labelAt": [
+        11.697500000000002,
+        -3.3536644281644286
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/16",
+        "W/16"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "up",
+      "type": "custom",
+      "semanticOp": "upsample",
+      "widths": [
+        1.19
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Bilinear ×4",
+        "256 × H/4 × W/4"
+      ],
+      "labelAt": [
+        17.097500000000004,
+        -3.3536644281644286
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        null,
+        null
+      ],
+      "sourceShape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "low",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        0.9967970000576926
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        10.8,
+        -6.8
+      ],
+      "label": [
+        "Low-level",
+        "1×1 projection",
+        "48 × H/4 × W/4"
+      ],
+      "labelAt": [
+        11.600898500028848,
+        -10.616746642246643
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        48,
+        null,
+        null
+      ],
+      "sourceShape": [
+        48,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "cat",
+      "type": "custom",
+      "semanticOp": "concat",
+      "widths": [
+        1.2098342010754868
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Concatenate",
+        "304 × H/4 × W/4"
+      ],
+      "labelAt": [
+        22.507417100537744,
+        -3.3536644281644286
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        304,
+        null,
+        null
+      ],
+      "sourceShape": [
+        304,
+        "H/4",
+        "W/4"
+      ],
+      "fill": "#D8BC80",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "ref",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        27,
+        0
+      ],
+      "label": [
+        "3×3 refine",
+        "+ bilinear ×4",
+        "K × H × W"
+      ],
+      "labelAt": [
+        27.8025,
+        -3.8167466422466427
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "K",
+        "H",
+        "W"
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "y",
+      "type": "custom",
+      "semanticOp": "output",
+      "widths": [
+        0.22
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        32.400000000000006,
+        0
+      ],
+      "label": [
+        "Segmentation",
+        "K × H × W"
+      ],
+      "labelAt": [
+        32.81250000000001,
+        -3.3536644281644286
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "K",
+        "H",
+        "W"
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "back",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "back",
+      "to": "aspp",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        -0.15
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": [
+        [
+          10.25,
+          -0.15
+        ],
+        [
+          10.25,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "aspp",
+      "to": "up",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.595,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e3",
+      "from": "up",
+      "to": "cat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.995,
+        0
+      ],
+      "toPoint": [
+        21.6,
+        -0.15
+      ],
+      "via": [
+        [
+          21.05,
+          0
+        ],
+        [
+          21.05,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "cat",
+      "to": "ref",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        23.41483,
+        0
+      ],
+      "toPoint": [
+        27,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e5",
+      "from": "ref",
+      "to": "y",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.605,
+        0
+      ],
+      "toPoint": [
+        32.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e6",
+      "from": "back",
+      "to": "low",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        0.15
+      ],
+      "toPoint": [
+        10.8,
+        -6.8
+      ],
+      "via": [
+        [
+          7.302,
+          0.15
+        ],
+        [
+          7.302,
+          -2.1275
+        ],
+        [
+          3.05417,
+          -2.1275
+        ],
+        [
+          3.05417,
+          -6.8
+        ]
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "low",
+      "to": "cat",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.4018,
+        -6.8
+      ],
+      "toPoint": [
+        21.6,
+        0.15
+      ],
+      "via": [
+        [
+          12.9518,
+          -6.8
+        ],
+        [
+          12.9518,
+          -4.6725
+        ],
+        [
+          3.37417,
+          -4.6725
+        ],
+        [
+          3.37417,
+          -1.776
+        ],
+        [
+          20.61229,
+          -1.776
+        ],
+        [
+          20.61229,
+          0.15
+        ]
+      ]
+    }
+  ]
+}

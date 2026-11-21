@@ -1,0 +1,133 @@
+{
+  "schema": "paper-model/1",
+  "title": "Siamese feature differencing",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/justchenhao/BIT_CD/blob/master/models/networks.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "BASE_Transformer.forward",
+      "statement": "Shared feature extraction and absolute elementwise difference; head and interpolation details stay model-specific. Two backbone invocations share weights, not input tensors.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "t1",
+      "op": "input",
+      "meaning": "Date1",
+      "label": "Date1",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "t2",
+      "op": "input",
+      "meaning": "Date2",
+      "label": "Date2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f1",
+      "op": "conv",
+      "meaning": "Shared backbone",
+      "label": "Shared backbone",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f2",
+      "op": "conv",
+      "meaning": "Shared backbone",
+      "label": "Shared backbone",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d",
+      "op": "custom",
+      "meaning": "Absolute difference",
+      "label": "Absolute difference",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Prediction head",
+      "label": "Prediction head",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "t1",
+      "to": "f1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "t2",
+      "to": "f2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "f1",
+      "to": "d",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "f2",
+      "to": "d",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "d",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Shared feature extraction and absolute elementwise difference; head and interpolation details stay model-specific. Two backbone invocations share weights, not input tensors.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

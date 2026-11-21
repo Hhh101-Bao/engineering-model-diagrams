@@ -1,0 +1,331 @@
+{
+  "schema": "paper-model/1",
+  "title": "SegFormer-B0",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/NVlabs/SegFormer/blob/master/mmseg/models/decode_heads/segformer_head.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "SegFormerHead.forward; official B0 config",
+      "statement": "Four MiT-B0 output levels32/64/160/256. Each decoder projection maps to256 and resizes to1/4. Fusion concat is1024 channels before1×1 fusion and prediction. Final resize shown; encoder internals omitted.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Image",
+      "label": "Image",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e0",
+      "op": "attention",
+      "meaning": "MiT stage1",
+      "label": "MiT stage1",
+      "shape": [
+        32,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "op": "attention",
+      "meaning": "MiT stage2",
+      "label": "MiT stage2",
+      "shape": [
+        64,
+        "H/8",
+        "W/8"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "op": "attention",
+      "meaning": "MiT stage3",
+      "label": "MiT stage3",
+      "shape": [
+        160,
+        "H/16",
+        "W/16"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "op": "attention",
+      "meaning": "MiT stage4",
+      "label": "MiT stage4",
+      "shape": [
+        256,
+        "H/32",
+        "W/32"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p0",
+      "op": "linear",
+      "meaning": "Linear + resize",
+      "label": "Linear + resize",
+      "shape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p1",
+      "op": "linear",
+      "meaning": "Linear + resize",
+      "label": "Linear + resize",
+      "shape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p2",
+      "op": "linear",
+      "meaning": "Linear + resize",
+      "label": "Linear + resize",
+      "shape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "p3",
+      "op": "linear",
+      "meaning": "Linear + resize",
+      "label": "Linear + resize",
+      "shape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "cat",
+      "op": "concat",
+      "meaning": "Concatenate",
+      "label": "Concatenate",
+      "shape": [
+        1024,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "fuse",
+      "op": "conv",
+      "meaning": "1×1 fusion",
+      "label": "1×1 fusion",
+      "shape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Predict + resize",
+      "label": "Predict + resize",
+      "shape": [
+        "K",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "e0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "e0",
+      "to": "e1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "e1",
+      "to": "e2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "e2",
+      "to": "e3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "e0",
+      "to": "p0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "p0",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "e1",
+      "to": "p1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "p1",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "e2",
+      "to": "p2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "p2",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "e3",
+      "to": "p3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "p3",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "cat",
+      "to": "fuse",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e13",
+      "from": "fuse",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Four MiT-B0 output levels32/64/160/256. Each decoder projection maps to256 and resizes to1/4. Fusion concat is1024 channels before1×1 fusion and prediction. Final resize shown; encoder internals omitted.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 274
+  }
+}

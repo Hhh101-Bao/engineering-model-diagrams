@@ -1,0 +1,247 @@
+{
+  "schema": "paper-model/1",
+  "title": "BIT · bitemporal transformer",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/justchenhao/BIT_CD/blob/master/models/networks.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "BASE_Transformer.forward; semantic tokenizer and transformer decoder",
+      "statement": "Shared backbone extracts both dates. Joint transformer encodes concatenated semantic tokens, which split by date for two decoder calls. Feature bypasses are preserved. Absolute differencing, upsampling and CNN classification follow.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "t1",
+      "op": "input",
+      "meaning": "Image t1",
+      "label": "Image t1",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "t2",
+      "op": "input",
+      "meaning": "Image t2",
+      "label": "Image t2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f1",
+      "op": "conv",
+      "meaning": "Shared backbone",
+      "label": "Shared backbone",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f2",
+      "op": "conv",
+      "meaning": "Shared backbone",
+      "label": "Shared backbone",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s1",
+      "op": "linear",
+      "meaning": "Semantic tokens",
+      "label": "Semantic tokens",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s2",
+      "op": "linear",
+      "meaning": "Semantic tokens",
+      "label": "Semantic tokens",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "tr",
+      "op": "attention",
+      "meaning": "Joint token / Transformer",
+      "label": "Joint token / Transformer",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d1",
+      "op": "attention",
+      "meaning": "Decoder t1",
+      "label": "Decoder t1",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d2",
+      "op": "attention",
+      "meaning": "Decoder t2",
+      "label": "Decoder t2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "diff",
+      "op": "custom",
+      "meaning": "Absolute / feature difference",
+      "label": "Absolute / feature difference",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Upsample + CNN / change prediction",
+      "label": "Upsample + CNN / change prediction",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "t1",
+      "to": "f1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "t2",
+      "to": "f2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "f1",
+      "to": "s1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "f2",
+      "to": "s2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "s1",
+      "to": "tr",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "s2",
+      "to": "tr",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "tr",
+      "to": "d1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "tr",
+      "to": "d2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "f1",
+      "to": "d1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "f2",
+      "to": "d2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "d1",
+      "to": "diff",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "d2",
+      "to": "diff",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "diff",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Shared backbone extracts both dates. Joint transformer encodes concatenated semantic tokens, which split by date for two decoder calls. Feature bypasses are preserved. Absolute differencing, upsampling and CNN classification follow.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 242
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schema": "paper-model/1",
+  "title": "Squeeze-and-Excitation",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1709.01507",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.1; Eqs.2–4",
+      "statement": "Global average pooling; two fully connected layers with reduction r; ReLU then sigmoid; channelwise multiplication broadcasts over H/W.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Feature U",
+      "label": "Feature U",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "gap",
+      "op": "gap",
+      "meaning": "Global avg pool",
+      "label": "Global avg pool",
+      "shape": [
+        "C",
+        1,
+        1
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "fc1",
+      "op": "linear",
+      "meaning": "FC + ReLU",
+      "label": "FC + ReLU",
+      "shape": [
+        "C/r",
+        1,
+        1
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "fc2",
+      "op": "linear",
+      "meaning": "FC + sigmoid",
+      "label": "FC + sigmoid",
+      "shape": [
+        "C",
+        1,
+        1
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "mul",
+      "op": "multiply",
+      "meaning": "Channel scale",
+      "label": "Channel scale",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "gap",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "gap",
+      "to": "fc1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "fc1",
+      "to": "fc2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "fc2",
+      "to": "mul",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "x",
+      "to": "mul",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Global average pooling; two fully connected layers with reduction r; ReLU then sigmoid; channelwise multiplication broadcasts over H/W.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "schema": "paper-model/1",
+  "title": "DeepLabv3+",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1802.02611",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.2; §3.2",
+      "statement": "Output stride16 schematic. ASPP internals have a separate module view. Low-level features are projected to48 channels; encoder features are upsampled4× before concat, then refined and upsampled4×.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Image",
+      "label": "Image",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "back",
+      "op": "conv",
+      "meaning": "CNN backbone",
+      "label": "CNN backbone",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "aspp",
+      "op": "attention",
+      "meaning": "ASPP",
+      "label": "ASPP",
+      "shape": [
+        256,
+        "H/16",
+        "W/16"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "up",
+      "op": "upsample",
+      "meaning": "Bilinear ×4",
+      "label": "Bilinear ×4",
+      "shape": [
+        256,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "low",
+      "op": "conv",
+      "meaning": "Low-level / 1×1 projection",
+      "label": "Low-level / 1×1 projection",
+      "shape": [
+        48,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "cat",
+      "op": "concat",
+      "meaning": "Concatenate",
+      "label": "Concatenate",
+      "shape": [
+        304,
+        "H/4",
+        "W/4"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "ref",
+      "op": "conv",
+      "meaning": "3×3 refine / + bilinear ×4",
+      "label": "3×3 refine / + bilinear ×4",
+      "shape": [
+        "K",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Segmentation",
+      "label": "Segmentation",
+      "shape": [
+        "K",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "back",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "back",
+      "to": "aspp",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "aspp",
+      "to": "up",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "up",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "cat",
+      "to": "ref",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "ref",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "back",
+      "to": "low",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "low",
+      "to": "cat",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Output stride16 schematic. ASPP internals have a separate module view. Low-level features are projected to48 channels; encoder features are upsampled4× before concat, then refined and upsampled4×.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 242
+  }
+}

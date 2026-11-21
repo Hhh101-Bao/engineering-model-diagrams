@@ -1,0 +1,18 @@
+{
+  "paper": {
+    "neutral":{"fill":"#F1F5F9","stroke":"#7D91A8"},
+    "encoder":{"fill":"#E9F1FA","stroke":"#6488B3"},
+    "decoder":{"fill":"#E6F3F0","stroke":"#4E9288"},
+    "attention":{"fill":"#EFEAF8","stroke":"#8A78AB"},
+    "fusion":{"fill":"#FBF0DB","stroke":"#B78C3F"},
+    "output":{"fill":"#EAF2E3","stroke":"#7C9A61"}
+  },
+  "mono": {
+    "neutral":{"fill":"#FFFFFF","stroke":"#717171"},
+    "encoder":{"fill":"#EEEEEE","stroke":"#444444"},
+    "decoder":{"fill":"#F6F6F6","stroke":"#555555"},
+    "attention":{"fill":"#E2E2E2","stroke":"#333333"},
+    "fusion":{"fill":"#FFFFFF","stroke":"#222222"},
+    "output":{"fill":"#F2F2F2","stroke":"#555555"}
+  }
+}

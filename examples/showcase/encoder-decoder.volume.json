@@ -1,0 +1,463 @@
+{
+  "backend": "neural-netz",
+  "title": "Multi-scale encoder-decoder | schematic",
+  "widthMm": 280,
+  "minFontPt": 8.3,
+  "palette": "cold",
+  "showRelu": true,
+  "showLegend": false,
+  "depthMultiplier": 0.23,
+  "layers": [
+    {
+      "name": "image",
+      "type": "custom",
+      "widths": [
+        0.08
+      ],
+      "height": 4,
+      "depth": 4,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        256,
+        256
+      ],
+      "fill": "#CBD3DC",
+      "at": [
+        -6,
+        6
+      ],
+      "label": [
+        "Input",
+        "3 × 256 × 256"
+      ],
+      "labelAt": [
+        -5.25,
+        2.1
+      ],
+      "bandfill": "#9382AA",
+      "show-relu": false
+    },
+    {
+      "name": "enc1",
+      "type": "conv",
+      "widths": [
+        0.55,
+        0.55
+      ],
+      "height": 4,
+      "depth": 4,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        32,
+        256,
+        256
+      ],
+      "at": [
+        0,
+        6
+      ],
+      "label": [
+        "Encoder 1",
+        "32 × 256 × 256"
+      ],
+      "labelAt": [
+        1.35,
+        9.6
+      ],
+      "fill": "#8FAAC4",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "sliceGap": 1.4700000000000002
+    },
+    {
+      "name": "enc2",
+      "type": "conv",
+      "widths": [
+        0.7,
+        0.7
+      ],
+      "height": 3.2,
+      "depth": 3.2,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        128,
+        128
+      ],
+      "at": [
+        4.5,
+        0.6
+      ],
+      "label": [
+        "Encoder 2",
+        "64 × 128 × 128"
+      ],
+      "labelAt": [
+        3,
+        -2.7
+      ],
+      "fill": "#8FAAC4",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "sliceGap": 1.286
+    },
+    {
+      "name": "enc3",
+      "type": "conv",
+      "widths": [
+        0.9,
+        0.9
+      ],
+      "height": 2.4,
+      "depth": 2.4,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "at": [
+        9,
+        -3.8
+      ],
+      "label": [
+        "Encoder 3",
+        "128 × 64 × 64"
+      ],
+      "labelAt": [
+        8.25,
+        -6.3
+      ],
+      "fill": "#8FAAC4",
+      "bandfill": "#6688A7",
+      "show-relu": false,
+      "sliceGap": 1.102
+    },
+    {
+      "name": "bridge",
+      "type": "conv",
+      "widths": [
+        1.1,
+        1.1
+      ],
+      "height": 1.8,
+      "depth": 1.8,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        256,
+        32,
+        32
+      ],
+      "at": [
+        15,
+        -7.4
+      ],
+      "label": [
+        "Bottleneck",
+        "256 × 32 × 32"
+      ],
+      "labelAt": [
+        16.799999999999997,
+        -10.1
+      ],
+      "fill": "#B3A4C5",
+      "bandfill": "#9382AA",
+      "show-relu": false,
+      "sliceGap": 0.9640000000000001
+    },
+    {
+      "name": "dec3",
+      "type": "conv",
+      "widths": [
+        0.9,
+        0.9
+      ],
+      "height": 2.4,
+      "depth": 2.4,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "fill": "#83B4AF",
+      "bandfill": "#5A938F",
+      "at": [
+        21,
+        -3.8
+      ],
+      "label": [
+        "Decoder 3",
+        "128 × 64 × 64"
+      ],
+      "labelAt": [
+        24,
+        -6.3
+      ],
+      "show-relu": false,
+      "sliceGap": 1.102
+    },
+    {
+      "name": "dec2",
+      "type": "conv",
+      "widths": [
+        0.7,
+        0.7
+      ],
+      "height": 3.2,
+      "depth": 3.2,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        64,
+        128,
+        128
+      ],
+      "fill": "#83B4AF",
+      "bandfill": "#5A938F",
+      "at": [
+        25.5,
+        0.6
+      ],
+      "label": [
+        "Decoder 2",
+        "64 × 128 × 128"
+      ],
+      "labelAt": [
+        27.75,
+        -2.7
+      ],
+      "show-relu": false,
+      "sliceGap": 1.286
+    },
+    {
+      "name": "dec1",
+      "type": "conv",
+      "widths": [
+        0.55,
+        0.55
+      ],
+      "height": 4,
+      "depth": 4,
+      "channels": [
+        "",
+        "",
+        ""
+      ],
+      "tensor": [
+        32,
+        256,
+        256
+      ],
+      "fill": "#83B4AF",
+      "bandfill": "#5A938F",
+      "at": [
+        30,
+        6
+      ],
+      "label": [
+        "Decoder 1",
+        "32 × 256 × 256"
+      ],
+      "labelAt": [
+        31.349999999999998,
+        9.6
+      ],
+      "show-relu": false,
+      "sliceGap": 1.4700000000000002
+    },
+    {
+      "name": "mask",
+      "type": "custom",
+      "widths": [
+        0.08
+      ],
+      "height": 4,
+      "depth": 4,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        1,
+        256,
+        256
+      ],
+      "fill": "#91B6A1",
+      "at": [
+        37.5,
+        6
+      ],
+      "label": [
+        "Prediction",
+        "1 × 256 × 256"
+      ],
+      "labelAt": [
+        38.25,
+        2.1
+      ],
+      "bandfill": "#9382AA",
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "from": "image",
+      "to": "enc1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    },
+    {
+      "from": "enc1",
+      "to": "enc2",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "label": "↓2",
+      "labelAt": [
+        4.050000000000001,
+        3.8
+      ]
+    },
+    {
+      "from": "enc2",
+      "to": "enc3",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "north",
+      "label": "↓2",
+      "labelAt": [
+        8.399999999999999,
+        -1.2
+      ]
+    },
+    {
+      "from": "enc3",
+      "to": "bridge",
+      "type": "direct",
+      "fromPort": "south",
+      "toPort": "west",
+      "label": "↓2",
+      "labelAt": [
+        13.649999999999999,
+        -5.2
+      ]
+    },
+    {
+      "from": "bridge",
+      "to": "dec3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "south",
+      "label": "↑2",
+      "labelAt": [
+        20.1,
+        -5.5
+      ]
+    },
+    {
+      "from": "dec3",
+      "to": "dec2",
+      "type": "direct",
+      "fromPort": "north",
+      "toPort": "south",
+      "label": "↑2",
+      "labelAt": [
+        24.75,
+        -0.8
+      ]
+    },
+    {
+      "from": "dec2",
+      "to": "dec1",
+      "type": "direct",
+      "fromPort": "north",
+      "toPort": "south",
+      "label": "↑2",
+      "labelAt": [
+        29.25,
+        3.7
+      ]
+    },
+    {
+      "from": "enc1",
+      "to": "dec1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "label": "skip + concatenate",
+      "labelAt": [
+        16.5,
+        6.8
+      ],
+      "opacity": 0.55
+    },
+    {
+      "from": "enc2",
+      "to": "dec2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "label": "skip + concatenate",
+      "labelAt": [
+        16.5,
+        1.4
+      ],
+      "opacity": 0.55
+    },
+    {
+      "from": "enc3",
+      "to": "dec3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "label": "skip + concatenate",
+      "labelAt": [
+        16.5,
+        -3
+      ],
+      "opacity": 0.55
+    },
+    {
+      "from": "dec1",
+      "to": "mask",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west"
+    }
+  ],
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "strokeThickness": 0.8
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "paper-model/1",
+  "title": "Swin block pair",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/2103.14030",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.3b; Eqs.3",
+      "statement": "One window-attention block followed by a shifted-window block. Each macro block includes pre-norm, attention residual and MLP residual. No patch merge inside this pair.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Tokens / windows",
+      "label": "Tokens / windows",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "w",
+      "op": "attention",
+      "meaning": "W-MSA block / Norm + two residuals",
+      "label": "W-MSA block / Norm + two residuals",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "sw",
+      "op": "attention",
+      "meaning": "SW-MSA block / Norm + two residuals",
+      "label": "SW-MSA block / Norm + two residuals",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Output",
+      "label": "Output",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "w",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "w",
+      "to": "sw",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "sw",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "One window-attention block followed by a shifted-window block. Each macro block includes pre-norm, attention residual and MLP residual. No patch merge inside this pair.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

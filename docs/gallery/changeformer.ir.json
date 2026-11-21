@@ -1,0 +1,271 @@
+{
+  "schema": "paper-model/1",
+  "title": "ChangeFormer · Siamese overview",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/wgcban/ChangeFormer/blob/main/models/ChangeFormer.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Siamese Transformer encoder and multiscale decoder; §3 in IGARSS2022 paper",
+      "statement": "Macro overview shared across the family: two shared hierarchical encoders, multiscale difference modules and lightweight decoder. Exact layer counts/interpolation/upsampling differ by code variant; no numeric variant-specific dimensions are asserted.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "t1",
+      "op": "input",
+      "meaning": "Image t1",
+      "label": "Image t1",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "t2",
+      "op": "input",
+      "meaning": "Image t2",
+      "label": "Image t2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "op": "attention",
+      "meaning": "Shared hierarchical / Transformer",
+      "label": "Shared hierarchical / Transformer",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "op": "attention",
+      "meaning": "Shared hierarchical / Transformer",
+      "label": "Shared hierarchical / Transformer",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d0",
+      "op": "custom",
+      "meaning": "Difference module / Scale 1",
+      "label": "Difference module / Scale 1",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d1",
+      "op": "custom",
+      "meaning": "Difference module / Scale 2",
+      "label": "Difference module / Scale 2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d2",
+      "op": "custom",
+      "meaning": "Difference module / Scale 3",
+      "label": "Difference module / Scale 3",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "d3",
+      "op": "custom",
+      "meaning": "Difference module / Scale 4",
+      "label": "Difference module / Scale 4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "fuse",
+      "op": "concat",
+      "meaning": "Resize + / multiscale fusion",
+      "label": "Resize + / multiscale fusion",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "head",
+      "op": "conv",
+      "meaning": "Lightweight / decoder",
+      "label": "Lightweight / decoder",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "y",
+      "op": "output",
+      "meaning": "Change map",
+      "label": "Change map",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "t1",
+      "to": "e1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "t2",
+      "to": "e2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "e1",
+      "to": "d0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "e2",
+      "to": "d0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "d0",
+      "to": "fuse",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "e1",
+      "to": "d1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "e2",
+      "to": "d1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "d1",
+      "to": "fuse",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "e1",
+      "to": "d2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "e2",
+      "to": "d2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "d2",
+      "to": "fuse",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "e1",
+      "to": "d3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "e2",
+      "to": "d3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e13",
+      "from": "d3",
+      "to": "fuse",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e14",
+      "from": "fuse",
+      "to": "head",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e15",
+      "from": "head",
+      "to": "y",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Macro overview shared across the family: two shared hierarchical encoders, multiscale difference modules and lightweight decoder. Exact layer counts/interpolation/upsampling differ by code variant; no numeric variant-specific dimensions are asserted.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 210
+  }
+}

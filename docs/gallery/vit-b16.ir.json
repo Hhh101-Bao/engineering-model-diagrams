@@ -1,0 +1,140 @@
+{
+  "schema": "paper-model/1",
+  "title": "ViT-B/16",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/2010.11929",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.1; §3.1; Table1",
+      "statement": "224 input,16-pixel patches:196 patch tokens plus one class token.12 encoder blocks with D768. Positional embedding and class-token insertion grouped explicitly; token axes are not image spatial dimensions.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Image",
+      "label": "Image",
+      "shape": [
+        3,
+        224,
+        224
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "patch",
+      "op": "linear",
+      "meaning": "16×16 patches / Linear embedding",
+      "label": "16×16 patches / Linear embedding",
+      "shape": [
+        196,
+        768
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "pos",
+      "op": "custom",
+      "meaning": "Class token / + position",
+      "label": "Class token / + position",
+      "shape": [
+        197,
+        768
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "enc",
+      "op": "attention",
+      "meaning": "Transformer / encoder ×12",
+      "label": "Transformer / encoder ×12",
+      "shape": [
+        197,
+        768
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "cls",
+      "op": "linear",
+      "meaning": "Select CLS / + MLP head",
+      "label": "Select CLS / + MLP head",
+      "shape": [
+        "K"
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "patch",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "patch",
+      "to": "pos",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "pos",
+      "to": "enc",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "enc",
+      "to": "cls",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "224 input,16-pixel patches:196 patch tokens plus one class token.12 encoder blocks with D768. Positional embedding and class-token insertion grouped explicitly; token axes are not image spatial dimensions.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

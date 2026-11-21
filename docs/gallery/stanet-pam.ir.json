@@ -1,0 +1,395 @@
+{
+  "schema": "paper-model/1",
+  "title": "PAM detail | regional attention and projection",
+  "sources": [
+    {
+      "id": "paper",
+      "uri": "https://doi.org/10.3390/rs12101662",
+      "kind": "pdf",
+      "sha256": "1ef4efeb0c162eb07ec5aaf4057e0aa7c113b71ffeac1998a1015105c52cf940"
+    },
+    {
+      "id": "feature",
+      "uri": "https://github.com/justchenhao/STANet/blob/6152d72f55df00a43d341580970be7a58c6b0cd5/models/mynet3.py",
+      "kind": "py",
+      "sha256": "bed713f258893065a07d6b714af7f0486688f60daf40c8a89019868e2439478b"
+    },
+    {
+      "id": "cdsa",
+      "uri": "https://github.com/justchenhao/STANet/blob/6152d72f55df00a43d341580970be7a58c6b0cd5/models/backbone.py",
+      "kind": "py",
+      "sha256": "e3d0d37202ac2a5439a9b78271f725d90cff9514420715e4361e28725b9774ab"
+    },
+    {
+      "id": "pamcode",
+      "uri": "https://github.com/justchenhao/STANet/blob/6152d72f55df00a43d341580970be7a58c6b0cd5/models/PAM2.py",
+      "kind": "py",
+      "sha256": "2398f756c9c92f746120dd24f70950c62cfc81b098d41e29bd616768b4ed1269"
+    },
+    {
+      "id": "modelcode",
+      "uri": "https://github.com/justchenhao/STANet/blob/6152d72f55df00a43d341580970be7a58c6b0cd5/models/CDFA_model.py",
+      "kind": "py",
+      "sha256": "e8e720368c78a2821b7b9b0b836338e23369ccd82f590218e838532fafe06893"
+    },
+    {
+      "id": "options",
+      "uri": "https://github.com/justchenhao/STANet/blob/6152d72f55df00a43d341580970be7a58c6b0cd5/options/base_options.py",
+      "kind": "py",
+      "sha256": "a6a9beeac778b52e5b7b93ae93faced819045bfb0486366f0114876d4e93c8c8"
+    },
+    {
+      "id": "readme",
+      "uri": "https://github.com/justchenhao/STANet/blob/6152d72f55df00a43d341580970be7a58c6b0cd5/README.md",
+      "kind": "md",
+      "sha256": "8828363ec44027545c1dc8ada53f39db32c2291d07f2485dae4536df916edaae"
+    },
+    {
+      "id": "demo",
+      "uri": "https://github.com/justchenhao/STANet/blob/6152d72f55df00a43d341580970be7a58c6b0cd5/demo.py",
+      "kind": "py",
+      "sha256": "e7f7e98b149bd4fd063dacc965968d6d67463b9d29af15cb34e4c0e91a039383"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "scope",
+      "source": "demo",
+      "locator": "pred_image; lines 54-64",
+      "statement": "Demo explicitly selects CDFA, mynet3 and PAM.",
+      "status": "stated"
+    },
+    {
+      "id": "sample",
+      "source": "readme",
+      "locator": "Prepare Datasets, cut bitemporal image pairs",
+      "statement": "A 256 x 256 RGB input is an illustrative size, not a fixed architecture requirement.",
+      "status": "inferred",
+      "reason": "README describes the 256 x 256 non-overlapping patches used in the paper; RGB input follows CDFA netF in_c=3."
+    },
+    {
+      "id": "defaults",
+      "source": "options",
+      "locator": "BaseOptions.initialize, lines 33-48",
+      "statement": "Feature width defaults to 64 and attention downsampling ds defaults to 1.",
+      "status": "stated"
+    },
+    {
+      "id": "shared",
+      "source": "modelcode",
+      "locator": "CDFAModel.__init__ and forward, lines 39-40 and 85-98",
+      "statement": "The same netF instance processes A and B, followed by netA; Euclidean feature distance precedes bilinear distance-map resizing, then threshold dist > 1.",
+      "status": "stated"
+    },
+    {
+      "id": "extract",
+      "source": "feature",
+      "locator": "Decoder.__init__/forward; mynet3.forward, lines 280-348",
+      "statement": "Four ResNet stage outputs are projected to 96 channels, aligned at quarter resolution, concatenated to 384 channels, followed by 3 x 3 to 256 and 1 x 1 to 64.",
+      "status": "stated"
+    },
+    {
+      "id": "backbone",
+      "source": "cdsa",
+      "locator": "define_F, lines 11-16",
+      "statement": "Official mynet3 instantiation uses a ResNet-18 based backbone with output_stride=32.",
+      "status": "stated"
+    },
+    {
+      "id": "stages",
+      "source": "feature",
+      "locator": "ResNet18; ResNet.__init__; ResNet.forward, lines 43-48, 145-180, 220-236",
+      "statement": "Stem Conv7/2 and MaxPool3/2 precede stage outputs 64,128,256,512 at strides 4,8,16,32. This implementation uses 2,2,2,3 BasicBlocks; the last stage uses dilation multipliers 1,2,4.",
+      "status": "stated"
+    },
+    {
+      "id": "temporal",
+      "source": "cdsa",
+      "locator": "CDSA.__init__/forward, lines 31-47",
+      "statement": "PAM uses scales [1,2,4,8]. Feature maps are concatenated along width, then split back into dates after attention.",
+      "status": "stated"
+    },
+    {
+      "id": "regions",
+      "source": "pamcode",
+      "locator": "_PAMBlock.forward, lines 42-122",
+      "statement": "Each s x s spatial grid region includes both dates; keys and queries have C/8 channels and values C. Scaled QK similarity is softmax-normalized and used for weighted value aggregation, then region outputs are reassembled.",
+      "status": "stated"
+    },
+    {
+      "id": "aggregate",
+      "source": "pamcode",
+      "locator": "PAM.__init__/forward, lines 134-168",
+      "statement": "Four context tensors are concatenated on the channel dimension and projected with Conv1x1 from 4C to C. This implementation returns the projected output directly, without an input residual addition.",
+      "status": "stated"
+    },
+    {
+      "id": "paper_extract",
+      "source": "paper",
+      "locator": "pp. 6-7, Fig.2(b), section 2.1.2",
+      "statement": "The paper uses a ResNet-18 based multi-scale feature extractor with 96-channel projections and final 256/64-channel convolutions.",
+      "status": "stated"
+    },
+    {
+      "id": "paper_pam",
+      "source": "paper",
+      "locator": "p.8, Fig.2(d), section 2.1.3",
+      "statement": "The paper defines four scales {1,2,4,8}, per-region attention, channel concatenation and a final 1x1 convolution followed by residual addition to X.",
+      "status": "stated"
+    },
+    {
+      "id": "paper_metric",
+      "source": "paper",
+      "locator": "p.9, section 2.1.4, Eq.(4)",
+      "statement": "The paper resizes the two feature maps before Euclidean distance, then thresholds distance at 1. This differs from the code order.",
+      "status": "stated"
+    },
+    {
+      "id": "trace",
+      "source": "feature",
+      "locator": "ResNet and Decoder.forward, lines 145-180 and 305-320",
+      "statement": "For the illustrative 256 x 256 input, the inferred quarter-resolution feature tensor is 64 x 64 x 64.",
+      "status": "inferred",
+      "reason": "Apply the explicit stride-2 stem, maxpool, stage strides and decoder interpolation to 256 x 256; batch axis is omitted."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "op": "input",
+      "label": "Stacked dates",
+      "axes": "CHW",
+      "shape": [
+        64,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "region1",
+      "op": "attention",
+      "label": "s=1: 1 region",
+      "axes": "CHW",
+      "shape": [
+        64,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "regions"
+      ],
+      "meaning": "Partition into 1 x 1 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2."
+    },
+    {
+      "id": "region2",
+      "op": "attention",
+      "label": "s=2: 4 regions",
+      "axes": "CHW",
+      "shape": [
+        64,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "regions"
+      ],
+      "meaning": "Partition into 2 x 2 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2."
+    },
+    {
+      "id": "region4",
+      "op": "attention",
+      "label": "s=4: 16 regions",
+      "axes": "CHW",
+      "shape": [
+        64,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "regions"
+      ],
+      "meaning": "Partition into 4 x 4 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2."
+    },
+    {
+      "id": "region8",
+      "op": "attention",
+      "label": "s=8: 64 regions",
+      "axes": "CHW",
+      "shape": [
+        64,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "regions"
+      ],
+      "meaning": "Partition into 8 x 8 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2."
+    },
+    {
+      "id": "channels",
+      "op": "concat",
+      "label": "Concat C",
+      "axes": "CHW",
+      "shape": [
+        256,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "aggregate"
+      ],
+      "params": {
+        "axis": 0
+      }
+    },
+    {
+      "id": "project",
+      "op": "conv",
+      "label": "Conv1x1 / 64",
+      "axes": "CHW",
+      "shape": [
+        64,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "aggregate"
+      ],
+      "params": {
+        "outChannels": 64,
+        "kernel": 1,
+        "stride": 1,
+        "padding": 0
+      }
+    },
+    {
+      "id": "output",
+      "op": "output",
+      "label": "PAM output",
+      "axes": "CHW",
+      "shape": [
+        64,
+        64,
+        128
+      ],
+      "shapeStatus": "inferred",
+      "shapeReason": "Illustrative 256 x 256 input; dimensions traced from official code with f_c=64 and ds=1.",
+      "evidence": [
+        "aggregate"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "input__region1",
+      "from": "input",
+      "to": "region1",
+      "evidence": [
+        "regions"
+      ]
+    },
+    {
+      "id": "input__region2",
+      "from": "input",
+      "to": "region2",
+      "evidence": [
+        "regions"
+      ]
+    },
+    {
+      "id": "input__region4",
+      "from": "input",
+      "to": "region4",
+      "evidence": [
+        "regions"
+      ]
+    },
+    {
+      "id": "input__region8",
+      "from": "input",
+      "to": "region8",
+      "evidence": [
+        "regions"
+      ]
+    },
+    {
+      "id": "region1__channels",
+      "from": "region1",
+      "to": "channels",
+      "evidence": [
+        "aggregate"
+      ]
+    },
+    {
+      "id": "region2__channels",
+      "from": "region2",
+      "to": "channels",
+      "evidence": [
+        "aggregate"
+      ]
+    },
+    {
+      "id": "region4__channels",
+      "from": "region4",
+      "to": "channels",
+      "evidence": [
+        "aggregate"
+      ]
+    },
+    {
+      "id": "region8__channels",
+      "from": "region8",
+      "to": "channels",
+      "evidence": [
+        "aggregate"
+      ]
+    },
+    {
+      "id": "channels__project",
+      "from": "channels",
+      "to": "project",
+      "evidence": [
+        "aggregate"
+      ]
+    },
+    {
+      "id": "project__output",
+      "from": "project",
+      "to": "output",
+      "evidence": [
+        "aggregate"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Scope: fixed official commit 6152d72f55df00a43d341580970be7a58c6b0cd5; CDFA / mynet3 / PAM / f_c=64 / ds=1. This is a sourced redraw, not an official author figure.",
+    "All displayed shapes use one illustrative RGB 256 x 256 input, omit the batch axis, and are inferred from the code. Geometry is compressed and non-proportional.",
+    "The main diagram abstracts the shared feature extractor and PAM. Companion diagrams expand their topology; BN, ReLU, training dropout, individual residual internals, parameter learning, and BCL supervision are omitted.",
+    "Paper/code differences are intentional: paper PAM adds X residually, code PAM2 does not; paper resizes features before distance, code computes distance then resizes it. These alternatives are not combined."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 260,
+    "minFontPt": 9,
+    "direction": "RIGHT",
+    "depthMultiplier": 0.22
+  }
+}

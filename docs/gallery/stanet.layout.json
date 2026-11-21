@@ -1,0 +1,357 @@
+{
+  "nodes": [
+    {
+      "id": "imageA",
+      "x": 0,
+      "y": 0,
+      "w": 8.042953874499759,
+      "h": 9.52528352010071
+    },
+    {
+      "id": "imageB",
+      "x": 0,
+      "y": 12.22528352010071,
+      "w": 8.042953874499759,
+      "h": 9.52528352010071
+    },
+    {
+      "id": "featureA",
+      "x": 10.242953874499758,
+      "y": 0.4147999999999999,
+      "w": 6.869128228749799,
+      "h": 8.69568352010071
+    },
+    {
+      "id": "featureB",
+      "x": 10.242953874499758,
+      "y": 12.640083520100712,
+      "w": 6.869128228749799,
+      "h": 8.69568352010071
+    },
+    {
+      "id": "stack",
+      "x": 19.312082103249555,
+      "y": 0.5966016666666664,
+      "w": 8.042953874499759,
+      "h": 8.770483520100711
+    },
+    {
+      "id": "pam",
+      "x": 29.555035977749313,
+      "y": 0.5966016666666664,
+      "w": 7.722819607477042,
+      "h": 8.770483520100711
+    },
+    {
+      "id": "splitA",
+      "x": 39.47785558522635,
+      "y": 0.4147999999999999,
+      "w": 8.042953874499759,
+      "h": 8.69568352010071
+    },
+    {
+      "id": "splitB",
+      "x": 39.47785558522635,
+      "y": 11.81048352010071,
+      "w": 8.042953874499759,
+      "h": 8.69568352010071
+    },
+    {
+      "id": "distance",
+      "x": 49.72080945972611,
+      "y": 0.6421049999999999,
+      "w": 7.456041051624778,
+      "h": 8.69568352010071
+    },
+    {
+      "id": "resize",
+      "x": 59.376850511350895,
+      "y": 0.22730500000000006,
+      "w": 7.456041051624778,
+      "h": 9.52528352010071
+    },
+    {
+      "id": "threshold",
+      "x": 69.03289156297568,
+      "y": 0.22730500000000006,
+      "w": 8.042953874499759,
+      "h": 9.52528352010071
+    },
+    {
+      "id": "prediction",
+      "x": 79.27584543747544,
+      "y": 0.22730500000000006,
+      "w": 7.456041051624778,
+      "h": 9.52528352010071
+    }
+  ],
+  "edges": [
+    {
+      "id": "imageA__featureA",
+      "from": "imageA",
+      "to": "featureA",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        4.4822,
+        -2.1557
+      ],
+      "toPoint": [
+        12.9216,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "imageB__featureB",
+      "from": "imageB",
+      "to": "featureB",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        4.4822,
+        -14.381
+      ],
+      "toPoint": [
+        12.9216,
+        -14.381
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "featureA__stack",
+      "from": "featureA",
+      "to": "stack",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        14.4334,
+        -2.1557
+      ],
+      "toPoint": [
+        22.5403,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "featureB__stack",
+      "from": "featureB",
+      "to": "stack",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        14.4334,
+        -14.381
+      ],
+      "toPoint": [
+        22.5403,
+        -2.5941
+      ],
+      "via": [
+        [
+          17.5121,
+          -14.381
+        ],
+        [
+          17.5121,
+          -2.5941
+        ]
+      ],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "stack__pam",
+      "from": "stack",
+      "to": "pam",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        24.1269,
+        -2.3749
+      ],
+      "toPoint": [
+        32.6231,
+        -2.3749
+      ],
+      "via": [],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "pam__splitA",
+      "from": "pam",
+      "to": "splitA",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        34.2097,
+        -2.1557
+      ],
+      "toPoint": [
+        42.7434,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "pam__splitB",
+      "from": "pam",
+      "to": "splitB",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        34.2097,
+        -2.5941
+      ],
+      "toPoint": [
+        42.7434,
+        -13.5514
+      ],
+      "via": [
+        [
+          37.6779,
+          -2.5941
+        ],
+        [
+          37.6779,
+          -13.5514
+        ]
+      ],
+      "evidence": [
+        "temporal"
+      ]
+    },
+    {
+      "id": "splitA__distance",
+      "from": "splitA",
+      "to": "distance",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        44.2552,
+        -2.1557
+      ],
+      "toPoint": [
+        52.9779,
+        -2.1557
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "splitB__distance",
+      "from": "splitB",
+      "to": "distance",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        44.2552,
+        -13.5514
+      ],
+      "toPoint": [
+        52.9779,
+        -2.6103
+      ],
+      "via": [
+        [
+          47.9208,
+          -13.5514
+        ],
+        [
+          47.9208,
+          -2.6103
+        ]
+      ],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "distance__resize",
+      "from": "distance",
+      "to": "resize",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        53.9197,
+        -2.383
+      ],
+      "toPoint": [
+        62.5592,
+        -2.383
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "resize__threshold",
+      "from": "resize",
+      "to": "threshold",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        63.6506,
+        -2.383
+      ],
+      "toPoint": [
+        72.5087,
+        -2.383
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    },
+    {
+      "id": "threshold__prediction",
+      "from": "threshold",
+      "to": "prediction",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        73.6001,
+        -2.383
+      ],
+      "toPoint": [
+        82.5432,
+        -2.383
+      ],
+      "via": [],
+      "evidence": [
+        "shared"
+      ]
+    }
+  ]
+}

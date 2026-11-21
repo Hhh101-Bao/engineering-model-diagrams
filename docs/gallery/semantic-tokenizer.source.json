@@ -1,0 +1,275 @@
+{
+  "backend": "neural-netz",
+  "title": "BIT semantic tokenizer",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Feature F",
+        "C × H × W"
+      ],
+      "labelAt": [
+        0.4125,
+        -3.155945822951274
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "p",
+      "type": "conv",
+      "semanticOp": "conv",
+      "widths": [
+        1
+      ],
+      "height": 2.75,
+      "depth": 2.75,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "1×1 Conv",
+        "L maps",
+        "L × H × W"
+      ],
+      "labelAt": [
+        6.202500000000001,
+        -3.520168734426911
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        "L",
+        "H",
+        "W"
+      ],
+      "fill": "#8FAAC4",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s",
+      "type": "custom",
+      "semanticOp": "custom",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Spatial softmax",
+        "L × HW"
+      ],
+      "labelAt": [
+        11.476,
+        -2.9544458229512736
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "L",
+        "HW"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "agg",
+      "type": "custom",
+      "semanticOp": "custom",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Weighted",
+        "aggregation",
+        "L × C"
+      ],
+      "labelAt": [
+        16.876,
+        -3.3186687344269106
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "L",
+        "C"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "p",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.825,
+        -0.044
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": [
+        [
+          4.85,
+          -0.044
+        ],
+        [
+          4.85,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "p",
+      "to": "s",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        7.005,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "s",
+      "to": "agg",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        -0.15
+      ],
+      "via": [
+        [
+          12.702,
+          0
+        ],
+        [
+          12.702,
+          -0.15
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "x",
+      "to": "agg",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.825,
+        0.044
+      ],
+      "toPoint": [
+        16.2,
+        0.15
+      ],
+      "via": [
+        [
+          1.375,
+          0.044
+        ],
+        [
+          1.375,
+          1.926
+        ],
+        [
+          15.65,
+          1.926
+        ],
+        [
+          15.65,
+          0.15
+        ]
+      ]
+    }
+  ]
+}

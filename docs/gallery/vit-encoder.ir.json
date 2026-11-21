@@ -1,0 +1,202 @@
+{
+  "schema": "paper-model/1",
+  "title": "ViT encoder block",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/2010.11929",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Fig.1 right; Eqs.2–3",
+      "statement": "Pre-normalization Transformer block with two residual additions. MLP groups Dense/GELU/Dense; dropout omitted.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Token sequence",
+      "label": "Token sequence",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "n1",
+      "op": "norm",
+      "meaning": "Layer norm",
+      "label": "Layer norm",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "a",
+      "op": "attention",
+      "meaning": "Multi-head / self-attention",
+      "label": "Multi-head / self-attention",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s1",
+      "op": "add",
+      "meaning": "Add",
+      "label": "Add",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "n2",
+      "op": "norm",
+      "meaning": "Layer norm",
+      "label": "Layer norm",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "mlp",
+      "op": "linear",
+      "meaning": "MLP / Dense–GELU–Dense",
+      "label": "MLP / Dense–GELU–Dense",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s2",
+      "op": "add",
+      "meaning": "Add",
+      "label": "Add",
+      "shape": [
+        "N",
+        "D"
+      ],
+      "shapeStatus": "stated",
+      "axes": "tokens",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "n1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "a",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "a",
+      "to": "s1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "s1",
+      "to": "n2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "n2",
+      "to": "mlp",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "mlp",
+      "to": "s2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "x",
+      "to": "s1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "s1",
+      "to": "s2",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Pre-normalization Transformer block with two residual additions. MLP groups Dense/GELU/Dense; dropout omitted.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 242
+  }
+}

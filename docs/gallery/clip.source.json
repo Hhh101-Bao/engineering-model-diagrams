@@ -1,0 +1,468 @@
+{
+  "backend": "neural-netz",
+  "title": "CLIP · contrastive pretraining",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "i",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Image batch"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -2.6788176737264675
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "t",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        0,
+        -6.8
+      ],
+      "label": [
+        "Text batch"
+      ],
+      "labelAt": [
+        0.28600000000000003,
+        -9.478817673726468
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "ie",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Image encoder"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -2.6788176737264675
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "te",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        5.4,
+        -6.8
+      ],
+      "label": [
+        "Text encoder"
+      ],
+      "labelAt": [
+        6.0760000000000005,
+        -9.478817673726468
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "in",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Projection",
+        "+ normalize",
+        "N × D"
+      ],
+      "labelAt": [
+        11.476,
+        -3.584453021179402
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "tn",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        10.8,
+        -6.8
+      ],
+      "label": [
+        "Projection",
+        "+ normalize",
+        "N × D"
+      ],
+      "labelAt": [
+        11.476,
+        -10.384453021179402
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "D"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "sim",
+      "type": "custom",
+      "semanticOp": "custom",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        16.200000000000003,
+        -3.4
+      ],
+      "label": [
+        "Pairwise cosine",
+        "similarities",
+        "N × N"
+      ],
+      "labelAt": [
+        16.876,
+        -6.984453021179402
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null
+      ],
+      "sourceShape": [
+        "N",
+        "N"
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "loss",
+      "type": "custom",
+      "semanticOp": "output",
+      "widths": [
+        0.22
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        21.6,
+        -3.4
+      ],
+      "label": [
+        "Symmetric",
+        "contrastive objective"
+      ],
+      "labelAt": [
+        21.886000000000003,
+        -6.5316353474529345
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "sourceShape": [
+        null,
+        null,
+        null
+      ],
+      "fill": "#91B6A1",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "i",
+      "to": "ie",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "ie",
+      "to": "in",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "in",
+      "to": "sim",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        -3.55
+      ],
+      "via": [
+        [
+          15.65,
+          0
+        ],
+        [
+          15.65,
+          -3.55
+        ]
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "sim",
+      "to": "loss",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.552,
+        -3.4
+      ],
+      "toPoint": [
+        21.6,
+        -3.4
+      ],
+      "via": []
+    },
+    {
+      "id": "e4",
+      "from": "t",
+      "to": "te",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        0.572,
+        -6.8
+      ],
+      "toPoint": [
+        5.4,
+        -6.8
+      ],
+      "via": []
+    },
+    {
+      "id": "e5",
+      "from": "te",
+      "to": "tn",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        6.752,
+        -6.8
+      ],
+      "toPoint": [
+        10.8,
+        -6.8
+      ],
+      "via": []
+    },
+    {
+      "id": "e6",
+      "from": "tn",
+      "to": "sim",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.152,
+        -6.8
+      ],
+      "toPoint": [
+        16.2,
+        -3.25
+      ],
+      "via": [
+        [
+          12.702,
+          -6.8
+        ],
+        [
+          12.702,
+          -5.176
+        ],
+        [
+          15.33,
+          -5.176
+        ],
+        [
+          15.33,
+          -3.25
+        ]
+      ]
+    }
+  ]
+}

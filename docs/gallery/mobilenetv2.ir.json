@@ -1,0 +1,287 @@
+{
+  "schema": "paper-model/1",
+  "title": "MobileNetV2 1.0",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1801.04381",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Table 2; torchvision MobileNetV2 default inverted_residual_setting",
+      "statement": "224 input and width multiplier1.0. Each stage groups repeated inverted residual blocks; internal expansion and depthwise steps have their own module diagram.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Input",
+      "label": "Input",
+      "shape": [
+        3,
+        224,
+        224
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "stem",
+      "op": "conv",
+      "meaning": "3×3 Conv, s2",
+      "label": "3×3 Conv, s2",
+      "shape": [
+        32,
+        112,
+        112
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b0",
+      "op": "conv",
+      "meaning": "Inverted residual / ×1",
+      "label": "Inverted residual / ×1",
+      "shape": [
+        16,
+        112,
+        112
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b1",
+      "op": "conv",
+      "meaning": "Inverted residual / ×2",
+      "label": "Inverted residual / ×2",
+      "shape": [
+        24,
+        56,
+        56
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b2",
+      "op": "conv",
+      "meaning": "Inverted residual / ×3",
+      "label": "Inverted residual / ×3",
+      "shape": [
+        32,
+        28,
+        28
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b3",
+      "op": "conv",
+      "meaning": "Inverted residual / ×4",
+      "label": "Inverted residual / ×4",
+      "shape": [
+        64,
+        14,
+        14
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b4",
+      "op": "conv",
+      "meaning": "Inverted residual / ×3",
+      "label": "Inverted residual / ×3",
+      "shape": [
+        96,
+        14,
+        14
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b5",
+      "op": "conv",
+      "meaning": "Inverted residual / ×3",
+      "label": "Inverted residual / ×3",
+      "shape": [
+        160,
+        7,
+        7
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "b6",
+      "op": "conv",
+      "meaning": "Inverted residual / ×1",
+      "label": "Inverted residual / ×1",
+      "shape": [
+        320,
+        7,
+        7
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "proj",
+      "op": "conv",
+      "meaning": "1×1 Conv",
+      "label": "1×1 Conv",
+      "shape": [
+        1280,
+        7,
+        7
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "pool",
+      "op": "linear",
+      "meaning": "Pool + classifier",
+      "label": "Pool + classifier",
+      "shape": [
+        1000
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "stem",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "stem",
+      "to": "b0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "b0",
+      "to": "b1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "b1",
+      "to": "b2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "b2",
+      "to": "b3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "b3",
+      "to": "b4",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "b4",
+      "to": "b5",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "b5",
+      "to": "b6",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "b6",
+      "to": "proj",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "proj",
+      "to": "pool",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "224 input and width multiplier1.0. Each stage groups repeated inverted residual blocks; internal expansion and depthwise steps have their own module diagram.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 340
+  }
+}

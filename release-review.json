@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "release": "v0.4.0",
+  "modelSchematics": 14,
+  "moduleSchematics": 14,
+  "scientificPalettes": 5,
+  "actualPdfFiguresAudited": 33,
+  "true3DMeshesAudited": 33,
+  "minimumMeasuredTextPt": 10.321,
+  "pdfRasterImages": 0,
+  "svgImageElements": 0,
+  "localMachinePathsFound": 0,
+  "brokenRelativeLinks": 0,
+  "sourcePapersRedistributed": false,
+  "originalAuthorFiguresRedistributed": false,
+  "visualReview": "Final generated PNGs and target-size text checks reviewed. Interpret model scopes and abstraction notes individually.",
+  "limitations": [
+    "Macro/stage grouping is explicit; no training/accuracy reproduction claim.",
+    "Long figures require decomposition for narrow journal columns.",
+    "Windows execution verified; other operating systems need their own Typst/Poppler/fonts.",
+    "Offline3D viewer interaction has not been browser-tested."
+  ]
+}

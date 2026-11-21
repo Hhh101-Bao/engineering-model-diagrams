@@ -1,0 +1,215 @@
+{
+  "schema": "paper-model/1",
+  "title": "ResNet-18",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://arxiv.org/abs/1512.03385",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "Table 1; BasicBlock in torchvision/models/resnet.py",
+      "statement": "224×224 input, four stages of two BasicBlocks; stage outputs shown. Stem includes Conv/BN/ReLU/MaxPool. Block internals are expanded separately.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Input",
+      "label": "Input",
+      "shape": [
+        3,
+        224,
+        224
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "stem",
+      "op": "conv",
+      "meaning": "Stem / 7×7, s2 + pool",
+      "label": "Stem / 7×7, s2 + pool",
+      "shape": [
+        64,
+        56,
+        56
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s0",
+      "op": "conv",
+      "meaning": "Stage 1 / BasicBlock ×2",
+      "label": "Stage 1 / BasicBlock ×2",
+      "shape": [
+        64,
+        56,
+        56
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s1",
+      "op": "conv",
+      "meaning": "Stage 2 / BasicBlock ×2",
+      "label": "Stage 2 / BasicBlock ×2",
+      "shape": [
+        128,
+        28,
+        28
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s2",
+      "op": "conv",
+      "meaning": "Stage 3 / BasicBlock ×2",
+      "label": "Stage 3 / BasicBlock ×2",
+      "shape": [
+        256,
+        14,
+        14
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s3",
+      "op": "conv",
+      "meaning": "Stage 4 / BasicBlock ×2",
+      "label": "Stage 4 / BasicBlock ×2",
+      "shape": [
+        512,
+        7,
+        7
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "gap",
+      "op": "gap",
+      "meaning": "Global avg pool",
+      "label": "Global avg pool",
+      "shape": [
+        512,
+        1,
+        1
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "fc",
+      "op": "linear",
+      "meaning": "Classifier",
+      "label": "Classifier",
+      "shape": [
+        1000
+      ],
+      "shapeStatus": "stated",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "stem",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "stem",
+      "to": "s0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "s0",
+      "to": "s1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "s1",
+      "to": "s2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "s2",
+      "to": "s3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "s3",
+      "to": "gap",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "gap",
+      "to": "fc",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "224×224 input, four stages of two BasicBlocks; stage outputs shown. Stem includes Conv/BN/ReLU/MaxPool. Block internals are expanded separately.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 274
+  }
+}

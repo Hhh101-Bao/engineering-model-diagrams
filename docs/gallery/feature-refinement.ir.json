@@ -1,0 +1,167 @@
+{
+  "schema": "paper-model/1",
+  "title": "UNetFormer feature-refinement head",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/WangLibo1995/GeoSeg/blob/main/geoseg/models/UNetFormer.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "FeatureRefinementHead.forward",
+      "statement": "Upsampling and normalized weighted skip fusion precede post-convolution. Channel/spatial attention branches gate x; their results add, project and combine with a shortcut before activation.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "d",
+      "op": "input",
+      "meaning": "Decoder features",
+      "label": "Decoder features",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "s",
+      "op": "input",
+      "meaning": "Encoder skip",
+      "label": "Encoder skip",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "f",
+      "op": "custom",
+      "meaning": "Upsample + / weighted fusion",
+      "label": "Upsample + / weighted fusion",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "post",
+      "op": "conv",
+      "meaning": "Post-conv",
+      "label": "Post-conv",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "ca",
+      "op": "attention",
+      "meaning": "Channel gate",
+      "label": "Channel gate",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "pa",
+      "op": "attention",
+      "meaning": "Spatial gate",
+      "label": "Spatial gate",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "a",
+      "op": "custom",
+      "meaning": "Sum + projection / + shortcut + act",
+      "label": "Sum + projection / + shortcut + act",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "d",
+      "to": "f",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "s",
+      "to": "f",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "f",
+      "to": "post",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "post",
+      "to": "ca",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "post",
+      "to": "pa",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "ca",
+      "to": "a",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "pa",
+      "to": "a",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "post",
+      "to": "a",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Upsampling and normalized weighted skip fusion precede post-convolution. Channel/spatial attention branches gate x; their results add, project and combine with a shortcut before activation.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

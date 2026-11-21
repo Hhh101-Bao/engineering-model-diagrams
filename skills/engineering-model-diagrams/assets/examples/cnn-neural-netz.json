@@ -1,0 +1,228 @@
+{
+  "backend": "neural-netz",
+  "title": "分层卷积编码器",
+  "widthMm": 200,
+  "minFontPt": 8,
+  "palette": "cold",
+  "showRelu": true,
+  "showLegend": true,
+  "depthMultiplier": 0.22,
+  "layers": [
+    {
+      "type": "custom",
+      "name": "input",
+      "widths": [
+        0.08
+      ],
+      "height": 5.4,
+      "depth": 5.4,
+      "channels": [
+        3,
+        256
+      ],
+      "tensor": [
+        3,
+        256,
+        256
+      ],
+      "label": "输入",
+      "fill": "#B7C2CC",
+      "show-connection": true
+    },
+    {
+      "type": "conv",
+      "name": "stage1",
+      "widths": [
+        0.45,
+        0.45
+      ],
+      "height": 5.4,
+      "depth": 5.4,
+      "channels": [
+        "",
+        32,
+        256
+      ],
+      "tensor": [
+        32,
+        256,
+        256
+      ],
+      "label": "卷积组 1",
+      "offset": 1.5
+    },
+    {
+      "type": "pool",
+      "name": "pool1",
+      "widths": [
+        0.14
+      ],
+      "height": 4.3,
+      "depth": 4.3,
+      "channels": [
+        "",
+        128
+      ],
+      "tensor": [
+        32,
+        128,
+        128
+      ],
+      "label": "",
+      "offset": 0.28,
+      "fill": "#D99275"
+    },
+    {
+      "type": "conv",
+      "name": "stage2",
+      "widths": [
+        0.6,
+        0.6
+      ],
+      "height": 4.3,
+      "depth": 4.3,
+      "channels": [
+        "",
+        64,
+        128
+      ],
+      "tensor": [
+        64,
+        128,
+        128
+      ],
+      "label": "卷积组 2",
+      "offset": 1.2
+    },
+    {
+      "type": "pool",
+      "name": "pool2",
+      "widths": [
+        0.14
+      ],
+      "height": 3.4,
+      "depth": 3.4,
+      "channels": [
+        "",
+        64
+      ],
+      "tensor": [
+        64,
+        64,
+        64
+      ],
+      "label": "",
+      "offset": 0.28,
+      "fill": "#D99275"
+    },
+    {
+      "type": "conv",
+      "name": "stage3",
+      "widths": [
+        0.85,
+        0.85,
+        0.85
+      ],
+      "height": 3.4,
+      "depth": 3.4,
+      "channels": [
+        "",
+        "",
+        128,
+        64
+      ],
+      "tensor": [
+        128,
+        64,
+        64
+      ],
+      "label": "卷积组 3",
+      "offset": 1.2
+    },
+    {
+      "type": "pool",
+      "name": "pool3",
+      "widths": [
+        0.14
+      ],
+      "height": 2.5,
+      "depth": 2.5,
+      "channels": [
+        "",
+        32
+      ],
+      "tensor": [
+        128,
+        32,
+        32
+      ],
+      "label": "",
+      "offset": 0.28,
+      "fill": "#D99275"
+    },
+    {
+      "type": "conv",
+      "name": "stage4",
+      "widths": [
+        1.1,
+        1.1,
+        1.1
+      ],
+      "height": 2.5,
+      "depth": 2.5,
+      "channels": [
+        "",
+        "",
+        256,
+        32
+      ],
+      "tensor": [
+        256,
+        32,
+        32
+      ],
+      "label": "卷积组 4",
+      "offset": 1.2
+    },
+    {
+      "type": "gap",
+      "name": "gap",
+      "widths": [
+        0.5
+      ],
+      "height": 0.8,
+      "depth": 0.8,
+      "channels": [
+        256,
+        1
+      ],
+      "tensor": [
+        256,
+        1,
+        1
+      ],
+      "label": "GAP",
+      "offset": 1.4
+    },
+    {
+      "type": "fc",
+      "name": "classifier",
+      "widths": [
+        0.25
+      ],
+      "height": 1.9,
+      "depth": 0.2,
+      "channels": [
+        10
+      ],
+      "tensor": [
+        10,
+        1,
+        1
+      ],
+      "label": "分类头",
+      "offset": 1.2
+    }
+  ],
+  "connections": []
+}

@@ -1,0 +1,50 @@
+{
+  "version":1,
+  "title":"Dual-branch feature fusion",
+  "subtitle":"双分支编码、特征融合与像素级预测",
+  "widthMm":180,
+  "minFontPt":7.5,
+  "theme":"paper",
+  "layout":{"mode":"auto","direction":"RIGHT"},
+  "groups":[{"id":"rgb","label":"RGB 分支"},{"id":"depth","label":"Depth 分支"}],
+  "nodes":[
+    {"id":"rgb_in","type":"input","label":"RGB 输入","tensor":[3,128,128],"group":"rgb"},
+    {"id":"depth_in","type":"input","label":"深度输入","tensor":[1,128,128],"group":"depth"},
+    {"id":"rgb_enc","type":"convblock","label":"视觉编码器","tensor":[64,32,32],"group":"rgb"},
+    {"id":"depth_enc","type":"convblock","label":"深度编码器","tensor":[64,32,32],"group":"depth"},
+    {"id":"fusion","type":"attention","label":"融合模块","tensor":[128,32,32],
+      "module":{
+        "title":"Fusion module · expanded view",
+        "subtitle":"通道拼接、特征映射与注意力残差融合",
+        "widthMm":180,"minFontPt":7.5,"layout":{"mode":"auto","direction":"RIGHT"},
+        "nodes":[
+          {"id":"visual","type":"feature","label":"视觉特征","tensor":[64,32,32]},
+          {"id":"depth","type":"feature","label":"深度特征","tensor":[64,32,32]},
+          {"id":"cat","type":"concat","label":"通道拼接","tensor":[128,32,32],"axis":0},
+          {"id":"project","type":"conv","label":"1 × 1 Conv","tensor":[128,32,32]},
+          {"id":"attention","type":"attention","label":"Attention","tensor":[128,32,32]},
+          {"id":"sum","type":"add","label":"残差相加","tensor":[128,32,32]},
+          {"id":"fused","type":"output","label":"融合特征","tensor":[128,32,32]}
+        ],
+        "edges":[
+          {"id":"a","from":"visual","to":"cat"},{"id":"b","from":"depth","to":"cat"},
+          {"id":"c","from":"cat","to":"project"},{"id":"d","from":"project","to":"attention"},
+          {"id":"e","from":"attention","to":"sum"},{"id":"res","from":"project","to":"sum","kind":"skip"},
+          {"id":"f","from":"sum","to":"fused"}
+        ],
+        "legend":[{"label":"C: concatenate on channel axis","type":"concat"},{"label":"+: elementwise addition","type":"add"}]
+      }
+    },
+    {"id":"head","type":"linear","label":"预测头","tensor":[1,32,32]},
+    {"id":"mask","type":"output","label":"预测输出","tensor":[1,32,32]}
+  ],
+  "edges":[
+    {"id":"rgb_stem","from":"rgb_in","to":"rgb_enc"},
+    {"id":"depth_stem","from":"depth_in","to":"depth_enc"},
+    {"id":"rgb_fuse","from":"rgb_enc","to":"fusion"},
+    {"id":"depth_fuse","from":"depth_enc","to":"fusion"},
+    {"id":"fuse_head","from":"fusion","to":"head"},
+    {"id":"prediction","from":"head","to":"mask"}
+  ],
+  "legend":[{"label":"编码与映射","type":"conv"},{"label":"注意力融合","type":"attention"},{"label":"预测输出","type":"output"}]
+}

@@ -1,0 +1,141 @@
+{
+  "schema": "paper-model/1",
+  "title": "UNetFormer global-local attention",
+  "sources": [
+    {
+      "id": "primary",
+      "uri": "https://github.com/WangLibo1995/GeoSeg/blob/main/geoseg/models/UNetFormer.py",
+      "kind": "primary-publication-or-author-code"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "architecture",
+      "source": "primary",
+      "locator": "GlobalLocalAttention.forward",
+      "statement": "Local1×1+3×3 features are added to window attention with cross-shaped pooling, then projected by separable convolution. Norm/MLP and outer GLTB residuals are outside this inner attention view.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "x",
+      "op": "input",
+      "meaning": "Features",
+      "label": "Features",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "local",
+      "op": "conv",
+      "meaning": "1×1 +3×3 / local features",
+      "label": "1×1 +3×3 / local features",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "win",
+      "op": "attention",
+      "meaning": "Window attention",
+      "label": "Window attention",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "cross",
+      "op": "pool",
+      "meaning": "Cross-shaped / context pooling",
+      "label": "Cross-shaped / context pooling",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "add",
+      "op": "add",
+      "meaning": "Add local / and global",
+      "label": "Add local / and global",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "proj",
+      "op": "conv",
+      "meaning": "Separable / projection",
+      "label": "Separable / projection",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "local",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e1",
+      "from": "x",
+      "to": "win",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "win",
+      "to": "cross",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "local",
+      "to": "add",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "cross",
+      "to": "add",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "add",
+      "to": "proj",
+      "evidence": [
+        "architecture"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Local1×1+3×3 features are added to window attention with cross-shaped pooling, then projected by separable convolution. Norm/MLP and outer GLTB residuals are outside this inner attention view.",
+    "Source-backed macro redraw; not an official author figure. Volumes use compressed schematic dimensions."
+  ],
+  "render": {
+    "mode": "volume",
+    "theme": "steel-teal",
+    "widthMm": 180
+  }
+}

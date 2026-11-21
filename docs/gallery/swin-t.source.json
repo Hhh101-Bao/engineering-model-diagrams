@@ -1,0 +1,559 @@
+{
+  "backend": "neural-netz",
+  "title": "Swin-T",
+  "widthMm": 338,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.22,
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "widths": [
+        0.22
+      ],
+      "height": 3.6,
+      "depth": 3.6,
+      "at": [
+        0,
+        0
+      ],
+      "label": [
+        "Image",
+        "3 × 224 × 224"
+      ],
+      "labelAt": [
+        0.506,
+        -3.8797947601010105
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        3,
+        224,
+        224
+      ],
+      "sourceShape": [
+        3,
+        224,
+        224
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "p",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 3.034132927396705,
+      "depth": 3.034132927396705,
+      "at": [
+        5.4,
+        0
+      ],
+      "label": [
+        "Patch partition",
+        "+ linear embed",
+        "96 × 56 × 56"
+      ],
+      "labelAt": [
+        6.272153122042484,
+        -4.001513225863506
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        56,
+        56
+      ],
+      "sourceShape": [
+        96,
+        56,
+        56
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s1",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.0767970000576925
+      ],
+      "height": 3.034132927396705,
+      "depth": 3.034132927396705,
+      "at": [
+        10.8,
+        0
+      ],
+      "label": [
+        "Swin blocks ×2",
+        "96 × 56 × 56"
+      ],
+      "labelAt": [
+        11.672153122042484,
+        -3.5346158458130006
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        96,
+        56,
+        56
+      ],
+      "sourceShape": [
+        96,
+        56,
+        56
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "m1",
+      "type": "pool",
+      "semanticOp": "pool",
+      "widths": [
+        1.1567970000576926
+      ],
+      "height": 2.744132927396705,
+      "depth": 2.744132927396705,
+      "at": [
+        16.200000000000003,
+        0
+      ],
+      "label": [
+        "Patch merge",
+        "192 × 28 × 28"
+      ],
+      "labelAt": [
+        17.080253122042485,
+        -3.3577158458130003
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        192,
+        28,
+        28
+      ],
+      "sourceShape": [
+        192,
+        28,
+        28
+      ],
+      "fill": "#D7B584",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s2",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.1567970000576926
+      ],
+      "height": 2.744132927396705,
+      "depth": 2.744132927396705,
+      "at": [
+        21.6,
+        0
+      ],
+      "label": [
+        "Swin blocks ×2",
+        "192 × 28 × 28"
+      ],
+      "labelAt": [
+        22.480253122042484,
+        -3.3577158458130003
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        192,
+        28,
+        28
+      ],
+      "sourceShape": [
+        192,
+        28,
+        28
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "m2",
+      "type": "pool",
+      "semanticOp": "pool",
+      "widths": [
+        1.2367970000576927
+      ],
+      "height": 2.454132927396705,
+      "depth": 2.454132927396705,
+      "at": [
+        27,
+        0
+      ],
+      "label": [
+        "Patch merge",
+        "384 × 14 × 14"
+      ],
+      "labelAt": [
+        27.888353122042485,
+        -3.1808158458130005
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        384,
+        14,
+        14
+      ],
+      "sourceShape": [
+        384,
+        14,
+        14
+      ],
+      "fill": "#D7B584",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s3",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.2367970000576927
+      ],
+      "height": 2.454132927396705,
+      "depth": 2.454132927396705,
+      "at": [
+        32.400000000000006,
+        0
+      ],
+      "label": [
+        "Swin blocks ×6",
+        "384 × 14 × 14"
+      ],
+      "labelAt": [
+        33.28835312204249,
+        -3.1808158458130005
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        384,
+        14,
+        14
+      ],
+      "sourceShape": [
+        384,
+        14,
+        14
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "m3",
+      "type": "pool",
+      "semanticOp": "pool",
+      "widths": [
+        1.3167970000576925
+      ],
+      "height": 2.164132927396705,
+      "depth": 2.164132927396705,
+      "at": [
+        37.800000000000004,
+        0
+      ],
+      "label": [
+        "Patch merge",
+        "768 × 7 × 7"
+      ],
+      "labelAt": [
+        38.696453122042485,
+        -3.003915845813
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        768,
+        7,
+        7
+      ],
+      "sourceShape": [
+        768,
+        7,
+        7
+      ],
+      "fill": "#D7B584",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "s4",
+      "type": "custom",
+      "semanticOp": "attention",
+      "widths": [
+        1.3167970000576925
+      ],
+      "height": 2.164132927396705,
+      "depth": 2.164132927396705,
+      "at": [
+        43.2,
+        0
+      ],
+      "label": [
+        "Swin blocks ×2",
+        "768 × 7 × 7"
+      ],
+      "labelAt": [
+        44.09645312204249,
+        -3.003915845813
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        768,
+        7,
+        7
+      ],
+      "sourceShape": [
+        768,
+        7,
+        7
+      ],
+      "fill": "#B0A3C3",
+      "show-connection": false,
+      "show-relu": false
+    },
+    {
+      "name": "h",
+      "type": "fc",
+      "semanticOp": "linear",
+      "widths": [
+        1
+      ],
+      "height": 2.6,
+      "depth": 1.6,
+      "at": [
+        48.6,
+        0
+      ],
+      "label": [
+        "Norm, pool",
+        "classifier",
+        "K"
+      ],
+      "labelAt": [
+        49.276,
+        -3.6266921401515155
+      ],
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null
+      ],
+      "sourceShape": [
+        "K"
+      ],
+      "fill": "#ADA2C2",
+      "show-connection": false,
+      "show-relu": false
+    }
+  ],
+  "connections": [
+    {
+      "id": "e0",
+      "from": "x",
+      "to": "p",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        1.012,
+        0
+      ],
+      "toPoint": [
+        5.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e1",
+      "from": "p",
+      "to": "s1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        7.14431,
+        0
+      ],
+      "toPoint": [
+        10.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e2",
+      "from": "s1",
+      "to": "m1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.54431,
+        0
+      ],
+      "toPoint": [
+        16.2,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e3",
+      "from": "m1",
+      "to": "s2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        17.96051,
+        0
+      ],
+      "toPoint": [
+        21.6,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e4",
+      "from": "s2",
+      "to": "m2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        23.36051,
+        0
+      ],
+      "toPoint": [
+        27,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e5",
+      "from": "m2",
+      "to": "s3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        28.77671,
+        0
+      ],
+      "toPoint": [
+        32.4,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e6",
+      "from": "s3",
+      "to": "m3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        34.17671,
+        0
+      ],
+      "toPoint": [
+        37.8,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e7",
+      "from": "m3",
+      "to": "s4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        39.59291,
+        0
+      ],
+      "toPoint": [
+        43.2,
+        0
+      ],
+      "via": []
+    },
+    {
+      "id": "e8",
+      "from": "s4",
+      "to": "h",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        44.99291,
+        0
+      ],
+      "toPoint": [
+        48.6,
+        0
+      ],
+      "via": []
+    }
+  ]
+}
