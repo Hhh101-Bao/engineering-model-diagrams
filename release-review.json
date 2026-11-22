@@ -1,23 +1,20 @@
 {
   "pass": true,
-  "release": "v0.4.0",
+  "release": "v0.5.0",
   "modelSchematics": 14,
   "moduleSchematics": 14,
   "scientificPalettes": 5,
   "actualPdfFiguresAudited": 33,
-  "true3DMeshesAudited": 33,
-  "minimumMeasuredTextPt": 10.321,
-  "pdfRasterImages": 0,
-  "svgImageElements": 0,
+  "minimumMeasuredTextPt": 8.5,
+  "true3DMeshesAudited": 35,
+  "meshConnectionEndpointsChecked": 582,
   "localMachinePathsFound": 0,
   "brokenRelativeLinks": 0,
-  "sourcePapersRedistributed": false,
-  "originalAuthorFiguresRedistributed": false,
-  "visualReview": "Final generated PNGs and target-size text checks reviewed. Interpret model scopes and abstraction notes individually.",
+  "visualReview": "Rendered PNGs inspected, including front/back ordering of sampled geometry.",
   "limitations": [
-    "Macro/stage grouping is explicit; no training/accuracy reproduction claim.",
-    "Long figures require decomposition for narrow journal columns.",
-    "Windows execution verified; other operating systems need their own Typst/Poppler/fonts.",
-    "Offline3D viewer interaction has not been browser-tested."
+    "Sampled tokens/windows/cells do not represent literal counts or measured values.",
+    "Source-backed schematic redraws; no training or accuracy reproduction claim.",
+    "Print dimensions matter; split narrow or tall figures. maxHeightMm rejects oversize output without reducing type.",
+    "Windows execution verified. Other OS and offline viewer UI not independently tested."
   ]
 }

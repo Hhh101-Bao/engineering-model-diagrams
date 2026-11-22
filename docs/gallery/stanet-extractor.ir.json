@@ -686,7 +686,7 @@
   "render": {
     "mode": "volume",
     "theme": "steel-teal",
-    "widthMm": 242,
+    "widthMm": 218,
     "minFontPt": 9,
     "direction": "RIGHT",
     "depthMultiplier": 0.22

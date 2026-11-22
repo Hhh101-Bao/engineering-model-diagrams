@@ -106,7 +106,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "g3",
@@ -122,7 +125,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "g2",
@@ -138,7 +144,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "frh",
@@ -154,7 +163,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "y",

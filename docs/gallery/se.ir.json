@@ -32,7 +32,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "gap",
@@ -48,7 +51,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector"
+      }
     },
     {
       "id": "fc1",
@@ -64,7 +70,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector"
+      }
     },
     {
       "id": "fc2",
@@ -80,7 +89,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector"
+      }
     },
     {
       "id": "mul",

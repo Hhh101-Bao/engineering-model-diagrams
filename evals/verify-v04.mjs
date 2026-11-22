@@ -17,8 +17,9 @@ const cp=await planVolumes(concat);assert.equal(cp.spec.layers.find(n=>n.name===
 const fixture=path.resolve('tmp/v04-regression');fs.mkdirSync(fixture,{recursive:true});await compileModel(separated,{out:path.join(fixture,'separated-down')});await compileModel(concat,{out:path.join(fixture,'width-concat')});
 const sample=definitions.find(m=>m.id==='residual-basic'),plans=scientificThemeNames.map(theme=>catalogPlan(sample,{theme}));
 assert.equal(scientificThemeNames.length,5);assert.equal(new Set(scientificThemeNames.map(id=>themeFor(id).colors.conv)).size,5);
-for(const p of plans.slice(1)){assert.deepEqual(p.spec.connections,plans[0].spec.connections);assert.deepEqual(p.spec.layers.map(({fill,...l})=>l),plans[0].spec.layers.map(({fill,...l})=>l));}
+const geometryOnly=layers=>layers.map(({fill,...l})=>({...l,parts:l.parts?.map(({fill,...p})=>p)}));
+for(const p of plans.slice(1)){assert.deepEqual(p.spec.connections,plans[0].spec.connections);assert.deepEqual(geometryOnly(p.spec.layers),geometryOnly(plans[0].spec.layers));}
 assert.throws(()=>themeFor('unknown-palette'));
-const meshes=[];for(const directory of ['docs/gallery','docs/palettes'])for(const file of fs.readdirSync(directory).filter(f=>f.endsWith('.glb'))){const result=checkMesh3D(path.join(directory,file));assert.ok(result.pass,file);meshes.push({file:directory+'/'+file,...result});}
+const meshes=[];for(const directory of ['docs/gallery','docs/palettes','docs/details'])for(const file of fs.readdirSync(directory).filter(f=>f.endsWith('.glb'))){const result=checkMesh3D(path.join(directory,file));assert.ok(result.pass,file);meshes.push({file:directory+'/'+file,...result});}
 const report={pass:true,separatedRepeatDepthAndGap:true,downPortsTouchActualFirstAndLastSolids:true,widthAxisConcatPreservedAndCompiled:true,fiveThemesPreserveGeometry:true,meshes};
 fs.writeFileSync('docs/gallery/runtime-audit.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,meshes:meshes.length},null,2));

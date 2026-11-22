@@ -9,10 +9,15 @@
       "source": "https://arxiv.org/abs/1512.03385",
       "locator": "Table 1; BasicBlock in torchvision/models/resnet.py",
       "scope": "224×224 input, four stages of two BasicBlocks; stage outputs shown. Stem includes Conv/BN/ReLU/MaxPool. Block internals are expanded separately.",
-      "widthMm": 274.099,
+      "figureFamily": "spatial-cascade",
+      "glyphs": [
+        "tensor",
+        "vector"
+      ],
+      "widthMm": 246.043,
       "layers": 8,
       "edges": 7,
-      "previewSha256": "9446598a2d2cc252176635581c4c8072fb3ecb37fb76c2e7b1c278eca5d8744c"
+      "previewSha256": "fd23deba4631bd897dd5cb54a62a6938819883533ab31855aa8b610be0e34dbe"
     },
     {
       "id": "mobilenetv2",
@@ -21,10 +26,15 @@
       "source": "https://arxiv.org/abs/1801.04381",
       "locator": "Table 2; torchvision MobileNetV2 default inverted_residual_setting",
       "scope": "224 input and width multiplier1.0. Each stage groups repeated inverted residual blocks; internal expansion and depthwise steps have their own module diagram.",
-      "widthMm": 340.231,
+      "figureFamily": "spatial-cascade",
+      "glyphs": [
+        "tensor",
+        "vector"
+      ],
+      "widthMm": 280.028,
       "layers": 11,
       "edges": 10,
-      "previewSha256": "0c1140daff2a2797f7ba9440e2eb21c28af33b05a5c7e752640f9d1788d121e9"
+      "previewSha256": "067d955a53783f293bad9bcffb57d78f05e16b340e6797e75afd7f69a5ebd197"
     },
     {
       "id": "vit-b16",
@@ -33,10 +43,17 @@
       "source": "https://arxiv.org/abs/2010.11929",
       "locator": "Fig.1; §3.1; Table1",
       "scope": "224 input,16-pixel patches:196 patch tokens plus one class token.12 encoder blocks with D768. Positional embedding and class-token insertion grouped explicitly; token axes are not image spatial dimensions.",
-      "widthMm": 179.849,
+      "figureFamily": "patch-token-sequence",
+      "glyphs": [
+        "patches",
+        "tokens",
+        "operation",
+        "vector"
+      ],
+      "widthMm": 219.817,
       "layers": 5,
       "edges": 4,
-      "previewSha256": "b75ebf3c93581f1898b0dfccb036408ab01a15107f8c027ae6d2d2862eb5ca9d"
+      "previewSha256": "608b77eac02a0186702e5f8a411415e96f728eff80e03670a44f586ddd99b27d"
     },
     {
       "id": "swin-t",
@@ -45,10 +62,17 @@
       "source": "https://arxiv.org/abs/2103.14030",
       "locator": "Fig.3; Microsoft configs/swin/swin_tiny_patch4_window7_224.yaml",
       "scope": "224 input,patch4,window7,stage depths2/2/6/2. Patch merging is a distinct operation. Layer norms and final pooling/classifier are grouped.",
-      "widthMm": 338.031,
+      "figureFamily": "window-hierarchy",
+      "glyphs": [
+        "patches",
+        "windows",
+        "operation",
+        "vector"
+      ],
+      "widthMm": 280.172,
       "layers": 10,
       "edges": 9,
-      "previewSha256": "5afb45d03240b4c7dda85885f782bacf008a74ce3b904b88bef62596cb6b0406"
+      "previewSha256": "4a66bf463387927ba2351ee9c97004d75c165168e11c24636d8d373eb4ac73e9"
     },
     {
       "id": "unet-original",
@@ -57,10 +81,14 @@
       "source": "https://arxiv.org/abs/1505.04597",
       "locator": "Fig.1; §2",
       "scope": "Original572 input and388 output; valid3×3 convolutions. Each encoder stage includes the following pooling operation only on outgoing main paths; skip edges include crop. Decoder stages group up-conv, crop-concat and double-conv.",
-      "widthMm": 340.168,
+      "figureFamily": "encoder-decoder",
+      "glyphs": [
+        "tensor"
+      ],
+      "widthMm": 280.027,
       "layers": 11,
       "edges": 14,
-      "previewSha256": "9ec37c60721ebf7e93e13fd1393ba754eac286e4ceb80e4f9f0a40caddfc0318"
+      "previewSha256": "17f2939fca62a1060a393d6a7760fbfac21a65cb54c2dc292b709b5e8e3b5f9b"
     },
     {
       "id": "deeplabv3plus",
@@ -69,10 +97,15 @@
       "source": "https://arxiv.org/abs/1802.02611",
       "locator": "Fig.2; §3.2",
       "scope": "Output stride16 schematic. ASPP internals have a separate module view. Low-level features are projected to48 channels; encoder features are upsampled4× before concat, then refined and upsampled4×.",
-      "widthMm": 241.97,
+      "figureFamily": "parallel-scale-fusion",
+      "glyphs": [
+        "tensor",
+        "operation"
+      ],
+      "widthMm": 218.053,
       "layers": 8,
       "edges": 8,
-      "previewSha256": "27d541817c2f9c2f25feea7de5c0f67ef671001e221fa3e07fb9378dc83b96ce"
+      "previewSha256": "ae0edd8977103b8c11a9de113850bf0543d73a6150bca1bfc1b635099850da24"
     },
     {
       "id": "segformer-b0",
@@ -81,10 +114,16 @@
       "source": "https://github.com/NVlabs/SegFormer/blob/master/mmseg/models/decode_heads/segformer_head.py",
       "locator": "SegFormerHead.forward; official B0 config",
       "scope": "Four MiT-B0 output levels32/64/160/256. Each decoder projection maps to256 and resizes to1/4. Fusion concat is1024 channels before1×1 fusion and prediction. Final resize shown; encoder internals omitted.",
-      "widthMm": 273.943,
+      "figureFamily": "pyramid-to-dense",
+      "glyphs": [
+        "tensor",
+        "windows",
+        "operation"
+      ],
+      "widthMm": 260.027,
       "layers": 12,
       "edges": 14,
-      "previewSha256": "7b24b0583f0191b64ea856d4124773a3804b9224a9078a1287de62343583de24"
+      "previewSha256": "9bcc81da21df972d4236f9e693d45ec626a55ffa51b88d375e838da9378c2918"
     },
     {
       "id": "detr",
@@ -93,10 +132,17 @@
       "source": "https://arxiv.org/abs/2005.12872",
       "locator": "Fig.2; §3",
       "scope": "Inference architecture: CNN features+position feed encoder; learned object queries feed decoder. Class and box heads operate in parallel. Bipartite matching loss is a training objective and is omitted.",
-      "widthMm": 179.883,
+      "figureFamily": "query-memory-decoder",
+      "glyphs": [
+        "tensor",
+        "tokens",
+        "operation",
+        "vector"
+      ],
+      "widthMm": 239.999,
       "layers": 7,
       "edges": 6,
-      "previewSha256": "15e308833d86b6e6cd7ff66f6afc7955f673d9c6b50c6dbcf2a8553e4c5f0304"
+      "previewSha256": "3ac74e7ee10a4c20e137835edbb6284d4d571889fdf612f7fe57cea304a5fb7b"
     },
     {
       "id": "sam",
@@ -105,10 +151,19 @@
       "source": "https://arxiv.org/abs/2304.02643",
       "locator": "Fig.4; AppendixA; official segment_anything/modeling",
       "scope": "SAM1 inference macro view: image encoder, sparse/dense prompt encoder, mask decoder, mask outputs and quality scores. Prompt types are grouped; automatic mask generation is not an extra neural stage.",
-      "widthMm": 179.784,
+      "figureFamily": "prompt-conditioned-decoder",
+      "glyphs": [
+        "tensor",
+        "windows",
+        "vector",
+        "tokens",
+        "operation",
+        "masks"
+      ],
+      "widthMm": 240,
       "layers": 7,
       "edges": 6,
-      "previewSha256": "1b865c510e3028f714efb6d6c1bf1afdc40787eef8de2ce1c227d1c17ea5b330"
+      "previewSha256": "251f1d122daf1c1e1e3c98fccbe92241fbdec5c6d2546e5d3322fde5041f2c9f"
     },
     {
       "id": "unetformer",
@@ -117,10 +172,14 @@
       "source": "https://github.com/WangLibo1995/GeoSeg/blob/main/geoseg/models/UNetFormer.py",
       "locator": "Decoder.forward inference path; UNetFormer class",
       "scope": "ResNet18 encoder and64-channel decoder. Three global-local blocks at1/32,1/16,1/8; weighted fusion includes upsampling. Feature-refinement head uses1/4 skip; auxiliary training head omitted.",
-      "widthMm": 180.06,
+      "figureFamily": "lateral-feature-pyramid",
+      "glyphs": [
+        "tensor"
+      ],
+      "widthMm": 179.858,
       "layers": 10,
       "edges": 12,
-      "previewSha256": "4b33eb55bf3cb9b8f268a048b0799ff9384f0a4031d4f34643268a2f3f08a954"
+      "previewSha256": "172695e174a84d5533cb11c2022a319af67000dfd7d01c18a6f722234068304e"
     },
     {
       "id": "bit",
@@ -129,10 +188,16 @@
       "source": "https://github.com/justchenhao/BIT_CD/blob/master/models/networks.py",
       "locator": "BASE_Transformer.forward; semantic tokenizer and transformer decoder",
       "scope": "Shared backbone extracts both dates. Joint transformer encodes concatenated semantic tokens, which split by date for two decoder calls. Feature bypasses are preserved. Absolute differencing, upsampling and CNN classification follow.",
-      "widthMm": 241.877,
+      "figureFamily": "siamese-token-interaction",
+      "glyphs": [
+        "tensor",
+        "tokens",
+        "operation"
+      ],
+      "widthMm": 259.87,
       "layers": 11,
       "edges": 13,
-      "previewSha256": "0463fd9d8dbcc834242ffe982aaca59f08860a7b4b4741d632954a90b7b30378"
+      "previewSha256": "54d72737c5c91eb9b201e2aba23211cfc759a2c8a5e5654ee923cec20c1a5a96"
     },
     {
       "id": "changeformer",
@@ -141,10 +206,16 @@
       "source": "https://github.com/wgcban/ChangeFormer/blob/main/models/ChangeFormer.py",
       "locator": "Siamese Transformer encoder and multiscale decoder; §3 in IGARSS2022 paper",
       "scope": "Macro overview shared across the family: two shared hierarchical encoders, multiscale difference modules and lightweight decoder. Exact layer counts/interpolation/upsampling differ by code variant; no numeric variant-specific dimensions are asserted.",
-      "widthMm": 209.93,
-      "layers": 11,
-      "edges": 16,
-      "previewSha256": "0795de9d3ebcd4c0ac263ad2f9129e176b223c3030fc21bab5c1ce8205887814"
+      "figureFamily": "siamese-multiscale-difference",
+      "glyphs": [
+        "tensor",
+        "windows",
+        "operation"
+      ],
+      "widthMm": 279.965,
+      "layers": 17,
+      "edges": 22,
+      "previewSha256": "2f3f11854fc0cd704f4f65a9df2b9274c4d0af958468420b5514d9c973da4cc5"
     },
     {
       "id": "clip",
@@ -153,10 +224,18 @@
       "source": "https://arxiv.org/abs/2103.00020",
       "locator": "Fig.1; §2.3",
       "scope": "Training representation view: paired image/text encoders produce normalized embeddings and an all-pairs similarity matrix. Symmetric contrastive objective shown as a distinct endpoint; this is not a single-image segmentation pipeline.",
-      "widthMm": 179.885,
+      "figureFamily": "dual-encoder-similarity",
+      "glyphs": [
+        "patches",
+        "tokens",
+        "operation",
+        "vector",
+        "matrix"
+      ],
+      "widthMm": 219.931,
       "layers": 8,
       "edges": 7,
-      "previewSha256": "ec3c3a175c7f1553730f483c01c41d9a48d4822757dcae1e4ecfa375dc42817a"
+      "previewSha256": "ef3b2d541a1738bab8b0eb3773d04ace58fac2763e82bdb8e5c6391e78b318fe"
     },
     {
       "id": "residual-basic",
@@ -165,10 +244,15 @@
       "source": "https://arxiv.org/abs/1512.03385",
       "locator": "Fig.2; torchvision BasicBlock.forward",
       "scope": "Stride1, matching-channel identity path. Downsampling projection is not used in this particular block.",
-      "widthMm": 179.843,
+      "figureFamily": "operator-flow",
+      "glyphs": [
+        "tensor",
+        "operator"
+      ],
+      "widthMm": 179.869,
       "layers": 5,
       "edges": 5,
-      "previewSha256": "b0660a6f63a98b99c098a1075d63e7e5d121d20b7768b9ee26f1a9dd142ba937"
+      "previewSha256": "e94a3a93c89ac2e059d2261e352eca2c24adfa8596e1d1856d7924c267af95a7"
     },
     {
       "id": "inverted-residual",
@@ -177,10 +261,15 @@
       "source": "https://arxiv.org/abs/1801.04381",
       "locator": "Fig.3; Table1",
       "scope": "Expansion factor t, depthwise spatial filtering, linear projection. Identity is shown only for stride1 and equal input/output channels.",
-      "widthMm": 179.846,
+      "figureFamily": "operator-flow",
+      "glyphs": [
+        "tensor",
+        "operator"
+      ],
+      "widthMm": 179.86,
       "layers": 5,
       "edges": 5,
-      "previewSha256": "5996ecaf05b0955e3d8e18a6da95f2d24560fcb5c1282bdd8bd7b31758acd013"
+      "previewSha256": "51be88e137f57b85735a21493152091865d7cf5bd63d7f153df62d6cb2c533ff"
     },
     {
       "id": "vit-encoder",
@@ -189,10 +278,16 @@
       "source": "https://arxiv.org/abs/2010.11929",
       "locator": "Fig.1 right; Eqs.2–3",
       "scope": "Pre-normalization Transformer block with two residual additions. MLP groups Dense/GELU/Dense; dropout omitted.",
-      "widthMm": 241.977,
+      "figureFamily": "operator-flow",
+      "glyphs": [
+        "tokens",
+        "operation",
+        "operator"
+      ],
+      "widthMm": 218.028,
       "layers": 7,
       "edges": 8,
-      "previewSha256": "7bcb98c5dc35a81f607c48bbfa245b691fe9806f85ac74ce4eb1b85286bf6567"
+      "previewSha256": "0dc82aa114917bf1eabbc98617b410ee38ad18bd5bbeffed1b5cde1dad434d62"
     },
     {
       "id": "swin-pair",
@@ -201,10 +296,15 @@
       "source": "https://arxiv.org/abs/2103.14030",
       "locator": "Fig.3b; Eqs.3",
       "scope": "One window-attention block followed by a shifted-window block. Each macro block includes pre-norm, attention residual and MLP residual. No patch merge inside this pair.",
-      "widthMm": 179.875,
+      "figureFamily": "window-shift",
+      "glyphs": [
+        "windows",
+        "tensor"
+      ],
+      "widthMm": 179.973,
       "layers": 4,
       "edges": 3,
-      "previewSha256": "3af5e2925c0eead55009d7de3b5d247e5e15c73fecfddc4a5cdaa35f36db7cc4"
+      "previewSha256": "f4958043a00a5e82189f570bd90c173f56c1727ab9a3f266eb0e31f17c48fdcf"
     },
     {
       "id": "aspp",
@@ -213,10 +313,15 @@
       "source": "https://arxiv.org/abs/1802.02611",
       "locator": "Fig.2; §3.1",
       "scope": "Five parallel branches:1×1, three atrous3×3 at rates6/12/18, image pooling with projection+resize. Concatenation followed by1×1 projection. Branch internals folded into labeled volumes.",
-      "widthMm": 179.902,
+      "figureFamily": "parallel-scale-fusion",
+      "glyphs": [
+        "tensor",
+        "operation"
+      ],
+      "widthMm": 179.948,
       "layers": 8,
       "edges": 11,
-      "previewSha256": "d3b286bbf6d0ec0460300c1546ba74c72ae17471f930d48db888cf8a3c9edcdc"
+      "previewSha256": "e4836ed7d2253d96ebfe35c37cc45d721a7a54cb5c12560f35bcfd62a8390e50"
     },
     {
       "id": "segformer-mlp",
@@ -225,10 +330,15 @@
       "source": "https://github.com/NVlabs/SegFormer/blob/master/mmseg/models/decode_heads/segformer_head.py",
       "locator": "SegFormerHead.forward",
       "scope": "Four feature levels are linearly embedded and aligned to the finest stride. Concatenation and1×1 fusion precede class prediction. Decoder embedding width is configurable.",
-      "widthMm": 179.839,
+      "figureFamily": "parallel-scale-fusion",
+      "glyphs": [
+        "tensor",
+        "operation"
+      ],
+      "widthMm": 179.837,
       "layers": 11,
       "edges": 10,
-      "previewSha256": "177580b893a49cb3625933a64638cc515f1f5b752953f71cf0e81ddc282945fb"
+      "previewSha256": "cf26d79e3edb634ba0ce5a1b51fde5de348e64a3c44ce8b305ae81b4c63980f0"
     },
     {
       "id": "se",
@@ -237,10 +347,16 @@
       "source": "https://arxiv.org/abs/1709.01507",
       "locator": "Fig.1; Eqs.2–4",
       "scope": "Global average pooling; two fully connected layers with reduction r; ReLU then sigmoid; channelwise multiplication broadcasts over H/W.",
+      "figureFamily": "channel-spatial-gating",
+      "glyphs": [
+        "tensor",
+        "vector",
+        "operator"
+      ],
       "widthMm": 179.834,
       "layers": 5,
       "edges": 5,
-      "previewSha256": "5f3882f17e6b1f12772adb268b8c183599e1793bfd51aed724bc02f334d81787"
+      "previewSha256": "7ef40407ceb689f9ae0c2b6d6b9136dfba0b78d277aed58127469f14c665c946"
     },
     {
       "id": "cbam",
@@ -249,10 +365,17 @@
       "source": "https://arxiv.org/abs/1807.06521",
       "locator": "Fig.1; Eqs.1–3",
       "scope": "Channel attention followed by spatial attention; both maps gate their current features. Pool/MLP and spatial7×7 details are grouped inside the named attention modules.",
-      "widthMm": 179.837,
+      "figureFamily": "channel-spatial-gating",
+      "glyphs": [
+        "tensor",
+        "vector",
+        "operator",
+        "windows"
+      ],
+      "widthMm": 179.85,
       "layers": 5,
       "edges": 6,
-      "previewSha256": "f9b5c9c9a09d17d907d5149ac4ab0906c9a68924f70d641e063b683e8b0b0d98"
+      "previewSha256": "a32b2b4e00ce514343ed7fb132bb5f7bd18ab7838ec7b5dd4b7cde6b110ebc49"
     },
     {
       "id": "global-local-attention",
@@ -261,10 +384,16 @@
       "source": "https://github.com/WangLibo1995/GeoSeg/blob/main/geoseg/models/UNetFormer.py",
       "locator": "GlobalLocalAttention.forward",
       "scope": "Local1×1+3×3 features are added to window attention with cross-shaped pooling, then projected by separable convolution. Norm/MLP and outer GLTB residuals are outside this inner attention view.",
-      "widthMm": 179.875,
+      "figureFamily": "operator-flow",
+      "glyphs": [
+        "tensor",
+        "operation",
+        "operator"
+      ],
+      "widthMm": 179.894,
       "layers": 6,
       "edges": 6,
-      "previewSha256": "d1b836b4db74c00255bf384ac486740d4fedb09b8b78f1bb64aaa48f51d20b38"
+      "previewSha256": "422e6f29612f064a15ce9a0035baf1b07f02f061a6ad85802ce67f17a9ea10ed"
     },
     {
       "id": "semantic-tokenizer",
@@ -273,10 +402,16 @@
       "source": "https://github.com/justchenhao/BIT_CD/blob/master/models/networks.py",
       "locator": "_forward_semantic_tokens",
       "scope": "A learned1×1 projection creates L spatial attention maps; softmax is over flattened spatial positions. Weighted aggregation of the original features produces L×C tokens.",
-      "widthMm": 179.921,
+      "figureFamily": "map-to-token-aggregation",
+      "glyphs": [
+        "tensor",
+        "matrix",
+        "tokens"
+      ],
+      "widthMm": 179.879,
       "layers": 4,
       "edges": 4,
-      "previewSha256": "24ad18d67a126b026f74ea8b180cc4a05f00aef9557e0cd774746840553ae46f"
+      "previewSha256": "e6fb9bbf20f81fac375a33a8a2934111be81210931937e9c327d62abb2437a37"
     },
     {
       "id": "siamese-difference",
@@ -285,10 +420,15 @@
       "source": "https://github.com/justchenhao/BIT_CD/blob/master/models/networks.py",
       "locator": "BASE_Transformer.forward",
       "scope": "Shared feature extraction and absolute elementwise difference; head and interpolation details stay model-specific. Two backbone invocations share weights, not input tensors.",
-      "widthMm": 179.911,
+      "figureFamily": "operator-flow",
+      "glyphs": [
+        "tensor",
+        "operation"
+      ],
+      "widthMm": 179.983,
       "layers": 6,
       "edges": 5,
-      "previewSha256": "10a5e5478efb67a24795ca8bc69761bc912f4ed3213e0fed1bf9be9d871c68dc"
+      "previewSha256": "1f9c74725fe3ed2546527ba035b4b61fb206c6c04083ebfa4f56adc951a655be"
     },
     {
       "id": "feature-refinement",
@@ -297,10 +437,15 @@
       "source": "https://github.com/WangLibo1995/GeoSeg/blob/main/geoseg/models/UNetFormer.py",
       "locator": "FeatureRefinementHead.forward",
       "scope": "Upsampling and normalized weighted skip fusion precede post-convolution. Channel/spatial attention branches gate x; their results add, project and combine with a shortcut before activation.",
-      "widthMm": 180.108,
+      "figureFamily": "operator-flow",
+      "glyphs": [
+        "tensor",
+        "operation"
+      ],
+      "widthMm": 179.885,
       "layers": 7,
       "edges": 8,
-      "previewSha256": "d58ede6c8029db882f4b5a4ee8ada0a801a79df28891521d5b1e9ae9bc8c0cbd"
+      "previewSha256": "5ea16f574dff47d45422c44bb64b7dd0b7b6c3e4d682e55751a08d44a0bf981d"
     },
     {
       "id": "stanet",
@@ -309,10 +454,10 @@
       "source": "https://github.com/justchenhao/STANet/tree/6152d72f55df00a43d341580970be7a58c6b0cd5",
       "locator": "Pinned author code and paper doi:10.3390/rs12101662, Fig.2 and §2.1",
       "scope": "Pinned official CDFA/mynet3/PAM code, f_c64,ds1. Code computes distance before interpolation; PAM has no residual addition, unlike the paper figure. Example256 input; training BCL omitted.",
-      "widthMm": 320.061,
+      "widthMm": 320.03,
       "layers": 12,
       "edges": 12,
-      "previewSha256": "6ab04354e9a98b20565a681d10dfd6c66911c5a53b8299336ffab65fed7c1789"
+      "previewSha256": "ce1f69ee04cb3103a0b058d48e3c3ae016cc04ecd4d1626292a8f64b780ff524"
     },
     {
       "id": "stanet-pam",
@@ -321,10 +466,10 @@
       "source": "https://github.com/justchenhao/STANet/tree/6152d72f55df00a43d341580970be7a58c6b0cd5",
       "locator": "Pinned author code and paper doi:10.3390/rs12101662, Fig.2 and §2.1",
       "scope": "Pinned PAM2.py code: four regional scales1/2/4/8, concatenation and1×1 projection. No X+Y residual in this code variant.",
-      "widthMm": 259.917,
+      "widthMm": 259.958,
       "layers": 8,
       "edges": 10,
-      "previewSha256": "9a966eea6dd79a57577136d2b4a789f1ad0599acb04050c92db7554567f77e13"
+      "previewSha256": "728b6dcc92e48eac9dc4b3bb27af48806c6a4d0537b376589a5730578de394e2"
     },
     {
       "id": "stanet-extractor",
@@ -333,10 +478,15 @@
       "source": "https://github.com/justchenhao/STANet/tree/6152d72f55df00a43d341580970be7a58c6b0cd5",
       "locator": "Pinned author code and paper doi:10.3390/rs12101662, Fig.2 and §2.1",
       "scope": "Pinned mynet3 code uses BasicBlock depths2/2/2/3 and final dilation multipliers1/2/4. Four96-channel projections align and concatenate in order stage4,stage1,stage2,stage3.",
-      "widthMm": 242.022,
+      "figureFamily": "multiscale-projection",
+      "glyphs": [
+        "tensor",
+        "operation"
+      ],
+      "widthMm": 218.051,
       "layers": 18,
       "edges": 20,
-      "previewSha256": "14e53d64b55cb3dd2af1d6a293235462d31880f22ce68970a535f5450dcde7e2"
+      "previewSha256": "a737a60947ba213467fac4da935ca698827ffff8a9e5fb2c6ae42fa6d62d1d19"
     }
   ],
   "errors": []

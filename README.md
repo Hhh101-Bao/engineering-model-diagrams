@@ -1,12 +1,12 @@
-<p align="center">
-  <img src="docs/assets/hero.png" alt="Engineering Model Diagrams：分离式立体编码器解码器" width="100%">
-</p>
-
 # Engineering Model Diagrams
 
 **从论文、模型图和代码，生成有出处、可编辑的科研立体网络图。**
 
 [English](README.en.md) · [分类图库](docs/gallery.md) · [五套科研配色](docs/palettes.md) · [下载 Releases](https://github.com/Hhh101-Bao/engineering-model-diagrams/releases/latest) · [安装与使用](docs/installation.md)
+
+![CLIP双编码器与配对相似度矩阵](docs/assets/hero.png)
+
+空间特征、token、窗口、门控与矩阵各用其适合的表达。v0.5按模型结构组织构图，收敛字体、线条与颜色，移除产品海报式封面和渐变算子。重复图形是示意采样，真实数量以维度标注为准；详见[表达规则](skills/engineering-model-diagrams/references/visual-language.md)。
 
 这是一套可安装的 **Codex Skill + 绘图工具**。调用 Skill 的助手阅读材料、解释模型并生成中间结构，脚本执行布局、代码生成和真实编译。用户无需先写 JSON 或坐标。离开助手单独运行 CLI 时，须提供结构描述或选择图库条目。
 
@@ -37,11 +37,13 @@
 
 模块包括残差块、倒残差、ViT编码块、Swin窗口块、ASPP、All-MLP解码器、SE、CBAM、全局局部注意力、语义tokenizer、孪生差分、特征细化、PAM及STANet特征提取器。详细范围见[分类图库](docs/gallery.md)。
 
+机制细节示例：[Swin普通窗口与移位窗口双面板](docs/details/README.md)，展开预归一化、注意力、MLP及四条残差，并保留两块之间的特征连续关系。
+
 <table>
-  <tr><th>遥感 · UNetFormer</th><th>视觉 · SAM</th></tr>
-  <tr><td><img src="docs/gallery/unetformer.png" alt="UNetFormer结构重绘"></td><td><img src="docs/gallery/sam.png" alt="SAM结构重绘"></td></tr>
-  <tr><th>遥感 · BIT</th><th>模块 · CBAM</th></tr>
-  <tr><td><img src="docs/gallery/bit.png" alt="BIT结构重绘"></td><td><img src="docs/gallery/cbam.png" alt="CBAM模块重绘"></td></tr>
+  <tr><th>U-Net · 尺度与跳连</th><th>ViT · patch与token</th></tr>
+  <tr><td><img src="docs/gallery/unet-original.png" alt="U-Net结构重绘"></td><td><img src="docs/gallery/vit-b16.png" alt="ViT结构重绘"></td></tr>
+  <tr><th>ChangeFormer · 双时相多尺度</th><th>CBAM · 通道与空间门控</th></tr>
+  <tr><td><img src="docs/gallery/changeformer.png" alt="ChangeFormer结构重绘"></td><td><img src="docs/gallery/cbam.png" alt="CBAM模块重绘"></td></tr>
 </table>
 
 ## 五套科研配色
@@ -62,7 +64,7 @@
 
 ## 安装并开始
 
-下载 [Windows便携版](https://github.com/Hhh101-Bao/engineering-model-diagrams/releases/latest) 或克隆源码。源码仓库不提交大型编译器；Windows便携Release包含固定版本Typst，其他依赖与平台说明见[安装文档](docs/installation.md)。
+下载 [Windows Skill包](https://github.com/Hhh101-Bao/engineering-model-diagrams/releases/latest) 后，将其中的engineering-model-diagrams目录放入Codex的skills目录。需要图库和开发脚本时克隆源码；以下命令用于源码安装。源码仓库不提交大型编译器，Windows Skill包包含固定版本Typst，其他依赖与平台说明见[安装文档](docs/installation.md)。
 
 ```bash
 git clone https://github.com/Hhh101-Bao/engineering-model-diagrams.git

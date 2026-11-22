@@ -1,9 +1,10 @@
 {
   "backend": "neural-netz",
   "title": "ViT encoder block",
-  "widthMm": 242,
+  "widthMm": 218,
   "minFontPt": 8.5,
-  "depthMultiplier": 0.22,
+  "depthMultiplier": 0.42,
+  "strokeThickness": 0.65,
   "fonts": [
     "Arial",
     "Liberation Sans",
@@ -17,10 +18,81 @@
       "type": "custom",
       "semanticOp": "input",
       "widths": [
-        0.22
+        2.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 1.05,
+      "depth": 0.25,
+      "glyph": "tokens",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.25999999999999995,
+          "h": 1.05,
+          "d": 0.25,
+          "fill": "#dee3e9",
+          "tone": 0.35
+        },
+        {
+          "x": 0.43999999999999995,
+          "y": 0,
+          "z": 0,
+          "w": 0.25999999999999995,
+          "h": 1.05,
+          "d": 0.25,
+          "fill": "#dee3e9",
+          "tone": 0.35
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 0,
+          "z": 0,
+          "w": 0.25999999999999995,
+          "h": 1.05,
+          "d": 0.25,
+          "fill": "#dee3e9",
+          "tone": 0.35
+        },
+        {
+          "x": 1.7599999999999998,
+          "y": 0,
+          "z": 0,
+          "w": 0.25999999999999995,
+          "h": 1.05,
+          "d": 0.25,
+          "fill": "#dee3e9",
+          "tone": 0.35
+        },
+        {
+          "x": 2.1999999999999997,
+          "y": 0,
+          "z": 0,
+          "w": 0.25999999999999995,
+          "h": 1.05,
+          "d": 0.25,
+          "fill": "#dee3e9",
+          "tone": 0.35
+        },
+        {
+          "x": 2.6399999999999997,
+          "y": 0,
+          "z": 0,
+          "w": 0.25999999999999995,
+          "h": 1.05,
+          "d": 0.25,
+          "fill": "#dee3e9",
+          "tone": 0.35
+        }
+      ],
+      "marks": [
+        {
+          "x": 1.45,
+          "y": 0.525,
+          "text": "⋯"
+        }
+      ],
+      "opacity": 1,
       "at": [
         0,
         0
@@ -30,8 +102,8 @@
         "N × D"
       ],
       "labelAt": [
-        0.28600000000000003,
-        -3.1521644281644283
+        1.5025,
+        -2.3595117913832206
       ],
       "channels": [
         "",
@@ -54,10 +126,25 @@
       "type": "custom",
       "semanticOp": "norm",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         5.4,
         0
@@ -67,8 +154,8 @@
         "N × D"
       ],
       "labelAt": [
-        6.0760000000000005,
-        -3.1521644281644283
+        6.3962,
+        -2.1782117913832204
       ],
       "channels": [
         "",
@@ -82,7 +169,7 @@
         "N",
         "D"
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -91,10 +178,25 @@
       "type": "custom",
       "semanticOp": "attention",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         10.8,
         0
@@ -105,8 +207,8 @@
         "N × D"
       ],
       "labelAt": [
-        11.476,
-        -3.6152466422466425
+        11.7962,
+        -2.69421768707483
       ],
       "channels": [
         "",
@@ -120,7 +222,7 @@
         "N",
         "D"
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -133,6 +235,8 @@
       ],
       "height": 0.9,
       "depth": 0.9,
+      "glyph": "operator",
+      "opacity": 1,
       "at": [
         16.200000000000003,
         0
@@ -143,7 +247,7 @@
       ],
       "labelAt": [
         16.650000000000002,
-        -2.1261644281644285
+        -2.2320117913832203
       ],
       "channels": [
         "",
@@ -157,7 +261,7 @@
         "N",
         "D"
       ],
-      "fill": "#91B6A1",
+      "fill": "#8FA99F",
       "show-connection": false,
       "show-relu": false,
       "radius": 0.45,
@@ -169,10 +273,25 @@
       "type": "custom",
       "semanticOp": "norm",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         21.6,
         0
@@ -182,8 +301,8 @@
         "N × D"
       ],
       "labelAt": [
-        22.276,
-        -3.1521644281644283
+        22.596200000000003,
+        -2.1782117913832204
       ],
       "channels": [
         "",
@@ -197,7 +316,7 @@
         "N",
         "D"
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -206,10 +325,25 @@
       "type": "fc",
       "semanticOp": "linear",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#dee0e2",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         27,
         0
@@ -220,8 +354,8 @@
         "N × D"
       ],
       "labelAt": [
-        27.676,
-        -3.6152466422466425
+        27.9962,
+        -2.69421768707483
       ],
       "channels": [
         "",
@@ -235,7 +369,7 @@
         "N",
         "D"
       ],
-      "fill": "#ADA2C2",
+      "fill": "#B0B4BB",
       "show-connection": false,
       "show-relu": false
     },
@@ -248,6 +382,8 @@
       ],
       "height": 0.9,
       "depth": 0.9,
+      "glyph": "operator",
+      "opacity": 1,
       "at": [
         32.400000000000006,
         0
@@ -258,7 +394,7 @@
       ],
       "labelAt": [
         32.85000000000001,
-        -2.1261644281644285
+        -2.2320117913832203
       ],
       "channels": [
         "",
@@ -272,7 +408,7 @@
         "N",
         "D"
       ],
-      "fill": "#91B6A1",
+      "fill": "#8FA99F",
       "show-connection": false,
       "show-relu": false,
       "radius": 0.45,
@@ -289,17 +425,19 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        0.572,
-        -0.044
+        3.005,
+        -0.15
       ],
       "toPoint": [
         5.4,
         0
       ],
+      "fromDepth": 0.25,
+      "toDepth": 0,
       "via": [
         [
           4.85,
-          -0.044
+          -0.15
         ],
         [
           4.85,
@@ -315,13 +453,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        6.752,
+        7.3924,
         0
       ],
       "toPoint": [
         10.8,
         0
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": []
     },
     {
@@ -332,20 +472,21 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        12.152,
+        12.7924,
         0
       ],
       "toPoint": [
         16.22574,
         -0.15
       ],
+      "fromDepth": 0.22,
       "via": [
         [
-          12.702,
+          13.3424,
           0
         ],
         [
-          12.702,
+          13.3424,
           -0.15
         ]
       ]
@@ -365,6 +506,7 @@
         21.6,
         0
       ],
+      "toDepth": 0,
       "via": [
         [
           21.05,
@@ -384,13 +526,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        22.952,
+        23.5924,
         0
       ],
       "toPoint": [
         27,
         0
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": []
     },
     {
@@ -401,20 +545,21 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        28.352,
+        28.9924,
         0
       ],
       "toPoint": [
         32.42574,
         -0.15
       ],
+      "fromDepth": 0.22,
       "via": [
         [
-          28.902,
+          29.5424,
           0
         ],
         [
-          28.902,
+          29.5424,
           -0.15
         ]
       ]
@@ -427,25 +572,26 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        0.572,
-        0.044
+        3.005,
+        0.15
       ],
       "toPoint": [
         16.22574,
         0.15
       ],
+      "fromDepth": 0.25,
       "via": [
         [
-          1.122,
-          0.044
+          3.555,
+          0.15
         ],
         [
-          1.122,
-          1.926
+          3.555,
+          -0.47
         ],
         [
           15.67574,
-          1.926
+          -0.47
         ],
         [
           15.67574,
@@ -475,11 +621,11 @@
         ],
         [
           17.62426,
-          1.606
+          0.47
         ],
         [
           31.87574,
-          1.606
+          0.47
         ],
         [
           31.87574,

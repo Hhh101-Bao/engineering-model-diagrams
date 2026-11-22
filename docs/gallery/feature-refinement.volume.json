@@ -3,7 +3,8 @@
   "title": "UNetFormer feature-refinement head",
   "widthMm": 180,
   "minFontPt": 8.5,
-  "depthMultiplier": 0.22,
+  "depthMultiplier": 0.42,
+  "strokeThickness": 0.65,
   "fonts": [
     "Arial",
     "Liberation Sans",
@@ -17,10 +18,24 @@
       "type": "custom",
       "semanticOp": "input",
       "widths": [
-        0.22
+        0.13
       ],
       "height": 2.6,
-      "depth": 1.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.6,
+          "d": 2.6,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         0,
         0
@@ -29,8 +44,8 @@
         "Decoder features"
       ],
       "labelAt": [
-        0.28600000000000003,
-        -2.6788176737264675
+        0.611,
+        -3.0488176737264676
       ],
       "channels": [
         "",
@@ -55,10 +70,24 @@
       "type": "custom",
       "semanticOp": "input",
       "widths": [
-        0.22
+        0.13
       ],
       "height": 2.6,
-      "depth": 1.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.6,
+          "d": 2.6,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         0,
         -6.8
@@ -67,8 +96,8 @@
         "Encoder skip"
       ],
       "labelAt": [
-        0.28600000000000003,
-        -9.478817673726468
+        0.611,
+        -9.848817673726469
       ],
       "channels": [
         "",
@@ -93,10 +122,25 @@
       "type": "custom",
       "semanticOp": "custom",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         5.4,
         -3.4
@@ -106,8 +150,8 @@
         "weighted fusion"
       ],
       "labelAt": [
-        6.0760000000000005,
-        -6.5316353474529345
+        6.3962,
+        -5.451835347452935
       ],
       "channels": [
         "",
@@ -123,7 +167,7 @@
         null,
         null
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -132,10 +176,12 @@
       "type": "conv",
       "semanticOp": "conv",
       "widths": [
-        1
+        0.63
       ],
       "height": 2.6,
-      "depth": 1.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "opacity": 1,
       "at": [
         10.8,
         -3.4
@@ -144,8 +190,8 @@
         "Post-conv"
       ],
       "labelAt": [
-        11.476,
-        -6.0788176737264665
+        11.661000000000001,
+        -6.4488176737264675
       ],
       "channels": [
         "",
@@ -161,7 +207,7 @@
         null,
         null
       ],
-      "fill": "#8FAAC4",
+      "fill": "#9EAFB9",
       "show-connection": false,
       "show-relu": false
     },
@@ -170,10 +216,25 @@
       "type": "custom",
       "semanticOp": "attention",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         16.200000000000003,
         0
@@ -182,8 +243,8 @@
         "Channel gate"
       ],
       "labelAt": [
-        16.876,
-        -2.6788176737264675
+        17.196200000000005,
+        -1.5990176737264672
       ],
       "channels": [
         "",
@@ -199,7 +260,7 @@
         null,
         null
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -208,10 +269,25 @@
       "type": "custom",
       "semanticOp": "attention",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         16.200000000000003,
         -6.8
@@ -220,8 +296,8 @@
         "Spatial gate"
       ],
       "labelAt": [
-        16.876,
-        -9.478817673726468
+        17.196200000000005,
+        -8.399017673726467
       ],
       "channels": [
         "",
@@ -237,7 +313,7 @@
         null,
         null
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -246,10 +322,25 @@
       "type": "custom",
       "semanticOp": "custom",
       "widths": [
-        1
+        1.9
       ],
-      "height": 2.6,
-      "depth": 1.6,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         21.6,
         -3.4
@@ -259,8 +350,8 @@
         "+ shortcut + act"
       ],
       "labelAt": [
-        22.276,
-        -6.5316353474529345
+        22.596200000000003,
+        -5.451835347452935
       ],
       "channels": [
         "",
@@ -276,7 +367,7 @@
         null,
         null
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     }
@@ -290,13 +381,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        0.572,
+        1.222,
         0
       ],
       "toPoint": [
         5.4,
-        -3.55
+        -3.54
       ],
+      "fromDepth": 2.6,
+      "toDepth": 0,
       "via": [
         [
           4.85,
@@ -304,7 +397,7 @@
         ],
         [
           4.85,
-          -3.55
+          -3.54
         ]
       ]
     },
@@ -316,21 +409,31 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        0.572,
+        1.222,
         -6.8
       ],
       "toPoint": [
         5.4,
-        -3.25
+        -3.26
       ],
+      "fromDepth": 2.6,
+      "toDepth": 0,
       "via": [
         [
-          1.122,
+          1.772,
           -6.8
         ],
         [
-          1.122,
-          -3.25
+          1.772,
+          -4.0962
+        ],
+        [
+          4.53,
+          -4.0962
+        ],
+        [
+          4.53,
+          -3.26
         ]
       ]
     },
@@ -342,13 +445,14 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        6.752,
+        7.3924,
         -3.4
       ],
       "toPoint": [
         10.8,
         -3.4
       ],
+      "fromDepth": 0.22,
       "via": []
     },
     {
@@ -359,20 +463,21 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        12.152,
-        -3.6
+        12.522,
+        -3.526
       ],
       "toPoint": [
         16.2,
         0
       ],
+      "toDepth": 0,
       "via": [
         [
-          12.702,
-          -3.6
+          13.072,
+          -3.526
         ],
         [
-          12.702,
+          13.072,
           0
         ]
       ]
@@ -385,13 +490,14 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        12.152,
+        12.522,
         -3.4
       ],
       "toPoint": [
         16.2,
         -6.8
       ],
+      "toDepth": 0,
       "via": [
         [
           15.65,
@@ -411,13 +517,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        17.552,
+        18.1924,
         0
       ],
       "toPoint": [
         21.6,
-        -3.6
+        -3.54
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": [
         [
           21.05,
@@ -425,7 +533,7 @@
         ],
         [
           21.05,
-          -3.6
+          -3.54
         ]
       ]
     },
@@ -437,20 +545,22 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        17.552,
+        18.1924,
         -6.8
       ],
       "toPoint": [
         21.6,
         -3.4
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": [
         [
-          18.102,
+          18.7424,
           -6.8
         ],
         [
-          18.102,
+          18.7424,
           -3.4
         ]
       ]
@@ -463,14 +573,24 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        12.152,
-        -3.2
+        12.522,
+        -3.274
       ],
       "toPoint": [
         21.6,
-        -3.2
+        -3.26
       ],
-      "via": []
+      "toDepth": 0,
+      "via": [
+        [
+          21.05,
+          -3.274
+        ],
+        [
+          21.05,
+          -3.26
+        ]
+      ]
     }
   ]
 }

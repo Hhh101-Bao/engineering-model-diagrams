@@ -4,6 +4,7 @@
   "widthMm": 320,
   "minFontPt": 9,
   "depthMultiplier": 0.22,
+  "strokeThickness": 0.7,
   "palette": "cold",
   "fonts": [
     "Arial",
@@ -19,10 +20,24 @@
       "semanticOp": "input",
       "meaning": "input",
       "widths": [
-        0.18
+        0.13
       ],
       "height": 3.37,
       "depth": 3.37,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 3.37,
+          "d": 3.37,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -38,11 +53,11 @@
       ],
       "labelAt": [
         4.0215,
-        -7.0259
+        -19.2512
       ],
       "at": [
-        3.5608,
-        -2.1557
+        3.5858,
+        -14.381
       ],
       "fill": "#CCD4DD",
       "show-connection": false,
@@ -62,10 +77,24 @@
       "semanticOp": "input",
       "meaning": "input",
       "widths": [
-        0.18
+        0.13
       ],
       "height": 3.37,
       "depth": 3.37,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 3.37,
+          "d": 3.37,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -81,11 +110,11 @@
       ],
       "labelAt": [
         4.0215,
-        -19.2512
+        -7.0259
       ],
       "at": [
-        3.5608,
-        -14.381
+        3.5858,
+        -2.1557
       ],
       "fill": "#CCD4DD",
       "show-connection": false,
@@ -105,10 +134,25 @@
       "semanticOp": "custom",
       "meaning": "The same netF weights process both dates: ResNet-18 based backbone and multi-scale decoder, expanded in extractor companion.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 2.69,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -124,13 +168,13 @@
       ],
       "labelAt": [
         13.6775,
-        -6.6111
+        -17.5697
       ],
       "at": [
-        12.9216,
-        -2.1557
+        12.7033,
+        -14.381
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "shared",
@@ -150,10 +194,25 @@
       "semanticOp": "custom",
       "meaning": "Same netF instance and weights as featureA; not a second independently trained network.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 2.69,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -169,13 +228,13 @@
       ],
       "labelAt": [
         13.6775,
-        -18.8364
+        -5.3444
       ],
       "at": [
-        12.9216,
-        -14.381
+        12.7033,
+        -2.1557
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "shared",
@@ -195,10 +254,25 @@
       "semanticOp": "custom",
       "meaning": "Concatenate dates along width (CHW axis 2); channel count remains 64. Kept as custom macro because the current volume backend concat checker assumes a channel-axis concat.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 3.0300000000000002,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -214,13 +288,13 @@
       ],
       "labelAt": [
         23.3336,
-        -6.8677
+        -5.3969
       ],
       "at": [
-        22.5403,
-        -2.3749
+        22.3594,
+        -2.2082
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "temporal"
@@ -237,10 +311,25 @@
       "semanticOp": "attention",
       "meaning": "Four regionwise scaled dot-product attention branches, channel concatenation and 1x1 projection. No residual add in selected code.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 3.0300000000000002,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -256,13 +345,13 @@
       ],
       "labelAt": [
         33.4164,
-        -6.8677
+        -5.3969
       ],
       "at": [
-        32.6231,
-        -2.3749
+        32.4422,
+        -2.2082
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "temporal",
@@ -281,10 +370,25 @@
       "semanticOp": "custom",
       "meaning": "Left W columns of the attention output.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 2.69,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -300,13 +404,13 @@
       ],
       "labelAt": [
         43.4993,
-        -6.6111
+        -14.2067
       ],
       "at": [
-        42.7434,
-        -2.1557
+        42.5251,
+        -11.018
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "temporal"
@@ -323,10 +427,25 @@
       "semanticOp": "custom",
       "meaning": "Right W columns of the attention output.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 2.69,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -342,13 +461,13 @@
       ],
       "labelAt": [
         43.4993,
-        -18.0068
+        -5.3444
       ],
       "at": [
-        42.7434,
-        -13.5514
+        42.5251,
+        -2.1557
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "temporal"
@@ -365,10 +484,25 @@
       "semanticOp": "custom",
       "meaning": "Per-pixel Euclidean distance between the two updated feature vectors.",
       "widths": [
-        0.35
+        1.9
       ],
-      "height": 2.69,
-      "depth": 2.69,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -384,13 +518,13 @@
       ],
       "labelAt": [
         53.4488,
-        -6.8384
+        -5.3969
       ],
       "at": [
-        52.9779,
-        -2.383
+        52.4746,
+        -2.2082
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "shared"
@@ -407,10 +541,24 @@
       "semanticOp": "upsample",
       "meaning": "upsample",
       "widths": [
-        0.35
+        0.22
       ],
       "height": 3.37,
       "depth": 3.37,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.22,
+          "h": 3.37,
+          "d": 3.37,
+          "fill": "#A3B7AD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -426,13 +574,13 @@
       ],
       "labelAt": [
         63.1049,
-        -7.2532
+        -7.0784
       ],
       "at": [
-        62.5592,
-        -2.383
+        62.6242,
+        -2.2082
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "shared"
@@ -449,10 +597,25 @@
       "semanticOp": "custom",
       "meaning": "Predict change=1 when the resized distance is greater than 1; otherwise unchanged=0.",
       "widths": [
-        0.35
+        1.9
       ],
-      "height": 3.37,
-      "depth": 3.37,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -468,13 +631,13 @@
       ],
       "labelAt": [
         73.0544,
-        -7.2532
+        -5.3969
       ],
       "at": [
-        72.5087,
-        -2.383
+        72.0802,
+        -2.2082
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "shared",
@@ -492,10 +655,24 @@
       "semanticOp": "output",
       "meaning": "output",
       "widths": [
-        0.18
+        0.13
       ],
       "height": 3.37,
       "depth": 3.37,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 3.37,
+          "d": 3.37,
+          "fill": "#8FA99F"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -511,13 +688,13 @@
       ],
       "labelAt": [
         83.0039,
-        -7.2532
+        -7.0784
       ],
       "at": [
-        82.5432,
-        -2.383
+        82.5682,
+        -2.2082
       ],
-      "fill": "#91B6A1",
+      "fill": "#8FA99F",
       "show-connection": false,
       "evidence": [
         "shared"
@@ -538,13 +715,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        4.4822,
-        -2.1557
+        4.4572,
+        -14.381
       ],
       "toPoint": [
-        12.9216,
-        -2.1557
+        12.7033,
+        -14.381
       ],
+      "fromDepth": 3.37,
+      "toDepth": 0,
       "via": [],
       "evidence": [
         "shared"
@@ -558,13 +737,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        4.4822,
-        -14.381
+        4.4572,
+        -2.1557
       ],
       "toPoint": [
-        12.9216,
-        -14.381
+        12.7033,
+        -2.1557
       ],
+      "fromDepth": 3.37,
+      "toDepth": 0,
       "via": [],
       "evidence": [
         "shared"
@@ -578,14 +759,25 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        14.4334,
-        -2.1557
+        14.6517,
+        -14.381
       ],
       "toPoint": [
-        22.5403,
-        -2.1557
+        22.3594,
+        -2.2607
       ],
-      "via": [],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [
+        [
+          17.5121,
+          -14.381
+        ],
+        [
+          17.5121,
+          -2.2607
+        ]
+      ],
       "evidence": [
         "temporal"
       ]
@@ -598,23 +790,16 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        14.4334,
-        -14.381
+        14.6517,
+        -2.1557
       ],
       "toPoint": [
-        22.5403,
-        -2.5941
+        22.3594,
+        -2.1557
       ],
-      "via": [
-        [
-          17.5121,
-          -14.381
-        ],
-        [
-          17.5121,
-          -2.5941
-        ]
-      ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [],
       "evidence": [
         "temporal"
       ]
@@ -627,13 +812,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        24.1269,
-        -2.3749
+        24.3078,
+        -2.2082
       ],
       "toPoint": [
-        32.6231,
-        -2.3749
+        32.4422,
+        -2.2082
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": [],
       "evidence": [
         "temporal"
@@ -647,14 +834,25 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        34.2097,
-        -2.1557
+        34.3906,
+        -2.2607
       ],
       "toPoint": [
-        42.7434,
-        -2.1557
+        42.5251,
+        -11.018
       ],
-      "via": [],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [
+        [
+          37.6779,
+          -2.2607
+        ],
+        [
+          37.6779,
+          -11.018
+        ]
+      ],
       "evidence": [
         "temporal"
       ]
@@ -667,23 +865,16 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        34.2097,
-        -2.5941
+        34.3906,
+        -2.1557
       ],
       "toPoint": [
-        42.7434,
-        -13.5514
+        42.5251,
+        -2.1557
       ],
-      "via": [
-        [
-          37.6779,
-          -2.5941
-        ],
-        [
-          37.6779,
-          -13.5514
-        ]
-      ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [],
       "evidence": [
         "temporal"
       ]
@@ -696,14 +887,25 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        44.2552,
-        -2.1557
+        44.4735,
+        -11.018
       ],
       "toPoint": [
-        52.9779,
-        -2.1557
+        52.4746,
+        -2.2607
       ],
-      "via": [],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [
+        [
+          47.9208,
+          -11.018
+        ],
+        [
+          47.9208,
+          -2.2607
+        ]
+      ],
       "evidence": [
         "shared"
       ]
@@ -716,23 +918,16 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        44.2552,
-        -13.5514
+        44.4735,
+        -2.1557
       ],
       "toPoint": [
-        52.9779,
-        -2.6103
+        52.4746,
+        -2.1557
       ],
-      "via": [
-        [
-          47.9208,
-          -13.5514
-        ],
-        [
-          47.9208,
-          -2.6103
-        ]
-      ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [],
       "evidence": [
         "shared"
       ]
@@ -745,13 +940,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        53.9197,
-        -2.383
+        54.423,
+        -2.2082
       ],
       "toPoint": [
-        62.5592,
-        -2.383
+        62.6242,
+        -2.2082
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": [],
       "evidence": [
         "shared"
@@ -765,13 +962,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        63.6506,
-        -2.383
+        63.5856,
+        -2.2082
       ],
       "toPoint": [
-        72.5087,
-        -2.383
+        72.0802,
+        -2.2082
       ],
+      "fromDepth": 3.37,
+      "toDepth": 0,
       "via": [],
       "evidence": [
         "shared"
@@ -785,13 +984,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        73.6001,
-        -2.383
+        74.0286,
+        -2.2082
       ],
       "toPoint": [
-        82.5432,
-        -2.383
+        82.5682,
+        -2.2082
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": [],
       "evidence": [
         "shared"

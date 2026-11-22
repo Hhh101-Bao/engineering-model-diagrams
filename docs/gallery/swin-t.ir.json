@@ -32,7 +32,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "patches"
+      }
     },
     {
       "id": "p",
@@ -48,7 +51,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "patches"
+      }
     },
     {
       "id": "s1",
@@ -64,7 +70,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "windows"
+      }
     },
     {
       "id": "m1",
@@ -96,7 +105,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "windows"
+      }
     },
     {
       "id": "m2",
@@ -128,7 +140,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "windows"
+      }
     },
     {
       "id": "m3",
@@ -160,7 +175,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "windows"
+      }
     },
     {
       "id": "h",
@@ -258,6 +276,6 @@
   "render": {
     "mode": "volume",
     "theme": "steel-teal",
-    "widthMm": 338
+    "widthMm": 280
   }
 }

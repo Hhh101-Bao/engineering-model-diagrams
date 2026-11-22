@@ -21,6 +21,10 @@ export function exportScene3D(planned,out){
       for(let j=0;j<2;j++){const angle=(layer.semanticOp==='multiply'?Math.PI/4:0)+j*Math.PI/2,vertices=boxVertices().map(p=>{const x=(p[0]-.5)*r,y=(p[1]-.5)*r*.12;return [cx+x*Math.cos(angle)-y*Math.sin(angle),cy+x*Math.sin(angle)+y*Math.cos(angle),r+.015+p[2]*.035];});symbols.push({id:layer.name+'_symbol_'+j,label:layer.symbol,color:'#254F46',vertices,indices:triangles,part:j+1,op:'operator-symbol',primitive:'symbol'});}
       continue;
     }
+    if(layer.parts){
+      for(const [index,p] of layer.parts.entries())boxes.push({id:layer.name,label:layer.label.join(' · '),color:p.fill,vertices:boxVertices().map(v=>[layer.at[0]+p.x+v[0]*p.w,originY+p.y+v[1]*p.h,p.z+v[2]*p.d]),indices:triangles,part:index+1,op:layer.semanticOp,shape:layer.sourceShape,primitive:layer.glyph??'cuboid'});
+      continue;
+    }
     let x=layer.at[0];
     for(const [index,w] of layer.widths.entries()){
       if(index>0&&layer.sliceGap){
@@ -35,7 +39,7 @@ export function exportScene3D(planned,out){
     const a=planned.spec.layers.find(n=>n.name===edge.from),b=planned.spec.layers.find(n=>n.name===edge.to),points=[edge.fromPoint,...edge.via,edge.toPoint];
     const down=(planned.ir.render?.direction??'RIGHT')==='DOWN';
     const portDepth=(layer,port,fallback)=>layer.type==='sum'?0:['north','east','true_east','northeast','northwest'].includes(port)?layer.depth:['south','west','true_west','southeast','southwest'].includes(port)?0:fallback;
-    const za=portDepth(a,edge.fromPort,down?0:a.depth),zb=portDepth(b,edge.toPort,down?b.depth:0);
+    const za=edge.fromDepth??portDepth(a,edge.fromPort,down?0:a.depth),zb=edge.toDepth??portDepth(b,edge.toPort,down?b.depth:0);
     const wire={id:edge.id,from:edge.from,to:edge.to,points:points.map((p,i)=>{const z=za+(zb-za)*i/(points.length-1);return [p[0]-z*depth,p[1]-z*depth,z];})};wires.push(wire);
     const arrow=cone(wire.points);if(arrow)arrows.push({id:edge.id+'_arrow',label:edge.from+' → '+edge.to,color:'#3B6873',...arrow,part:1,op:'dataflow-arrow',primitive:'cone',from:edge.from,to:edge.to});
   }
@@ -51,7 +55,7 @@ export function exportScene3D(planned,out){
   }
   const lineMaterial=materials.length;materials.push({name:'dataflow',pbrMetallicRoughness:{baseColorFactor:[.2,.35,.4,1],metallicFactor:0,roughnessFactor:1}});
   for(const w of wires){const p=[];for(let i=1;i<w.points.length;i++)p.push(w.points[i-1],w.points[i]);const mesh=meshes.length;meshes.push({name:w.id,primitives:[{attributes:{POSITION:posAccessor(p)},mode:1,material:lineMaterial}]});nodes.push({name:w.id,mesh,extras:{from:w.from,to:w.to}});}
-  const binary=Buffer.concat(buffers),gltf={asset:{version:'2.0',generator:'engineering-model-diagrams 0.3'},scene:0,scenes:[{nodes:nodes.map((_,i)=>i)}],nodes,meshes,materials,buffers:[{byteLength:binary.length}],bufferViews:views,accessors,extras:{title:scene.title,sourceSchema:planned.ir.schema}};
+  const binary=Buffer.concat(buffers),gltf={asset:{version:'2.0',generator:'engineering-model-diagrams 0.5'},scene:0,scenes:[{nodes:nodes.map((_,i)=>i)}],nodes,meshes,materials,buffers:[{byteLength:binary.length}],bufferViews:views,accessors,extras:{title:scene.title,sourceSchema:planned.ir.schema}};
   let json=Buffer.from(JSON.stringify(gltf));json=Buffer.concat([json,Buffer.alloc((4-json.length%4)%4,0x20)]);
   const head=Buffer.alloc(12);head.writeUInt32LE(0x46546c67,0);head.writeUInt32LE(2,4);head.writeUInt32LE(12+8+json.length+8+binary.length,8);
   const jhead=Buffer.alloc(8);jhead.writeUInt32LE(json.length,0);jhead.writeUInt32LE(0x4e4f534a,4);

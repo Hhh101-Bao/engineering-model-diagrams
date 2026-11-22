@@ -4,7 +4,7 @@
 
 | theme | 名称 | 卷积/骨干 | 拼接 | 注意力/自定义 | 输出/融合 |
 |---|---|---|---|---|---|
-| steel-teal | 钢蓝青绿 | #8FAAC4 | #D8BC80 | #B0A3C3 | #91B6A1 |
+| steel-teal | 钢蓝青绿 | #9EAFB9 | #C6AD84 | #A3B7AD | #8FA99F |
 | ocean-sand | 海蓝砂金 | #769BC2 | #CDB98B | #A5B2C8 | #83B2AD |
 | sage-earth | 鼠尾草大地 | #9EAD97 | #D5BD85 | #B4AAA1 | #83A596 |
 | plum-slate | 灰紫岩蓝 | #A39CB7 | #D6BE8F | #B19CAC | #8FB2AA |

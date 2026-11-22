@@ -48,7 +48,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "s",
@@ -63,7 +66,10 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "matrix"
+      }
     },
     {
       "id": "agg",
@@ -78,7 +84,10 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tokens"
+      }
     }
   ],
   "edges": [

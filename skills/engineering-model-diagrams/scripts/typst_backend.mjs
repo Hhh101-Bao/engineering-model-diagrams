@@ -19,7 +19,7 @@ function typ(value,key=''){
   if(typeof value==='boolean'||typeof value==='number')return String(value);
   if(typeof value==='string')return ['fill','bandfill'].includes(key)&&/^#[0-9a-f]{6}$/i.test(value)?`rgb(${JSON.stringify(value)})`:JSON.stringify(value);
   if(Array.isArray(value)){
-    if(key==='label')return '['+value.map((s,i)=>`#text(weight: ${JSON.stringify(i?'regular':'bold')}, ${JSON.stringify(String(s))})`).join('#linebreak()')+']';
+    if(key==='label')return '['+value.map(s=>`#text(weight: "regular", ${JSON.stringify(String(s))})`).join('#linebreak()')+']';
     return '('+value.map(v=>typ(v)).join(', ')+(value.length===1?',':'')+')';
   }
   return '('+Object.entries(value).map(([k,v])=>`${JSON.stringify(k)}: ${typ(v,k)}`).join(', ')+')';
@@ -34,6 +34,7 @@ export function validateTypstSpec(spec){
     for(const key of ['height','depth','width'])if(layer[key]!==undefined&&(!Number.isFinite(layer[key])||layer[key]<0))throw Error(`Invalid ${key}: ${layer.name}`);
     if(layer.widths&&(!Array.isArray(layer.widths)||!layer.widths.length||layer.widths.some(x=>!Number.isFinite(x)||x<=0)))throw Error(`Invalid widths: ${layer.name}`);
     if(layer.sliceGap!==undefined&&(!Number.isFinite(layer.sliceGap)||layer.sliceGap<0||!['conv','convres'].includes(layer.type)))throw Error(`sliceGap requires a nonnegative conv separation: ${layer.name}`);
+    if(layer.parts)for(const p of layer.parts){if(!['x','y','z'].every(k=>Number.isFinite(p[k])&&p[k]>=0)||!['w','h','d'].every(k=>Number.isFinite(p[k])&&p[k]>0))throw Error(`Invalid 3D glyph part: ${layer.name}`);}
     if(layer.tensor&&(!Array.isArray(layer.tensor)||!layer.tensor.length||layer.tensor.some(x=>x!==null&&(!Number.isInteger(x)||x<=0))))throw Error(`Invalid tensor: ${layer.name}`);
     if(layer.image&&layer.image!=='default')throw Error('This adapter accepts the bundled default image only; edit the emitted .typ to use your own image asset.');
   }
@@ -66,12 +67,14 @@ export function validateTypstSpec(spec){
       if(layer.tensor&&layer.tensor.every(Number.isInteger)&&JSON.stringify(layer.tensor)!==JSON.stringify(expected))throw Error(`Output tensor differs: ${layer.name}`);
     }
   }
-  if(!Number.isFinite(spec.widthMm??200)||(spec.widthMm??200)<80)throw Error('widthMm must be >= 80');
+  if(!Number.isFinite(spec.widthMm??200)||(spec.widthMm??200)<40)throw Error('widthMm must be >= 40; keep the requested print font size');
   if(!Number.isFinite(spec.minFontPt??8)||(spec.minFontPt??8)<5)throw Error('minFontPt must be >= 5');
+  if(spec.maxHeightMm!==undefined&&(!Number.isFinite(spec.maxHeightMm)||spec.maxHeightMm<40))throw Error('maxHeightMm must be >= 40');
 }
 function source(spec,assetName,scale,fontScale){
   const layers=spec.layers.map(l=>{
     const n={...l,...(l.at?{'show-connection':false}:{})};
+    if(l.parts){n.type='custom';n.width=l.widths.reduce((a,b)=>a+b,0)+(l.sliceGap??0)*(l.widths.length-1);delete n.widths;n.opacity=1;n.parts=[...l.parts].sort((a,b)=>b.z-a.z||a.y-b.y||a.x-b.x);}
     if(l.labelAt){n['label-at']=l.labelAt;delete n.labelAt;}
     if(l.sliceGap!==undefined){n['slice-gap']=l.sliceGap;delete n.sliceGap;}
     if(!['conv','convres','custom','input'].includes(l.type)&&l.widths&&!l.width)n.width=l.widths.reduce((a,b)=>a+b,0);
@@ -102,7 +105,7 @@ export async function renderTypst(input,options={}){
   const sourcePath=out+'.typ',assetName=path.basename(assets),cache=path.join(assets,'.cache');
   const args=['compile','--root',path.dirname(out),'--package-path',path.join(assets,'packages'),'--package-cache-path',cache];
   const width=spec.widthMm??200,minFont=spec.minFontPt??8;
-  let scale=spec.geometryScale??0.65, measured=0,passes=0,svg;
+  let scale=spec.geometryScale??0.65, measured=0,measuredHeight=0,passes=0,svg;
   for(;passes<5;passes++){
     const fontScale=minFont/(7*scale);
     fs.writeFileSync(sourcePath,source(spec,assetName,scale,fontScale),'utf8');
@@ -111,16 +114,18 @@ export async function renderTypst(input,options={}){
     const viewBox=svg.match(/viewBox="([^"]+)"/)?.[1].split(/\s+/).map(Number);
     if(!viewBox)throw Error('Cannot read the exported SVG physical size');
     measured=viewBox[2]*25.4/72;
+    measuredHeight=viewBox[3]*25.4/72;
     if(Math.abs(measured-width)<0.25)break;
     scale*=(width-8)/(measured-8);
   }
   if(Math.abs(measured-width)>0.5)throw Error(`Could not fit ${width}mm without shrinking typography; produced ${measured.toFixed(2)}mm. Reduce label length or split the figure.`);
+  if(spec.maxHeightMm&&measuredHeight>spec.maxHeightMm+.5)throw Error(`Figure height ${measuredHeight.toFixed(1)}mm exceeds maxHeightMm=${spec.maxHeightMm}; split overview/detail or change composition. Typography was not reduced.`);
   run(tool.exe,[...args,sourcePath,out+'.pdf']);
   const png=spawnSync(process.env.ENGINEERING_PDFTOPPM??'pdftoppm',['-singlefile','-scale-to',String(options.previewSize??2400),'-png',out+'.pdf',out],{encoding:'utf8',windowsHide:true});
   if(png.status!==0)throw Error(png.stderr||'pdftoppm required for PNG preview');
   fs.writeFileSync(out+'.source.json',JSON.stringify(spec,null,2)+'\n');
   const provenance=JSON.parse(fs.readFileSync(path.join(vendor,'provenance.json'),'utf8'));
-  const report={backend:'neural-netz',typstVersion:tool.version,upstream:provenance['neural-netz'],widthMm:+measured.toFixed(3),targetWidthMm:width,minDeclaredFontPt:minFont,geometryScale:scale,passes:passes+1,layers:spec.layers.length,explicitConnections:spec.connections?.length??0,editableSource:sourcePath,portableDependencies:assets,files:['typ','source.json','svg','pdf','png'].map(ext=>out+'.'+ext),limitations:['Named at/direct/font-scale parameters are local extensions, original source is retained as lib.typ.','Paper-space collision checks require inspecting the PNG; no claim of automatic collision-free placement.','SVG uses vector glyph outlines; edit the .typ or source.json for text changes.']};
+  const report={backend:'neural-netz',typstVersion:tool.version,upstream:provenance['neural-netz'],widthMm:+measured.toFixed(3),heightMm:+measuredHeight.toFixed(3),targetWidthMm:width,minDeclaredFontPt:minFont,geometryScale:scale,passes:passes+1,layers:spec.layers.length,explicitConnections:spec.connections?.length??0,editableSource:sourcePath,portableDependencies:assets,files:['typ','source.json','svg','pdf','png'].map(ext=>out+'.'+ext),limitations:['Named at/direct/font-scale parameters are local extensions, original source is retained as lib.typ.','Paper-space collision checks require inspecting the PNG; no claim of automatic collision-free placement.','SVG uses vector glyph outlines; edit the .typ or source.json for text changes.']};
   fs.writeFileSync(out+'.compile.json',JSON.stringify(report,null,2)+'\n');
   return report;
 }

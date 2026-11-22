@@ -14,6 +14,8 @@ Windows x64 Release包含经过SHA-256校验的Typst；仓库源码不含大型e
 
 ## 安装 Skill
 
+独立Windows Skill ZIP解压后直接复制engineering-model-diagrams目录到Codex的skills目录；包含便携Typst。skill-source ZIP不含编译器，需要自行安装Typst。下面的安装脚本位于完整源码仓库，需要图库与开发文件时使用Git克隆或GitHub自动生成的Source code ZIP。
+
 ```text
 python scripts/install-skill.py
 ```

@@ -32,7 +32,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "patches"
+      }
     },
     {
       "id": "patch",
@@ -47,7 +50,10 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tokens"
+      }
     },
     {
       "id": "pos",
@@ -62,7 +68,11 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tokens",
+        "cls": true
+      }
     },
     {
       "id": "enc",
@@ -77,7 +87,11 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "operation",
+        "width": 2.5
+      }
     },
     {
       "id": "cls",
@@ -91,7 +105,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector"
+      }
     }
   ],
   "edges": [
@@ -135,6 +152,6 @@
   "render": {
     "mode": "volume",
     "theme": "steel-teal",
-    "widthMm": 180
+    "widthMm": 220
   }
 }

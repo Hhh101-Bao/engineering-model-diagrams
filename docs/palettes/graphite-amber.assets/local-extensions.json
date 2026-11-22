@@ -22,8 +22,9 @@
     "Separated repeat cuboids with real slice-gap and internal arrows",
     "First/last solid surface ports for separated groups",
     "One arrowhead per direct route to avoid elbow clutter",
-    "Physical label hierarchy: bold module name, regular description/dimensions"
+    "Semantic component cuboids for tokens, windows and matrices; shared XYZ geometry",
+    "Matte faces, regular print labels and mathematical operator circles"
   ],
   "sourceSha256": "9c14d4288834ba6d31a56154637a0ce442c870ab46afc603355aa768febc1418",
-  "derivedSha256": "069a4e846c147ee9c495aa871b28af8aae71942be3991d82b95662cfe40925e3"
+  "derivedSha256": "0feaf90fd2d75962194c05d019e530e2b2b976ecb5eb9ce17b55ed491715e522"
 }

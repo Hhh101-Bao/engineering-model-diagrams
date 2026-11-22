@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {renderTypst} from './typst_backend.mjs';
 import {themeFor} from './styles.mjs';
+import {tint} from './visual-language.mjs';
 
 function python(explicit){
   const candidates=[explicit,process.env.ENGINEERING_PYTHON,path.resolve(path.dirname(process.execPath),'../../python/python.exe'),'python','python3','py'].filter(Boolean);
@@ -18,7 +19,7 @@ export async function renderNetwork(input,options={}){
   const out=path.resolve(options.out??'network-volume');
   if(options.widthMm)spec.widthMm=Number(options.widthMm);
   const backend=String(options.backend??spec.backend??spec.renderer??'neural-netz').toLowerCase();
-  if(options.theme){const t=themeFor(options.theme),ops={fc:'linear',convres:'convblock',sum:'add',deconv:'conv',unpool:'pool'};spec.fonts=t.fonts;for(const l of spec.layers){const op=l.semanticOp??ops[l.type]??l.type;l.fill=t.colors[op]??t.colors.custom;l.bandfill=l.fill;}}
+  if(options.theme){const t=themeFor(options.theme),ops={fc:'linear',convres:'convblock',sum:'add',deconv:'conv',unpool:'pool'};spec.fonts=t.fonts;for(const l of spec.layers){const op=l.colorRole??l.semanticOp??ops[l.type]??l.type;l.fill=t.colors[op]??t.colors.custom;l.bandfill=l.fill;for(const p of l.parts??[])if(!p.fixedFill)p.fill=tint(l.fill,p.tone??0);}}
   if(['neural-netz','typst'].includes(backend))return renderTypst(spec,{out,typst:options.typst,previewSize:options.previewSize});
   if(!['plotneuralnet','plot'].includes(backend))throw Error(`Unknown volume backend: ${backend}`);
   fs.mkdirSync(path.dirname(out),{recursive:true});

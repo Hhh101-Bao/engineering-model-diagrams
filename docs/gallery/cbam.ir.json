@@ -32,7 +32,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "ca",
@@ -48,7 +51,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector"
+      }
     },
     {
       "id": "m1",
@@ -80,7 +86,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "windows"
+      }
     },
     {
       "id": "m2",

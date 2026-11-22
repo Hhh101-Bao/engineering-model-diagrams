@@ -65,22 +65,22 @@ let colors-cold = (
 
 let strokes = (
   solid: (paint: black.lighten(20%), thickness: 0.65pt * stroke-thickness),
-  hidden: (paint: gray.darken(50%).transparentize(50%), thickness: 0.45pt * stroke-thickness, dash: (1pt, 0.8pt)),
+  hidden: (paint: white, thickness: 0pt, dash: none),
   arrow: (thickness: 0pt),
   connection: (thickness: 1pt * stroke-thickness),
 )
 
 let dynamic-color-strokes(fill) = {
   (
-    solid: (paint: fill.darken(50%).saturate(80%), thickness: strokes.solid.thickness),
-    hidden: (paint: fill.darken(60%).saturate(80%).transparentize(60%), thickness: strokes.hidden.thickness, dash: strokes.hidden.dash),
+    solid: (paint: fill.darken(38%), thickness: strokes.solid.thickness),
+    hidden: (paint: white, thickness: 0pt, dash: none),
   )
 }
 
 let font-sizes = (
-  label: 8.5pt,
+  label: 7pt,
   channel-number: 7pt,
-  layer-label: 8.5pt,
+  layer-label: 7pt,
   output-number: 8pt,
   legend-title: 10pt,
   legend-item: 8pt,
@@ -205,9 +205,6 @@ canvas(length: 1cm * scale-factor, {
     
     let dyn-strokes = dynamic-color-strokes(fill)
 
-    line((x, y), (x + ox, y + oy), stroke: dyn-strokes.hidden)
-    line((x + ox, y + oy), (x + w + ox, y + oy), stroke: dyn-strokes.hidden)
-    line((x + ox, y + oy), (x + ox, y + h + oy), stroke: dyn-strokes.hidden)
     
     rect((x, y), (x + w, y + h), fill: fill.transparentize(alpha), stroke: none)
     
@@ -221,7 +218,7 @@ canvas(length: 1cm * scale-factor, {
     line((x, y), (x + w, y), stroke: dyn-strokes.solid)
     
     line((x, y + h), (x + ox, y + h + oy), (x + w + ox, y + h + oy), (x + w, y + h),
-      close: true, fill: fill.darken(darken-amounts.top).transparentize(alpha), stroke: dyn-strokes.solid)
+      close: true, fill: fill.lighten(12%).transparentize(alpha), stroke: dyn-strokes.solid)
     
     // Draw right face normally
     line((x + w, y), (x + w + ox, y + oy), (x + w + ox, y + h + oy), (x + w, y + h),
@@ -742,7 +739,17 @@ canvas(length: 1cm * scale-factor, {
           img = image("bird.jpg")
         }
         
-        box-3d(x, y-offset, actual-w, h, d, fill-color, opacity: layer-opacity, show-left: true, show-right: true, image: img)
+        if "parts" in l {
+          for part in l.parts {
+            let z-offset = part.z * depth-multiplier
+            box-3d(x + part.x + z-offset, y-offset + part.y + z-offset, part.w, part.h, part.d, part.fill, opacity: 1)
+          }
+          for mark in l.at("marks", default: ()) {
+            content((x + mark.x, y-offset + mark.y), [#text(size: scaled-font(font-sizes.label), mark.text)])
+          }
+        } else {
+          box-3d(x, y-offset, actual-w, h, d, fill-color, opacity: layer-opacity, show-left: true, show-right: true, image: img)
+        }
         
         // Display channels labels
         draw-channels-labels(channels, x + actual-w/2, x + actual-w, y-offset, ox, oy)
@@ -1539,11 +1546,7 @@ canvas(length: 1cm * scale-factor, {
       fill-color = fill-color.transparentize((1-layer-opacity)*100%)
 
       circle((center-x, center-y), radius: radius,
-        fill: gradient.radial(
-          fill-color.lighten(50%), fill-color, fill-color.darken(30%),
-          center: (50%, 50%), radius: 50%,
-          focal-center: (35%, 35%), focal-radius: 5%
-        ),
+        fill: white,
         stroke: dyn-stroke.solid)
       
       if symbol != none {

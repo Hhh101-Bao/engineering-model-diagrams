@@ -26,7 +26,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "patches",
+        "colorRole": "conv"
+      }
     },
     {
       "id": "t",
@@ -36,7 +40,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tokens",
+        "colorRole": "attention"
+      }
     },
     {
       "id": "ie",
@@ -46,7 +54,12 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "operation",
+        "width": 2.5,
+        "colorRole": "conv"
+      }
     },
     {
       "id": "te",
@@ -56,7 +69,12 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "operation",
+        "width": 2.5,
+        "colorRole": "attention"
+      }
     },
     {
       "id": "in",
@@ -71,7 +89,11 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector",
+        "colorRole": "conv"
+      }
     },
     {
       "id": "tn",
@@ -86,7 +108,11 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector",
+        "colorRole": "attention"
+      }
     },
     {
       "id": "sim",
@@ -101,7 +127,12 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "matrix",
+        "diagonal": true,
+        "colorRole": "concat"
+      }
     },
     {
       "id": "loss",
@@ -111,7 +142,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "operation"
+      }
     }
   ],
   "edges": [
@@ -179,6 +213,6 @@
   "render": {
     "mode": "volume",
     "theme": "steel-teal",
-    "widthMm": 180
+    "widthMm": 220
   }
 }

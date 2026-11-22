@@ -29,6 +29,6 @@
 
 `repeat` 是实际重复次数，卷积可用最多三个几何分段加 ×N 压缩表示。不要把不同算子重复打包为一个 convblock，除非说明模块含义和展开范围。
 
-`render.mode` 必须为 volume。direction 支持 RIGHT/DOWN。布局由 ELK 根据新 nodes/edges 生成，不写 at/labelAt/via；这些字段属于生成后的 volume.json。复杂层级目前建议拆总图/模块图，循环网络可用有证据的宏观模块保留时间展开含义，不能以图形无环布局反推模型无反馈。
+`render.mode` 必须为 volume。direction 支持 RIGHT/DOWN。`render.maxHeightMm`可限制成图高度，超限会要求拆图或调整构图，不会压小字号。布局由 ELK 根据新 nodes/edges 生成，不写 at/labelAt/via；这些字段属于生成后的 volume.json。复杂层级目前建议拆总图/模块图，循环网络可用有证据的宏观模块保留时间展开含义，不能以图形无环布局反推模型无反馈。`nodes[].visual`按[语义图形规则](visual-language.md)选择表达，不改算子或证据。
 
 `render.theme` 默认 `publication`：低饱和钢蓝表示卷积，青绿表示融合输出，琥珀表示降采样/拼接，灰紫表示全连接或自定义模块，使用无衬线字体。`classic` 保留旧配色。颜色表达算子角色，不能仅凭颜色推断论文未给出的结构。

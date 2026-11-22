@@ -36,7 +36,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
     },
     {
       "id": "enc",
@@ -46,7 +49,10 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tokens"
+      }
     },
     {
       "id": "queries",
@@ -61,7 +67,10 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tokens"
+      }
     },
     {
       "id": "dec",
@@ -76,7 +85,11 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "operation",
+        "width": 2.4
+      }
     },
     {
       "id": "cls",
@@ -91,7 +104,10 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector"
+      }
     },
     {
       "id": "box",
@@ -106,7 +122,10 @@
       "axes": "tokens",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "vector"
+      }
     }
   ],
   "edges": [
@@ -166,6 +185,6 @@
   "render": {
     "mode": "volume",
     "theme": "steel-teal",
-    "widthMm": 180
+    "widthMm": 240
   }
 }

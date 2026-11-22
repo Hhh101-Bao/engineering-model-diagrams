@@ -48,7 +48,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "e2",
@@ -64,7 +68,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "e3",
@@ -80,7 +88,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "e4",
@@ -96,11 +108,15 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "b",
-      "op": "attention",
+      "op": "conv",
       "meaning": "Bottleneck",
       "label": "Bottleneck",
       "shape": [
@@ -112,7 +128,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "d4",
@@ -128,7 +148,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "d3",
@@ -144,7 +168,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "d2",
@@ -160,7 +188,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "d1",
@@ -176,7 +208,11 @@
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "tensor"
+      },
+      "repeat": 2
     },
     {
       "id": "y",
@@ -316,6 +352,6 @@
   "render": {
     "mode": "volume",
     "theme": "steel-teal",
-    "widthMm": 340
+    "widthMm": 280
   }
 }

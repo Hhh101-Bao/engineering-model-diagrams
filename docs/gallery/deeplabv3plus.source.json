@@ -1,9 +1,10 @@
 {
   "backend": "neural-netz",
   "title": "DeepLabv3+",
-  "widthMm": 242,
+  "widthMm": 218,
   "minFontPt": 8.5,
-  "depthMultiplier": 0.22,
+  "depthMultiplier": 0.42,
+  "strokeThickness": 0.65,
   "fonts": [
     "Arial",
     "Liberation Sans",
@@ -17,10 +18,24 @@
       "type": "custom",
       "semanticOp": "input",
       "widths": [
-        0.22
+        0.13
       ],
       "height": 2.6,
-      "depth": 1.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.6,
+          "d": 2.6,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         0,
         0
@@ -29,8 +44,8 @@
         "Image"
       ],
       "labelAt": [
-        0.28600000000000003,
-        -2.689082214082214
+        0.611,
+        -3.11200589569161
       ],
       "channels": [
         "",
@@ -55,10 +70,12 @@
       "type": "conv",
       "semanticOp": "conv",
       "widths": [
-        1
+        0.63
       ],
       "height": 2.6,
-      "depth": 1.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "opacity": 1,
       "at": [
         5.4,
         0
@@ -67,8 +84,8 @@
         "CNN backbone"
       ],
       "labelAt": [
-        6.0760000000000005,
-        -2.689082214082214
+        6.261,
+        -3.11200589569161
       ],
       "channels": [
         "",
@@ -84,7 +101,7 @@
         null,
         null
       ],
-      "fill": "#8FAAC4",
+      "fill": "#9EAFB9",
       "show-connection": false,
       "show-relu": false
     },
@@ -93,10 +110,25 @@
       "type": "custom",
       "semanticOp": "attention",
       "widths": [
-        1.19
+        1.9
       ],
-      "height": 2.75,
-      "depth": 2.75,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         10.8,
         0
@@ -106,8 +138,8 @@
         "256 × H/16 × W/16"
       ],
       "labelAt": [
-        11.697500000000002,
-        -3.3536644281644286
+        11.7962,
+        -2.1782117913832204
       ],
       "channels": [
         "",
@@ -123,7 +155,7 @@
         "H/16",
         "W/16"
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -132,10 +164,24 @@
       "type": "custom",
       "semanticOp": "upsample",
       "widths": [
-        1.19
+        0.8
       ],
-      "height": 2.75,
-      "depth": 2.75,
+      "height": 2.5775482221505763,
+      "depth": 2.5775482221505763,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.8,
+          "h": 2.5775482221505763,
+          "d": 2.5775482221505763,
+          "fill": "#A3B7AD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         16.200000000000003,
         0
@@ -145,8 +191,8 @@
         "256 × H/4 × W/4"
       ],
       "labelAt": [
-        17.097500000000004,
-        -3.3536644281644286
+        17.141285126651624,
+        -3.6120710291101297
       ],
       "channels": [
         "",
@@ -162,7 +208,7 @@
         "H/4",
         "W/4"
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "show-relu": false
     },
@@ -171,10 +217,12 @@
       "type": "conv",
       "semanticOp": "conv",
       "widths": [
-        0.9967970000576926
+        0.5947218125612983
       ],
-      "height": 2.75,
-      "depth": 2.75,
+      "height": 2.5775482221505763,
+      "depth": 2.5775482221505763,
+      "glyph": "tensor",
+      "opacity": 1,
       "at": [
         10.8,
         -6.8
@@ -185,8 +233,8 @@
         "48 × H/4 × W/4"
       ],
       "labelAt": [
-        11.600898500028848,
-        -10.616746642246643
+        11.638646032932272,
+        -10.92807692480174
       ],
       "channels": [
         "",
@@ -202,7 +250,7 @@
         "H/4",
         "W/4"
       ],
-      "fill": "#8FAAC4",
+      "fill": "#9EAFB9",
       "show-connection": false,
       "show-relu": false
     },
@@ -211,10 +259,25 @@
       "type": "custom",
       "semanticOp": "concat",
       "widths": [
-        1.2098342010754868
+        1.9
       ],
-      "height": 2.75,
-      "depth": 2.75,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#e7ddcb",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         21.6,
         0
@@ -224,8 +287,8 @@
         "304 × H/4 × W/4"
       ],
       "labelAt": [
-        22.507417100537744,
-        -3.3536644281644286
+        22.596200000000003,
+        -2.1782117913832204
       ],
       "channels": [
         "",
@@ -241,7 +304,7 @@
         "H/4",
         "W/4"
       ],
-      "fill": "#D8BC80",
+      "fill": "#C6AD84",
       "show-connection": false,
       "show-relu": false
     },
@@ -250,10 +313,12 @@
       "type": "conv",
       "semanticOp": "conv",
       "widths": [
-        1
+        0.63
       ],
-      "height": 2.75,
-      "depth": 2.75,
+      "height": 2.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "opacity": 1,
       "at": [
         27,
         0
@@ -264,8 +329,8 @@
         "K × H × W"
       ],
       "labelAt": [
-        27.8025,
-        -3.8167466422466427
+        27.861,
+        -4.144017687074831
       ],
       "channels": [
         "",
@@ -281,7 +346,7 @@
         "H",
         "W"
       ],
-      "fill": "#8FAAC4",
+      "fill": "#9EAFB9",
       "show-connection": false,
       "show-relu": false
     },
@@ -290,10 +355,24 @@
       "type": "custom",
       "semanticOp": "output",
       "widths": [
-        0.22
+        0.13
       ],
-      "height": 2.75,
-      "depth": 2.75,
+      "height": 2.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.6,
+          "d": 2.6,
+          "fill": "#8FA99F"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "at": [
         32.400000000000006,
         0
@@ -303,8 +382,8 @@
         "K × H × W"
       ],
       "labelAt": [
-        32.81250000000001,
-        -3.3536644281644286
+        33.011,
+        -3.62801179138322
       ],
       "channels": [
         "",
@@ -320,7 +399,7 @@
         "H",
         "W"
       ],
-      "fill": "#91B6A1",
+      "fill": "#8FA99F",
       "show-connection": false,
       "show-relu": false
     }
@@ -334,13 +413,14 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        0.572,
+        1.222,
         0
       ],
       "toPoint": [
         5.4,
         0
       ],
+      "fromDepth": 2.6,
       "via": []
     },
     {
@@ -351,17 +431,18 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        6.752,
-        -0.15
+        7.122,
+        -0.126
       ],
       "toPoint": [
         10.8,
         0
       ],
+      "toDepth": 0,
       "via": [
         [
           10.25,
-          -0.15
+          -0.126
         ],
         [
           10.25,
@@ -377,13 +458,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        12.595,
+        12.7924,
         0
       ],
       "toPoint": [
         16.2,
         0
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": []
     },
     {
@@ -394,13 +477,15 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        17.995,
+        18.08257,
         0
       ],
       "toPoint": [
         21.6,
-        -0.15
+        -0.14
       ],
+      "fromDepth": 2.5775482221505763,
+      "toDepth": 0,
       "via": [
         [
           21.05,
@@ -408,7 +493,7 @@
         ],
         [
           21.05,
-          -0.15
+          -0.14
         ]
       ]
     },
@@ -420,13 +505,14 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        23.41483,
+        23.5924,
         0
       ],
       "toPoint": [
         27,
         0
       ],
+      "fromDepth": 0.22,
       "via": []
     },
     {
@@ -437,13 +523,14 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        28.605,
+        28.722,
         0
       ],
       "toPoint": [
         32.4,
         0
       ],
+      "toDepth": 0,
       "via": []
     },
     {
@@ -454,8 +541,8 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        6.752,
-        0.15
+        7.122,
+        0.126
       ],
       "toPoint": [
         10.8,
@@ -463,19 +550,19 @@
       ],
       "via": [
         [
-          7.302,
-          0.15
+          7.672,
+          0.126
         ],
         [
-          7.302,
-          -2.1275
+          7.672,
+          -2.146
         ],
         [
-          3.05417,
-          -2.1275
+          3.01381,
+          -2.146
         ],
         [
-          3.05417,
+          3.01381,
           -6.8
         ]
       ]
@@ -488,37 +575,38 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        12.4018,
+        12.47729,
         -6.8
       ],
       "toPoint": [
         21.6,
-        0.15
+        0.14
       ],
+      "toDepth": 0,
       "via": [
         [
-          12.9518,
+          13.02729,
           -6.8
         ],
         [
-          12.9518,
-          -4.6725
+          13.02729,
+          -3.66022
         ],
         [
-          3.37417,
-          -4.6725
+          3.33381,
+          -3.66022
         ],
         [
-          3.37417,
-          -1.776
+          3.33381,
+          2.28006
         ],
         [
-          20.61229,
-          -1.776
+          21.05,
+          2.28006
         ],
         [
-          20.61229,
-          0.15
+          21.05,
+          0.14
         ]
       ]
     }

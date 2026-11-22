@@ -23,26 +23,15 @@ let stage=0,cx=0;for(const l of cnn.layers){l.fill=l.type==='conv'?palette.encod
 cnn.connections=cnn.layers.slice(1).map((l,i)=>({from:cnn.layers[i].name,to:l.name,type:'direct',fromPort:'east',toPort:'west'}));
 const cases=[['encoder-decoder',unet],['dual-stream',fusion],['convolutional-encoder',cnn]];
 for(const [name,spec] of cases){fs.writeFileSync(path.join(examples,name+'.volume.json'),JSON.stringify(spec,null,2)+'\n');await renderTypst(spec,{out:path.join(dir,name),previewSize:2800});}
-// Poster references an actual vector SVG; the PDF remains vector, not a screenshot.
-const poster=`#set page(width: 310mm, height: auto, margin: (x: 14mm, y: 12mm), fill: rgb("#F5F7FA"))
-#set text(font: ("Arial", "Liberation Sans"), fill: rgb("#24384B"))
-#text(size: 9pt, weight: "bold", tracking: 1.2pt, fill: rgb("#52738D"))[PAPER → STRUCTURE → VOLUME]
+// A technical figure with a caption; no product-poster framing or decorative cards.
+fs.copyFileSync(path.join(root,'docs/gallery/clip.svg'),path.join(dir,'hero-architecture.svg'));
+const poster=`#set page(width: 240mm, height: auto, margin: 5mm)
+#set text(font: ("Arial", "Liberation Sans"), size: 9pt, fill: rgb("#263039"))
+#text[CLIP — contrastive pretraining]
 #v(3mm)
-#text(size: 29pt, weight: "bold")[Engineering Model Diagrams]
+#image("hero-architecture.svg", width: 100%)
 #v(2mm)
-#text(size: 11pt, fill: rgb("#617386"))[Evidence-led diagrams. Editable vectors. Genuine 3D geometry.]
-#v(8mm)
-#block(width: 100%, fill: white, radius: 3mm, inset: (x: 5mm,y: 6mm))[
-  #text(size: 10pt, weight: "bold")[MULTI-SCALE ENCODER–DECODER]
-  #h(1fr) #text(size: 8pt, fill: rgb("#758596"))[Architecture schematic]
-  #v(4mm)
-  #image("encoder-decoder.svg", width: 100%)
-]
-#v(5mm)
-#grid(columns: (1fr, 1fr, 1fr), column-gutter: 5mm,
- [#text(size: 10pt, weight: "bold", fill: rgb("#52738D"))[01 · SEMANTIC STRUCTURE] #linebreak() #text(size: 8pt,fill: rgb("#617386"))[Modules, shapes and source evidence.]],
- [#text(size: 10pt, weight: "bold", fill: rgb("#52738D"))[02 · VOLUME DRAWING] #linebreak() #text(size: 8pt,fill: rgb("#617386"))[Feature scales, branches and skip paths.]],
- [#text(size: 10pt, weight: "bold", fill: rgb("#52738D"))[03 · EDITABLE OUTPUT] #linebreak() #text(size: 8pt,fill: rgb("#617386"))[Typst · PDF · SVG · PNG · GLB.]])
+#text(size: 8pt)[Rows: image embeddings. Columns: text embeddings. The diagonal marks paired examples; cells are schematic, not measured scores.]
 `;
 fs.writeFileSync(path.join(dir,'hero.typ'),poster);
 const bundled=path.join(root,'skills/engineering-model-diagrams/scripts/vendor/typst/typst.exe');

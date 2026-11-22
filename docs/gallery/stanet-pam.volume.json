@@ -4,6 +4,7 @@
   "widthMm": 260,
   "minFontPt": 9,
   "depthMultiplier": 0.22,
+  "strokeThickness": 0.7,
   "palette": "cold",
   "fonts": [
     "Arial",
@@ -19,10 +20,24 @@
       "semanticOp": "input",
       "meaning": "input",
       "widths": [
-        0.18
+        0.13
       ],
       "height": 2.69,
       "depth": 3.0300000000000002,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.69,
+          "d": 3.0300000000000002,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -38,11 +53,11 @@
       ],
       "labelAt": [
         2.0465,
-        -4.9921
+        -4.5976
       ],
       "at": [
-        1.6232,
-        -2.1729
+        1.6482,
+        -1.7783
       ],
       "fill": "#CCD4DD",
       "show-connection": false,
@@ -61,10 +76,25 @@
       "semanticOp": "attention",
       "meaning": "Partition into 1 x 1 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 3.0300000000000002,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -80,13 +110,13 @@
       ],
       "labelAt": [
         8.5775,
-        -4.5976
+        -20.2165
       ],
       "at": [
-        7.7842,
-        -1.7783
+        7.6033,
+        -18.7013
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "regions"
@@ -103,10 +133,25 @@
       "semanticOp": "attention",
       "meaning": "Partition into 2 x 2 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 3.0300000000000002,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -122,13 +167,13 @@
       ],
       "labelAt": [
         8.5775,
-        -12.9678
+        -14.4544
       ],
       "at": [
-        7.7842,
-        -10.1486
+        7.6033,
+        -12.9393
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "regions"
@@ -145,10 +190,25 @@
       "semanticOp": "attention",
       "meaning": "Partition into 4 x 4 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 3.0300000000000002,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -164,13 +224,13 @@
       ],
       "labelAt": [
         8.5775,
-        -21.3381
+        -8.6924
       ],
       "at": [
-        7.7842,
-        -18.5188
+        7.6033,
+        -7.1772
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "regions"
@@ -187,10 +247,25 @@
       "semanticOp": "attention",
       "meaning": "Partition into 8 x 8 spatial regions, each retaining both dates. Per-branch Q,K are 8 channels and V is 64; compute scaled softmax(Q K^T), weighted V, and reassemble spatial regions. No within-branch residual addition in PAM2.",
       "widths": [
-        0.9199999999999999
+        1.9
       ],
-      "height": 2.69,
-      "depth": 3.0300000000000002,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#d8e1dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -206,13 +281,13 @@
       ],
       "labelAt": [
         8.5775,
-        -29.7083
+        -2.9303
       ],
       "at": [
-        7.7842,
-        -26.8891
+        7.6033,
+        -1.4152
       ],
-      "fill": "#B0A3C3",
+      "fill": "#A3B7AD",
       "show-connection": false,
       "evidence": [
         "regions"
@@ -229,10 +304,25 @@
       "semanticOp": "concat",
       "meaning": "concat",
       "widths": [
-        1.16
+        1.9
       ],
-      "height": 2.69,
-      "depth": 3.0300000000000002,
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#e7ddcb",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "axis": 0,
       "channels": [
         "",
@@ -249,13 +339,13 @@
       ],
       "labelAt": [
         14.7516,
-        -13.0994
+        -8.7239
       ],
       "at": [
-        13.8383,
-        -10.2801
+        13.7774,
+        -7.2087
       ],
-      "fill": "#D8BC80",
+      "fill": "#C6AD84",
       "show-connection": false,
       "evidence": [
         "aggregate"
@@ -272,10 +362,12 @@
       "semanticOp": "conv",
       "meaning": "conv",
       "widths": [
-        0.9199999999999999
+        0.63
       ],
       "height": 2.69,
       "depth": 3.0300000000000002,
+      "glyph": "tensor",
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -291,13 +383,13 @@
       ],
       "labelAt": [
         20.5688,
-        -13.0994
+        -10.028
       ],
       "at": [
-        19.7755,
-        -10.2801
+        19.9205,
+        -7.2087
       ],
-      "fill": "#8FAAC4",
+      "fill": "#9EAFB9",
       "show-connection": false,
       "evidence": [
         "aggregate"
@@ -314,10 +406,24 @@
       "semanticOp": "output",
       "meaning": "output",
       "widths": [
-        0.18
+        0.13
       ],
       "height": 2.69,
       "depth": 3.0300000000000002,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.69,
+          "d": 3.0300000000000002,
+          "fill": "#8FA99F"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
       "channels": [
         "",
         ""
@@ -333,13 +439,13 @@
       ],
       "labelAt": [
         26.4401,
-        -13.0994
+        -10.028
       ],
       "at": [
-        26.0168,
-        -10.2801
+        26.0418,
+        -7.2087
       ],
-      "fill": "#91B6A1",
+      "fill": "#8FA99F",
       "show-connection": false,
       "evidence": [
         "aggregate"
@@ -360,14 +466,25 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        2.4698,
-        -1.7783
+        2.4448,
+        -2.1415
       ],
       "toPoint": [
-        7.7842,
-        -1.7783
+        7.6033,
+        -18.7013
       ],
-      "via": [],
+      "fromDepth": 3.0300000000000002,
+      "toDepth": 0,
+      "via": [
+        [
+          4.4931,
+          -2.1415
+        ],
+        [
+          4.4931,
+          -18.7013
+        ]
+      ],
       "evidence": [
         "regions"
       ]
@@ -380,21 +497,23 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        2.4698,
-        -2.0413
+        2.4448,
+        -1.8994
       ],
       "toPoint": [
-        7.7842,
-        -10.1486
+        7.6033,
+        -12.9393
       ],
+      "fromDepth": 3.0300000000000002,
+      "toDepth": 0,
       "via": [
         [
-          4.6931,
-          -2.0413
+          4.5931,
+          -1.8994
         ],
         [
-          4.6931,
-          -10.1486
+          4.5931,
+          -12.9393
         ]
       ],
       "evidence": [
@@ -409,21 +528,23 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        2.4698,
-        -2.3044
+        2.4448,
+        -1.6573
       ],
       "toPoint": [
-        7.7842,
-        -18.5188
+        7.6033,
+        -7.1772
       ],
+      "fromDepth": 3.0300000000000002,
+      "toDepth": 0,
       "via": [
         [
-          4.5931,
-          -2.3044
+          4.6931,
+          -1.6573
         ],
         [
-          4.5931,
-          -18.5188
+          4.6931,
+          -7.1772
         ]
       ],
       "evidence": [
@@ -438,23 +559,16 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        2.4698,
-        -2.5674
+        2.4448,
+        -1.4152
       ],
       "toPoint": [
-        7.7842,
-        -26.8891
+        7.6033,
+        -1.4152
       ],
-      "via": [
-        [
-          4.4931,
-          -2.5674
-        ],
-        [
-          4.4931,
-          -26.8891
-        ]
-      ],
+      "fromDepth": 3.0300000000000002,
+      "toDepth": 0,
+      "via": [],
       "evidence": [
         "regions"
       ]
@@ -467,21 +581,23 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        9.3708,
-        -1.7783
+        9.5517,
+        -18.7013
       ],
       "toPoint": [
-        13.8383,
-        -9.8855
+        13.7774,
+        -7.3032
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": [
         [
-          11.262,
-          -1.7783
+          11.362,
+          -18.7013
         ],
         [
-          11.262,
-          -9.8855
+          11.362,
+          -7.3032
         ]
       ],
       "evidence": [
@@ -496,14 +612,25 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        9.3708,
-        -10.1486
+        9.5517,
+        -12.9393
       ],
       "toPoint": [
-        13.8383,
-        -10.1486
+        13.7774,
+        -7.2402
       ],
-      "via": [],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [
+        [
+          11.262,
+          -12.9393
+        ],
+        [
+          11.262,
+          -7.2402
+        ]
+      ],
       "evidence": [
         "aggregate"
       ]
@@ -516,23 +643,16 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        9.3708,
-        -18.5188
+        9.5517,
+        -7.1772
       ],
       "toPoint": [
-        13.8383,
-        -10.4116
+        13.7774,
+        -7.1772
       ],
-      "via": [
-        [
-          11.262,
-          -18.5188
-        ],
-        [
-          11.262,
-          -10.4116
-        ]
-      ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [],
       "evidence": [
         "aggregate"
       ]
@@ -545,21 +665,23 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        9.3708,
-        -26.8891
+        9.5517,
+        -1.4152
       ],
       "toPoint": [
-        13.8383,
-        -10.6746
+        13.7774,
+        -7.1142
       ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
       "via": [
         [
-          11.362,
-          -26.8891
+          11.262,
+          -1.4152
         ],
         [
-          11.362,
-          -10.6746
+          11.262,
+          -7.1142
         ]
       ],
       "evidence": [
@@ -574,13 +696,14 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        15.6649,
-        -10.2801
+        15.7258,
+        -7.2087
       ],
       "toPoint": [
-        19.7755,
-        -10.2801
+        19.9205,
+        -7.2087
       ],
+      "fromDepth": 0.22,
       "via": [],
       "evidence": [
         "aggregate"
@@ -594,13 +717,14 @@
       "fromPort": "east",
       "toPort": "west",
       "fromPoint": [
-        21.3621,
-        -10.2801
+        21.2171,
+        -7.2087
       ],
       "toPoint": [
-        26.0168,
-        -10.2801
+        26.0418,
+        -7.2087
       ],
+      "toDepth": 0,
       "via": [],
       "evidence": [
         "aggregate"

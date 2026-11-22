@@ -2,6 +2,8 @@
 
 下图均是依据原论文或作者代码重新绘制的结构示意，不是作者官方出图。优先表达有出处的模块、连接与尺度；省略内容、具体变体和示意比例逐项说明。展示图不代表已运行对应模型训练或验证精度。
 
+空间特征、token、窗口、门控和矩阵采用不同的语义几何。重复的token、网格和矩阵单元是示意采样，真实数量以维度标注为准。CLIP矩阵对角线表示配对位置，不表示测得的相似度值。
+
 [返回主页](../README.md) · [五套科研配色](palettes.md)
 
 渲染任一条目：
@@ -14,7 +16,7 @@ node skills/engineering-model-diagrams/scripts/render-catalog.mjs --model MODEL_
 
 ### ResNet-18
 
-ID: `resnet18` · 8模块 / 7连接 · 成图宽274.099mm
+ID: `resnet18` · 8模块 / 7连接 · 成图宽246.043mm
 
 ![ResNet-18](gallery/resnet18.png)
 
@@ -26,7 +28,7 @@ ID: `resnet18` · 8模块 / 7连接 · 成图宽274.099mm
 
 ### MobileNetV2 1.0
 
-ID: `mobilenetv2` · 11模块 / 10连接 · 成图宽340.231mm
+ID: `mobilenetv2` · 11模块 / 10连接 · 成图宽280.028mm
 
 ![MobileNetV2 1.0](gallery/mobilenetv2.png)
 
@@ -38,7 +40,7 @@ ID: `mobilenetv2` · 11模块 / 10连接 · 成图宽340.231mm
 
 ### ViT-B/16
 
-ID: `vit-b16` · 5模块 / 4连接 · 成图宽179.849mm
+ID: `vit-b16` · 5模块 / 4连接 · 成图宽219.817mm
 
 ![ViT-B/16](gallery/vit-b16.png)
 
@@ -50,7 +52,7 @@ ID: `vit-b16` · 5模块 / 4连接 · 成图宽179.849mm
 
 ### Swin-T
 
-ID: `swin-t` · 10模块 / 9连接 · 成图宽338.031mm
+ID: `swin-t` · 10模块 / 9连接 · 成图宽280.172mm
 
 ![Swin-T](gallery/swin-t.png)
 
@@ -64,7 +66,7 @@ ID: `swin-t` · 10模块 / 9连接 · 成图宽338.031mm
 
 ### U-Net · original valid-padding
 
-ID: `unet-original` · 11模块 / 14连接 · 成图宽340.168mm
+ID: `unet-original` · 11模块 / 14连接 · 成图宽280.027mm
 
 ![U-Net · original valid-padding](gallery/unet-original.png)
 
@@ -76,7 +78,7 @@ ID: `unet-original` · 11模块 / 14连接 · 成图宽340.168mm
 
 ### DeepLabv3+
 
-ID: `deeplabv3plus` · 8模块 / 8连接 · 成图宽241.97mm
+ID: `deeplabv3plus` · 8模块 / 8连接 · 成图宽218.053mm
 
 ![DeepLabv3+](gallery/deeplabv3plus.png)
 
@@ -88,7 +90,7 @@ ID: `deeplabv3plus` · 8模块 / 8连接 · 成图宽241.97mm
 
 ### SegFormer-B0
 
-ID: `segformer-b0` · 12模块 / 14连接 · 成图宽273.943mm
+ID: `segformer-b0` · 12模块 / 14连接 · 成图宽260.027mm
 
 ![SegFormer-B0](gallery/segformer-b0.png)
 
@@ -100,7 +102,7 @@ ID: `segformer-b0` · 12模块 / 14连接 · 成图宽273.943mm
 
 ### Segment Anything · SAM
 
-ID: `sam` · 7模块 / 6连接 · 成图宽179.784mm
+ID: `sam` · 7模块 / 6连接 · 成图宽240mm
 
 ![Segment Anything · SAM](gallery/sam.png)
 
@@ -114,7 +116,7 @@ ID: `sam` · 7模块 / 6连接 · 成图宽179.784mm
 
 ### DETR
 
-ID: `detr` · 7模块 / 6连接 · 成图宽179.883mm
+ID: `detr` · 7模块 / 6连接 · 成图宽239.999mm
 
 ![DETR](gallery/detr.png)
 
@@ -128,7 +130,7 @@ ID: `detr` · 7模块 / 6连接 · 成图宽179.883mm
 
 ### UNetFormer
 
-ID: `unetformer` · 10模块 / 12连接 · 成图宽180.06mm
+ID: `unetformer` · 10模块 / 12连接 · 成图宽179.858mm
 
 ![UNetFormer](gallery/unetformer.png)
 
@@ -142,7 +144,7 @@ ID: `unetformer` · 10模块 / 12连接 · 成图宽180.06mm
 
 ### BIT · bitemporal transformer
 
-ID: `bit` · 11模块 / 13连接 · 成图宽241.877mm
+ID: `bit` · 11模块 / 13连接 · 成图宽259.87mm
 
 ![BIT · bitemporal transformer](gallery/bit.png)
 
@@ -154,7 +156,7 @@ ID: `bit` · 11模块 / 13连接 · 成图宽241.877mm
 
 ### ChangeFormer · Siamese overview
 
-ID: `changeformer` · 11模块 / 16连接 · 成图宽209.93mm
+ID: `changeformer` · 17模块 / 22连接 · 成图宽279.965mm
 
 ![ChangeFormer · Siamese overview](gallery/changeformer.png)
 
@@ -166,7 +168,7 @@ ID: `changeformer` · 11模块 / 16连接 · 成图宽209.93mm
 
 ### STANet · official-code PAM
 
-ID: `stanet` · 12模块 / 12连接 · 成图宽320.061mm
+ID: `stanet` · 12模块 / 12连接 · 成图宽320.03mm
 
 ![STANet · official-code PAM](gallery/stanet.png)
 
@@ -180,7 +182,7 @@ ID: `stanet` · 12模块 / 12连接 · 成图宽320.061mm
 
 ### CLIP · contrastive pretraining
 
-ID: `clip` · 8模块 / 7连接 · 成图宽179.885mm
+ID: `clip` · 8模块 / 7连接 · 成图宽219.931mm
 
 ![CLIP · contrastive pretraining](gallery/clip.png)
 
@@ -194,7 +196,7 @@ ID: `clip` · 8模块 / 7连接 · 成图宽179.885mm
 
 ### Residual BasicBlock
 
-ID: `residual-basic` · 5模块 / 5连接 · 成图宽179.843mm
+ID: `residual-basic` · 5模块 / 5连接 · 成图宽179.869mm
 
 ![Residual BasicBlock](gallery/residual-basic.png)
 
@@ -206,7 +208,7 @@ ID: `residual-basic` · 5模块 / 5连接 · 成图宽179.843mm
 
 ### Inverted residual · stride1
 
-ID: `inverted-residual` · 5模块 / 5连接 · 成图宽179.846mm
+ID: `inverted-residual` · 5模块 / 5连接 · 成图宽179.86mm
 
 ![Inverted residual · stride1](gallery/inverted-residual.png)
 
@@ -220,7 +222,7 @@ ID: `inverted-residual` · 5模块 / 5连接 · 成图宽179.846mm
 
 ### ViT encoder block
 
-ID: `vit-encoder` · 7模块 / 8连接 · 成图宽241.977mm
+ID: `vit-encoder` · 7模块 / 8连接 · 成图宽218.028mm
 
 ![ViT encoder block](gallery/vit-encoder.png)
 
@@ -232,7 +234,7 @@ ID: `vit-encoder` · 7模块 / 8连接 · 成图宽241.977mm
 
 ### Swin block pair
 
-ID: `swin-pair` · 4模块 / 3连接 · 成图宽179.875mm
+ID: `swin-pair` · 4模块 / 3连接 · 成图宽179.973mm
 
 ![Swin block pair](gallery/swin-pair.png)
 
@@ -246,7 +248,7 @@ ID: `swin-pair` · 4模块 / 3连接 · 成图宽179.875mm
 
 ### ASPP · output stride16
 
-ID: `aspp` · 8模块 / 11连接 · 成图宽179.902mm
+ID: `aspp` · 8模块 / 11连接 · 成图宽179.948mm
 
 ![ASPP · output stride16](gallery/aspp.png)
 
@@ -258,7 +260,7 @@ ID: `aspp` · 8模块 / 11连接 · 成图宽179.902mm
 
 ### SegFormer All-MLP decoder
 
-ID: `segformer-mlp` · 11模块 / 10连接 · 成图宽179.839mm
+ID: `segformer-mlp` · 11模块 / 10连接 · 成图宽179.837mm
 
 ![SegFormer All-MLP decoder](gallery/segformer-mlp.png)
 
@@ -284,7 +286,7 @@ ID: `se` · 5模块 / 5连接 · 成图宽179.834mm
 
 ### CBAM · sequential attention
 
-ID: `cbam` · 5模块 / 6连接 · 成图宽179.837mm
+ID: `cbam` · 5模块 / 6连接 · 成图宽179.85mm
 
 ![CBAM · sequential attention](gallery/cbam.png)
 
@@ -298,7 +300,7 @@ ID: `cbam` · 5模块 / 6连接 · 成图宽179.837mm
 
 ### UNetFormer global-local attention
 
-ID: `global-local-attention` · 6模块 / 6连接 · 成图宽179.875mm
+ID: `global-local-attention` · 6模块 / 6连接 · 成图宽179.894mm
 
 ![UNetFormer global-local attention](gallery/global-local-attention.png)
 
@@ -310,7 +312,7 @@ ID: `global-local-attention` · 6模块 / 6连接 · 成图宽179.875mm
 
 ### BIT semantic tokenizer
 
-ID: `semantic-tokenizer` · 4模块 / 4连接 · 成图宽179.921mm
+ID: `semantic-tokenizer` · 4模块 / 4连接 · 成图宽179.879mm
 
 ![BIT semantic tokenizer](gallery/semantic-tokenizer.png)
 
@@ -322,7 +324,7 @@ ID: `semantic-tokenizer` · 4模块 / 4连接 · 成图宽179.921mm
 
 ### Siamese feature differencing
 
-ID: `siamese-difference` · 6模块 / 5连接 · 成图宽179.911mm
+ID: `siamese-difference` · 6模块 / 5连接 · 成图宽179.983mm
 
 ![Siamese feature differencing](gallery/siamese-difference.png)
 
@@ -334,7 +336,7 @@ ID: `siamese-difference` · 6模块 / 5连接 · 成图宽179.911mm
 
 ### UNetFormer feature-refinement head
 
-ID: `feature-refinement` · 7模块 / 8连接 · 成图宽180.108mm
+ID: `feature-refinement` · 7模块 / 8连接 · 成图宽179.885mm
 
 ![UNetFormer feature-refinement head](gallery/feature-refinement.png)
 
@@ -346,7 +348,7 @@ ID: `feature-refinement` · 7模块 / 8连接 · 成图宽180.108mm
 
 ### STANet pyramid-attention module
 
-ID: `stanet-pam` · 8模块 / 10连接 · 成图宽259.917mm
+ID: `stanet-pam` · 8模块 / 10连接 · 成图宽259.958mm
 
 ![STANet pyramid-attention module](gallery/stanet-pam.png)
 
@@ -358,7 +360,7 @@ ID: `stanet-pam` · 8模块 / 10连接 · 成图宽259.917mm
 
 ### STANet shared feature extractor
 
-ID: `stanet-extractor` · 18模块 / 20连接 · 成图宽242.022mm
+ID: `stanet-extractor` · 18模块 / 20连接 · 成图宽218.051mm
 
 ![STANet shared feature extractor](gallery/stanet-extractor.png)
 

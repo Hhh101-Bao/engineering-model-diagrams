@@ -1,0 +1,314 @@
+{
+  "pass": true,
+  "figures": 35,
+  "endpointsChecked": 582,
+  "sampledCellsHaveRealGeometry": true,
+  "windowShiftChangesPartition": true,
+  "similarityAndEmbeddingUseDifferentGeometry": true,
+  "results": [
+    {
+      "file": "docs/gallery/aspp.scene3d.json",
+      "endpointsChecked": 22,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/bit.scene3d.json",
+      "endpointsChecked": 26,
+      "glyphs": [
+        "tensor",
+        "tokens",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/cbam.scene3d.json",
+      "endpointsChecked": 12,
+      "glyphs": [
+        "tensor",
+        "vector",
+        "operator",
+        "windows"
+      ]
+    },
+    {
+      "file": "docs/gallery/changeformer.scene3d.json",
+      "endpointsChecked": 44,
+      "glyphs": [
+        "tensor",
+        "windows",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/clip.scene3d.json",
+      "endpointsChecked": 14,
+      "glyphs": [
+        "patches",
+        "tokens",
+        "operation",
+        "vector",
+        "matrix"
+      ]
+    },
+    {
+      "file": "docs/gallery/deeplabv3plus.scene3d.json",
+      "endpointsChecked": 16,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/detr.scene3d.json",
+      "endpointsChecked": 12,
+      "glyphs": [
+        "tensor",
+        "tokens",
+        "operation",
+        "vector"
+      ]
+    },
+    {
+      "file": "docs/gallery/feature-refinement.scene3d.json",
+      "endpointsChecked": 16,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/global-local-attention.scene3d.json",
+      "endpointsChecked": 12,
+      "glyphs": [
+        "tensor",
+        "operation",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/gallery/inverted-residual.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/gallery/mobilenetv2.scene3d.json",
+      "endpointsChecked": 20,
+      "glyphs": [
+        "tensor",
+        "vector"
+      ]
+    },
+    {
+      "file": "docs/gallery/residual-basic.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/gallery/resnet18.scene3d.json",
+      "endpointsChecked": 14,
+      "glyphs": [
+        "tensor",
+        "vector"
+      ]
+    },
+    {
+      "file": "docs/gallery/sam.scene3d.json",
+      "endpointsChecked": 12,
+      "glyphs": [
+        "tensor",
+        "windows",
+        "vector",
+        "tokens",
+        "operation",
+        "masks"
+      ]
+    },
+    {
+      "file": "docs/gallery/se.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "vector",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/gallery/segformer-b0.scene3d.json",
+      "endpointsChecked": 28,
+      "glyphs": [
+        "tensor",
+        "windows",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/segformer-mlp.scene3d.json",
+      "endpointsChecked": 20,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/semantic-tokenizer.scene3d.json",
+      "endpointsChecked": 8,
+      "glyphs": [
+        "tensor",
+        "matrix",
+        "tokens"
+      ]
+    },
+    {
+      "file": "docs/gallery/siamese-difference.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/stanet-extractor.scene3d.json",
+      "endpointsChecked": 40,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/stanet-pam.scene3d.json",
+      "endpointsChecked": 20,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/stanet.scene3d.json",
+      "endpointsChecked": 24,
+      "glyphs": [
+        "tensor",
+        "operation"
+      ]
+    },
+    {
+      "file": "docs/gallery/swin-pair.scene3d.json",
+      "endpointsChecked": 6,
+      "glyphs": [
+        "windows",
+        "tensor"
+      ]
+    },
+    {
+      "file": "docs/gallery/swin-t.scene3d.json",
+      "endpointsChecked": 18,
+      "glyphs": [
+        "patches",
+        "windows",
+        "operation",
+        "vector"
+      ]
+    },
+    {
+      "file": "docs/gallery/unet-original.scene3d.json",
+      "endpointsChecked": 28,
+      "glyphs": [
+        "tensor"
+      ]
+    },
+    {
+      "file": "docs/gallery/unetformer.scene3d.json",
+      "endpointsChecked": 24,
+      "glyphs": [
+        "tensor"
+      ]
+    },
+    {
+      "file": "docs/gallery/vit-b16.scene3d.json",
+      "endpointsChecked": 8,
+      "glyphs": [
+        "patches",
+        "tokens",
+        "operation",
+        "vector"
+      ]
+    },
+    {
+      "file": "docs/gallery/vit-encoder.scene3d.json",
+      "endpointsChecked": 16,
+      "glyphs": [
+        "tokens",
+        "operation",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/palettes/graphite-amber.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/palettes/ocean-sand.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/palettes/plum-slate.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/palettes/sage-earth.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/palettes/steel-teal.scene3d.json",
+      "endpointsChecked": 10,
+      "glyphs": [
+        "tensor",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/details/regular-block-final.scene3d.json",
+      "endpointsChecked": 16,
+      "glyphs": [
+        "tensor",
+        "operation",
+        "windows",
+        "operator"
+      ]
+    },
+    {
+      "file": "docs/details/shifted-block-final.scene3d.json",
+      "endpointsChecked": 16,
+      "glyphs": [
+        "tensor",
+        "operation",
+        "windows",
+        "operator"
+      ]
+    }
+  ]
+}

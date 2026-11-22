@@ -1,0 +1,679 @@
+{
+  "backend": "neural-netz",
+  "title": "Regular-window Swin block",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.42,
+  "strokeThickness": 0.7,
+  "palette": "cold",
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "x",
+      "type": "custom",
+      "semanticOp": "input",
+      "meaning": "Input features",
+      "widths": [
+        0.13
+      ],
+      "height": 2.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.6,
+          "d": 2.6,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "Input features",
+        "C×H×W"
+      ],
+      "labelAt": [
+        4.5853,
+        -6.6555
+      ],
+      "at": [
+        3.9743,
+        -1.946
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "ln1",
+      "type": "custom",
+      "semanticOp": "norm",
+      "meaning": "LN",
+      "widths": [
+        1.9
+      ],
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#dbd8dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "LN"
+      ],
+      "labelAt": [
+        13.0623,
+        -7.2667
+      ],
+      "at": [
+        12.0661,
+        -4.007
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "w",
+      "type": "custom",
+      "semanticOp": "attention",
+      "meaning": "W-MSA",
+      "widths": [
+        0.63
+      ],
+      "height": 2.6,
+      "depth": 2.6,
+      "glyph": "windows",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0.8899999999999999,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "z": 1.7799999999999998,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.8899999999999999,
+          "z": 0,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.8899999999999999,
+          "z": 0.8899999999999999,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.8899999999999999,
+          "z": 1.7799999999999998,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 1.7799999999999998,
+          "z": 0,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 1.7799999999999998,
+          "z": 0.8899999999999999,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 1.7799999999999998,
+          "z": 1.7799999999999998,
+          "w": 0.63,
+          "h": 0.82,
+          "d": 0.82,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "W-MSA"
+      ],
+      "labelAt": [
+        19.1783,
+        -8.7165
+      ],
+      "at": [
+        18.3173,
+        -4.007
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive",
+        "windows"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "a1",
+      "type": "sum",
+      "semanticOp": "add",
+      "meaning": "Add",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "glyph": "operator",
+      "opacity": 1,
+      "radius": 0.45,
+      "symbol": "+",
+      "broadcast": false,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "Add"
+      ],
+      "labelAt": [
+        25.2942,
+        -4.967
+      ],
+      "at": [
+        24.8442,
+        -1.6535
+      ],
+      "fill": "#92ACA8",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "ln2",
+      "type": "custom",
+      "semanticOp": "norm",
+      "meaning": "LN",
+      "widths": [
+        1.9
+      ],
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#dbd8dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "LN"
+      ],
+      "labelAt": [
+        31.2776,
+        -4.8157
+      ],
+      "at": [
+        30.2814,
+        -1.556
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "mlp1",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "MLP",
+      "widths": [
+        1.9
+      ],
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#dbd8dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "MLP"
+      ],
+      "labelAt": [
+        37.2609,
+        -4.8157
+      ],
+      "at": [
+        36.2647,
+        -1.556
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "a2",
+      "type": "sum",
+      "semanticOp": "add",
+      "meaning": "Add",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "glyph": "operator",
+      "opacity": 1,
+      "radius": 0.45,
+      "symbol": "+",
+      "broadcast": false,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "Block 1 output",
+        "C×H×W"
+      ],
+      "labelAt": [
+        45.7379,
+        -4.967
+      ],
+      "at": [
+        45.2879,
+        -1.6535
+      ],
+      "fill": "#92ACA8",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "x__ln1",
+      "from": "x",
+      "to": "ln1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        5.1963,
+        -2.141
+      ],
+      "toPoint": [
+        12.0661,
+        -4.007
+      ],
+      "fromDepth": 2.6,
+      "toDepth": 0,
+      "via": [
+        [
+          9.5706,
+          -2.141
+        ],
+        [
+          9.5706,
+          -4.007
+        ]
+      ],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "ln1__w",
+      "from": "ln1",
+      "to": "w",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        14.0585,
+        -4.007
+      ],
+      "toPoint": [
+        18.3173,
+        -4.007
+      ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "w__a1",
+      "from": "w",
+      "to": "a1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        20.0393,
+        -4.007
+      ],
+      "toPoint": [
+        24.8549,
+        -1.556
+      ],
+      "fromDepth": 2.5999999999999996,
+      "via": [
+        [
+          21.8026,
+          -4.007
+        ],
+        [
+          21.8026,
+          -1.556
+        ]
+      ],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a1__ln2",
+      "from": "a1",
+      "to": "ln2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        25.7336,
+        -1.556
+      ],
+      "toPoint": [
+        30.2814,
+        -1.556
+      ],
+      "toDepth": 0,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "ln2__mlp1",
+      "from": "ln2",
+      "to": "mlp1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        32.2738,
+        -1.556
+      ],
+      "toPoint": [
+        36.2647,
+        -1.556
+      ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "mlp1__a2",
+      "from": "mlp1",
+      "to": "a2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        38.2571,
+        -1.556
+      ],
+      "toPoint": [
+        45.2986,
+        -1.556
+      ],
+      "fromDepth": 0.22,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "x__a1",
+      "from": "x",
+      "to": "a1",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        5.1963,
+        -1.751
+      ],
+      "toPoint": [
+        24.8549,
+        -1.751
+      ],
+      "fromDepth": 2.6,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a1__a2",
+      "from": "a1",
+      "to": "a2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        25.7336,
+        -1.751
+      ],
+      "toPoint": [
+        45.2986,
+        -1.751
+      ],
+      "via": [
+        [
+          27.7859,
+          -1.751
+        ],
+        [
+          27.7859,
+          -7.642
+        ],
+        [
+          39.7526,
+          -7.642
+        ],
+        [
+          39.7526,
+          -1.751
+        ]
+      ],
+      "evidence": [
+        "successive"
+      ]
+    }
+  ]
+}

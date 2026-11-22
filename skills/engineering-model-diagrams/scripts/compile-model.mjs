@@ -7,12 +7,14 @@ import {validateIR,resolveShapes} from './model-ir.mjs';
 import {renderTypst} from './typst_backend.mjs';
 import {exportScene3D} from './export-scene3d.mjs';
 import {themeFor} from './styles.mjs';
+import {glyphGeometry,partPort} from './visual-language.mjs';
 const require=createRequire(import.meta.url),ELK=require('./vendor/elk.bundled.cjs');
 const nativeType={input:'custom',output:'custom',conv:'conv',convblock:'conv',pool:'pool',gap:'gap',linear:'fc',concat:'concat',add:'sum',multiply:'sum'};
 const round=x=>+x.toFixed(4),safe=s=>String(s).replace(/[\r\n|]/g,' ');
 const units=s=>[...String(s)].reduce((n,c)=>n+(/[\u2e80-\uffff]/.test(c)?1:/[MW@]/.test(c)?.8:.55),0);
-function lines(text,budget=11){const out=[];let line='';for(const c of String(text)){if(line&&units(line+c)>budget){out.push(line);line='';}line+=c;}if(line)out.push(line);return out;}
+function lines(text,budget=11){const out=[];let line='';for(const token of String(text).match(/[A-Za-z0-9_]+(?:[-/][A-Za-z0-9_]+)*|\s+|./gu)??[]){if(line.trim()&&units(line+token)>budget){out.push(line.trim());line='';}if(!line&&/^\s+$/.test(token))continue;line+=token;}if(line.trim())out.push(line.trim());return out;}
 function surfacePort(b,frac,isSource,direction){
+  if(b.parts){const port=direction==='RIGHT'?(isSource?'east':'west'):(isSource?'south':'north'),spread=(direction==='RIGHT'?b.h:b.w)*.45*(frac-.5),hit=partPort(b.parts,b,port,spread,b.projection);return [b.bodyX+hit.point[0],b.bodyY+b.projH-hit.point[1],hit.z];}
   if(direction==='RIGHT'){const spread=Math.max(.15,b.h-b.ox)*.65*(frac-.5),radius=b.sphere?Math.sqrt(Math.max(0,.45**2-spread**2)):0;
     return [b.bodyX+(b.sphere?.45+(isSource?radius:-radius):isSource?b.projW:0),b.bodyY+b.projH/2+spread];}
   const partWidth=isSource?b.widths.at(-1):b.widths[0],center=b.sliceGap?(isSource?b.w-partWidth/2:partWidth/2):b.w/2;
@@ -20,27 +22,21 @@ function surfacePort(b,frac,isSource,direction){
   return [b.bodyX+center+dx+(isSource?0:b.ox),b.bodyY+(b.sphere?.45+(isSource?radius:-radius):isSource?b.projH:0)];
 }
 function geometry(n,projectionDepth=.22){
-  const shape=n.shape??[null,null,null],chw=(n.axes??'CHW')==='CHW'&&shape.length===3;
-  const symbolic=shape.some(x=>typeof x==='string'||x===null),C=typeof shape[0]==='number'?shape[0]:64;
-  const size=x=>typeof x==='number'?Math.min(4.2,Math.max(.85,.65+Math.log2(Math.max(1,x))*.34)):2.4;
-  const h=chw?size(shape[1]):['gap','linear'].includes(n.op)?1.3:2.3;
-  const d=chw?size(shape[2]):['gap','linear'].includes(n.op)?.6:1.3;
-  const repeat=['conv','convblock'].includes(n.op)?Math.min(n.repeat??1,3):1;
-  const sliceGap=repeat>1?d*projectionDepth+.65:0;
-  const thickness=['input','output'].includes(n.op)?.18:Math.min(1.35,Math.max(.35,.2+Math.log2(Math.max(2,C))*.12));
-  const sphere=['add','multiply'].includes(n.op);
+  const shape=n.shape??[null,null,null],symbolic=shape.some(x=>typeof x==='string'||x===null),repeat=n.repeat??1;
   const label=[...lines(n.label),(n.repeat??1)>1?`×${n.repeat}`:null,shape.map(x=>x??'?').join('×')+(n.shapeStatus==='unknown'?' ?':'')].filter(Boolean);
-  return {h:sphere?.9:h,d:sphere?.9:d,w:sphere?.9:thickness*repeat+sliceGap*(repeat-1),widths:Array(repeat).fill(sphere?.9:thickness),sliceGap,repeat,sphere,label,symbolic};
+  const semantic=glyphGeometry(n,'#A7B8C3',{projection:projectionDepth});
+  return {...semantic,repeat,label,symbolic,projection:projectionDepth};
 }
 export async function planVolumes(ir,{spacing=1.6}={}){
   const validation=validateIR(ir);if(!validation.pass)throw Error(validation.errors.join('\n'));
   const resolved=resolveShapes(ir);if(resolved.errors.length)throw Error(resolved.errors.join('\n'));
   ir=resolved.ir;
   const theme=themeFor(ir.render?.theme),colors=theme.colors;
-  const width=ir.render?.widthMm??220,minFont=ir.render?.minFontPt??8,depth=ir.render?.depthMultiplier??.22;
+  const width=ir.render?.widthMm??220,minFont=ir.render?.minFontPt??8,depth=ir.render?.depthMultiplier??.42;
   const direction=ir.render?.direction??'RIGHT';if(!['RIGHT','DOWN'].includes(direction))throw Error('direction must be RIGHT or DOWN');
   if(!(depth>0))throw Error('A nonzero projection depth is required; no 2D fallback');
-  const g=new Map(ir.nodes.map(n=>[n.id,geometry(n,depth)]));
+  const colorFor=n=>colors[n.visual?.colorRole]??colors[n.op]??colors.custom;
+  const g=new Map(ir.nodes.map(n=>{const b=geometry(n,depth);if(b.parts)b.parts=glyphGeometry(n,colorFor(n),{projection:depth}).parts;return [n.id,b];}));
   let scale=.75,laid,children;
   let converged=false;
   for(let pass=0;pass<24;pass++){
@@ -72,12 +68,12 @@ export async function planVolumes(ir,{spacing=1.6}={}){
   const layers=laid.children.map(c=>{
     const n=ir.nodes.find(n=>n.id===c.id),b=g.get(n.id),x=c.x/100+b.bodyX,y=-(c.y/100+b.bodyY+b.projH/2);
     const labelAt=[round((c.x/100)+b.labelCenterX),round(-(c.y/100+b.labelCenterY))];
-    return {name:n.id,type:nativeType[n.op]??'custom',semanticOp:n.op,meaning:n.meaning??n.op,widths:b.widths,height:b.h,depth:b.d,
+    return {name:n.id,type:nativeType[n.op]??'custom',semanticOp:n.op,meaning:n.meaning??n.op,widths:b.widths,height:b.h,depth:b.d,glyph:b.kind,...(b.parts?{parts:b.parts,marks:b.marks??[]}:{}),opacity:1,
       ...(b.sliceGap?{sliceGap:b.sliceGap}:{}),
       ...(n.op==='concat'?{axis:n.params?.axis??0}:{}),
       ...(b.sphere?{radius:.45,symbol:n.op==='multiply'?'×':'+',broadcast:!!n.params?.broadcast}:{}),
       channels:Array(b.widths.length+1).fill(''),tensor:n.shape.map(v=>typeof v==='number'?v:null),
-      label:b.label,labelAt,at:[round(x),round(y)],fill:colors[n.op]??colors.custom,...(theme.bands[n.op]?{bandfill:theme.bands[n.op]}:{}),'show-connection':false,
+      label:b.label,labelAt,at:[round(x),round(y)],fill:colorFor(n),...(n.visual?.colorRole?{colorRole:n.visual.colorRole}:{}),...(theme.bands[n.op]?{bandfill:theme.bands[n.op]}:{}),'show-connection':false,
       evidence:n.evidence,sourceShape:n.shape};
   });
   const connections=laid.edges.map(e=>{
@@ -85,15 +81,15 @@ export async function planVolumes(ir,{spacing=1.6}={}){
     const convert=p=>[round(p.x/100),round(-p.y/100)];
     // ELK clamps ports to the label-inclusive node boundary. Recompute body ports
     // from immutable geometry rather than reusing the modified input ports.
-    const absolute=(id,isSource)=>{const c=laid.children.find(n=>n.id===id),b=g.get(id),peers=ir.edges.filter(k=>(isSource?k.from:k.to)===id),i=peers.findIndex(k=>k.id===e.id),frac=(i+1)/(peers.length+1),[x,y]=surfacePort(b,frac,isSource,direction);return {x:c.x+100*x,y:c.y+100*y};};
+    const absolute=(id,isSource)=>{const c=laid.children.find(n=>n.id===id),b=g.get(id),peers=ir.edges.filter(k=>(isSource?k.from:k.to)===id),i=peers.findIndex(k=>k.id===e.id),frac=(i+1)/(peers.length+1),[x,y,z]=surfacePort(b,frac,isSource,direction);return {x:c.x+100*x,y:c.y+100*y,z};};
     const a=absolute(original.from,true),b=absolute(original.to,false);
     const first=direction==='RIGHT'?{x:s.startPoint.x,y:a.y}:{x:a.x,y:s.startPoint.y};
     const last=direction==='RIGHT'?{x:s.endPoint.x,y:b.y}:{x:b.x,y:s.endPoint.y};
     let points=[a,first,s.startPoint,...(s.bendPoints??[]),s.endPoint,last,b].map(convert).filter((p,i,arr)=>!i||p[0]!==arr[i-1][0]||p[1]!==arr[i-1][1]);
     for(let i=1;i<points.length-1;){const [a,b,c]=points.slice(i-1,i+2);if((a[0]===b[0]&&b[0]===c[0])||(a[1]===b[1]&&b[1]===c[1]))points.splice(i,1);else i++;}
-    return {id:e.id,from:original.from,to:original.to,type:'direct',fromPort:direction==='DOWN'?'south':'east',toPort:direction==='DOWN'?'north':'west',fromPoint:points[0],toPoint:points.at(-1),via:points.slice(1,-1),evidence:original.evidence};
+    return {id:e.id,from:original.from,to:original.to,type:'direct',fromPort:direction==='DOWN'?'south':'east',toPort:direction==='DOWN'?'north':'west',fromPoint:points[0],toPoint:points.at(-1),...(a.z!==undefined?{fromDepth:a.z}:{}),...(b.z!==undefined?{toDepth:b.z}:{}),via:points.slice(1,-1),evidence:original.evidence};
   });
-  const spec={backend:'neural-netz',title:ir.title,widthMm:width,minFontPt:minFont,depthMultiplier:depth,palette:'cold',fonts:theme.fonts,showRelu:false,showLegend:false,layers,connections};
+  const spec={backend:'neural-netz',title:ir.title,widthMm:width,...(ir.render?.maxHeightMm?{maxHeightMm:ir.render.maxHeightMm}:{}),minFontPt:minFont,depthMultiplier:depth,strokeThickness:.7,palette:'cold',fonts:theme.fonts,showRelu:false,showLegend:false,layers,connections};
   if(spec.layers.some(l=>!(l.depth>0)||!(l.height>0)||l.widths.some(w=>!(w>0))))throw Error('Volume geometry invariant failed');
   const nodeRects=laid.children.map(c=>({id:c.id,x:c.x/100,y:c.y/100,w:c.width/100,h:c.height/100}));
   const geometryErrors=[];

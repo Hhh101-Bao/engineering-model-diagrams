@@ -39,60 +39,152 @@
       ]
     },
     {
-      "id": "e1",
+      "id": "a0",
       "op": "attention",
-      "meaning": "Shared hierarchical / Transformer",
-      "label": "Shared hierarchical / Transformer",
+      "meaning": "Shared encoder / Stage 1",
+      "label": "Shared encoder / Stage 1",
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 3.2
+      }
     },
     {
-      "id": "e2",
+      "id": "b0",
       "op": "attention",
-      "meaning": "Shared hierarchical / Transformer",
-      "label": "Shared hierarchical / Transformer",
+      "meaning": "Shared encoder / Stage 1",
+      "label": "Shared encoder / Stage 1",
       "axes": "CHW",
       "evidence": [
         "architecture"
-      ]
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 3.2
+      }
     },
     {
       "id": "d0",
       "op": "custom",
-      "meaning": "Difference module / Scale 1",
-      "label": "Difference module / Scale 1",
+      "meaning": "Difference / Scale 1",
+      "label": "Difference / Scale 1",
       "axes": "CHW",
       "evidence": [
         "architecture"
       ]
+    },
+    {
+      "id": "a1",
+      "op": "attention",
+      "meaning": "Shared encoder / Stage 2",
+      "label": "Shared encoder / Stage 2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 2.6500000000000004
+      }
+    },
+    {
+      "id": "b1",
+      "op": "attention",
+      "meaning": "Shared encoder / Stage 2",
+      "label": "Shared encoder / Stage 2",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 2.6500000000000004
+      }
     },
     {
       "id": "d1",
       "op": "custom",
-      "meaning": "Difference module / Scale 2",
-      "label": "Difference module / Scale 2",
+      "meaning": "Difference / Scale 2",
+      "label": "Difference / Scale 2",
       "axes": "CHW",
       "evidence": [
         "architecture"
       ]
+    },
+    {
+      "id": "a2",
+      "op": "attention",
+      "meaning": "Shared encoder / Stage 3",
+      "label": "Shared encoder / Stage 3",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 2.1
+      }
+    },
+    {
+      "id": "b2",
+      "op": "attention",
+      "meaning": "Shared encoder / Stage 3",
+      "label": "Shared encoder / Stage 3",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 2.1
+      }
     },
     {
       "id": "d2",
       "op": "custom",
-      "meaning": "Difference module / Scale 3",
-      "label": "Difference module / Scale 3",
+      "meaning": "Difference / Scale 3",
+      "label": "Difference / Scale 3",
       "axes": "CHW",
       "evidence": [
         "architecture"
       ]
     },
     {
+      "id": "a3",
+      "op": "attention",
+      "meaning": "Shared encoder / Stage 4",
+      "label": "Shared encoder / Stage 4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 1.55
+      }
+    },
+    {
+      "id": "b3",
+      "op": "attention",
+      "meaning": "Shared encoder / Stage 4",
+      "label": "Shared encoder / Stage 4",
+      "axes": "CHW",
+      "evidence": [
+        "architecture"
+      ],
+      "visual": {
+        "glyph": "windows",
+        "spatialSize": 1.55
+      }
+    },
+    {
       "id": "d3",
       "op": "custom",
-      "meaning": "Difference module / Scale 4",
-      "label": "Difference module / Scale 4",
+      "meaning": "Difference / Scale 4",
+      "label": "Difference / Scale 4",
       "axes": "CHW",
       "evidence": [
         "architecture"
@@ -133,37 +225,85 @@
     {
       "id": "e0",
       "from": "t1",
-      "to": "e1",
+      "to": "a0",
       "evidence": [
         "architecture"
       ]
     },
     {
       "id": "e1",
-      "from": "t2",
-      "to": "e2",
+      "from": "a0",
+      "to": "a1",
       "evidence": [
         "architecture"
       ]
     },
     {
       "id": "e2",
-      "from": "e1",
-      "to": "d0",
+      "from": "a1",
+      "to": "a2",
       "evidence": [
         "architecture"
       ]
     },
     {
       "id": "e3",
-      "from": "e2",
-      "to": "d0",
+      "from": "a2",
+      "to": "a3",
       "evidence": [
         "architecture"
       ]
     },
     {
       "id": "e4",
+      "from": "t2",
+      "to": "b0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "b0",
+      "to": "b1",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "b1",
+      "to": "b2",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "b2",
+      "to": "b3",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "a0",
+      "to": "d0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "b0",
+      "to": "d0",
+      "evidence": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "e10",
       "from": "d0",
       "to": "fuse",
       "evidence": [
@@ -171,23 +311,23 @@
       ]
     },
     {
-      "id": "e5",
-      "from": "e1",
+      "id": "e11",
+      "from": "a1",
       "to": "d1",
       "evidence": [
         "architecture"
       ]
     },
     {
-      "id": "e6",
-      "from": "e2",
+      "id": "e12",
+      "from": "b1",
       "to": "d1",
       "evidence": [
         "architecture"
       ]
     },
     {
-      "id": "e7",
+      "id": "e13",
       "from": "d1",
       "to": "fuse",
       "evidence": [
@@ -195,23 +335,23 @@
       ]
     },
     {
-      "id": "e8",
-      "from": "e1",
+      "id": "e14",
+      "from": "a2",
       "to": "d2",
       "evidence": [
         "architecture"
       ]
     },
     {
-      "id": "e9",
-      "from": "e2",
+      "id": "e15",
+      "from": "b2",
       "to": "d2",
       "evidence": [
         "architecture"
       ]
     },
     {
-      "id": "e10",
+      "id": "e16",
       "from": "d2",
       "to": "fuse",
       "evidence": [
@@ -219,23 +359,23 @@
       ]
     },
     {
-      "id": "e11",
-      "from": "e1",
+      "id": "e17",
+      "from": "a3",
       "to": "d3",
       "evidence": [
         "architecture"
       ]
     },
     {
-      "id": "e12",
-      "from": "e2",
+      "id": "e18",
+      "from": "b3",
       "to": "d3",
       "evidence": [
         "architecture"
       ]
     },
     {
-      "id": "e13",
+      "id": "e19",
       "from": "d3",
       "to": "fuse",
       "evidence": [
@@ -243,7 +383,7 @@
       ]
     },
     {
-      "id": "e14",
+      "id": "e20",
       "from": "fuse",
       "to": "head",
       "evidence": [
@@ -251,7 +391,7 @@
       ]
     },
     {
-      "id": "e15",
+      "id": "e21",
       "from": "head",
       "to": "y",
       "evidence": [
@@ -266,6 +406,6 @@
   "render": {
     "mode": "volume",
     "theme": "steel-teal",
-    "widthMm": 210
+    "widthMm": 280
   }
 }

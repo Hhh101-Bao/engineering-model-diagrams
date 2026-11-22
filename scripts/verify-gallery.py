@@ -35,7 +35,7 @@ for file in files:
     s=json.loads(file.with_suffix('.volume.json').read_text(encoding='utf-8'))
     width=float(page.mediabox.width)*25.4/72;images=image_count(page['/Resources'])
     svg_images=sum(n.tag.endswith('image') for n in ET.parse(file.with_suffix('.svg')).getroot().iter())
-    results.append(dict(id=file.stem,file=str(file.relative_to(root)),widthMm=round(width,3),minimumTextPt=round(min(sizes),3),pdfRasterImages=images,svgImageElements=svg_images,labelCollisionCandidates=collisions,pass_=not collisions and images==0 and svg_images==0 and min(sizes)>=s['minFontPt']-.1 and abs(width-s['widthMm'])<.5))
+    results.append(dict(id=file.stem,file=str(file.relative_to(root)),widthMm=round(width,3),heightMm=round(float(page.mediabox.height)*25.4/72,3),minimumTextPt=round(min(sizes),3),pdfRasterImages=images,svgImageElements=svg_images,labelCollisionCandidates=collisions,pass_=not collisions and images==0 and svg_images==0 and min(sizes)>=s['minFontPt']-.1 and abs(width-s['widthMm'])<.5))
 folder=root/'tmp/gallery-review';folder.mkdir(parents=True,exist_ok=True)
 font_paths=[Path('C:/Windows/Fonts/arial.ttf'),Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'),Path('/Library/Fonts/Arial.ttf')]
 font=next((ImageFont.truetype(str(p),20) for p in font_paths if p.exists()),ImageFont.load_default())

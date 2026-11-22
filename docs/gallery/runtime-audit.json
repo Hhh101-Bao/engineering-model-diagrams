@@ -17,32 +17,32 @@
       "file": "docs/gallery/bit.glb",
       "pass": true,
       "errors": [],
-      "volumes": 24,
-      "triangles": 444,
+      "volumes": 34,
+      "triangles": 564,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/cbam.glb",
       "pass": true,
       "errors": [],
-      "volumes": 15,
-      "triangles": 1188,
+      "volumes": 28,
+      "triangles": 1344,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/changeformer.glb",
       "pass": true,
       "errors": [],
-      "volumes": 27,
-      "triangles": 516,
+      "volumes": 103,
+      "triangles": 1500,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/clip.glb",
       "pass": true,
       "errors": [],
-      "volumes": 15,
-      "triangles": 264,
+      "volumes": 63,
+      "triangles": 840,
       "imageTextures": 0
     },
     {
@@ -57,8 +57,8 @@
       "file": "docs/gallery/detr.glb",
       "pass": true,
       "errors": [],
-      "volumes": 13,
-      "triangles": 228,
+      "volumes": 33,
+      "triangles": 468,
       "imageTextures": 0
     },
     {
@@ -89,8 +89,8 @@
       "file": "docs/gallery/mobilenetv2.glb",
       "pass": true,
       "errors": [],
-      "volumes": 21,
-      "triangles": 372,
+      "volumes": 26,
+      "triangles": 432,
       "imageTextures": 0
     },
     {
@@ -105,32 +105,32 @@
       "file": "docs/gallery/resnet18.glb",
       "pass": true,
       "errors": [],
-      "volumes": 15,
-      "triangles": 264,
+      "volumes": 25,
+      "triangles": 384,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/sam.glb",
       "pass": true,
       "errors": [],
-      "volumes": 13,
-      "triangles": 228,
+      "volumes": 38,
+      "triangles": 528,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/se.glb",
       "pass": true,
       "errors": [],
-      "volumes": 12,
-      "triangles": 672,
+      "volumes": 27,
+      "triangles": 852,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/segformer-b0.glb",
       "pass": true,
       "errors": [],
-      "volumes": 26,
-      "triangles": 480,
+      "volumes": 58,
+      "triangles": 864,
       "imageTextures": 0
     },
     {
@@ -145,8 +145,8 @@
       "file": "docs/gallery/semantic-tokenizer.glb",
       "pass": true,
       "errors": [],
-      "volumes": 8,
-      "triangles": 144,
+      "volumes": 38,
+      "triangles": 504,
       "imageTextures": 0
     },
     {
@@ -185,24 +185,24 @@
       "file": "docs/gallery/swin-pair.glb",
       "pass": true,
       "errors": [],
-      "volumes": 7,
-      "triangles": 120,
+      "volumes": 38,
+      "triangles": 492,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/swin-t.glb",
       "pass": true,
       "errors": [],
-      "volumes": 19,
-      "triangles": 336,
+      "volumes": 72,
+      "triangles": 972,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/unet-original.glb",
       "pass": true,
       "errors": [],
-      "volumes": 25,
-      "triangles": 468,
+      "volumes": 43,
+      "triangles": 792,
       "imageTextures": 0
     },
     {
@@ -217,16 +217,16 @@
       "file": "docs/gallery/vit-b16.glb",
       "pass": true,
       "errors": [],
-      "volumes": 9,
-      "triangles": 156,
+      "volumes": 32,
+      "triangles": 432,
       "imageTextures": 0
     },
     {
       "file": "docs/gallery/vit-encoder.glb",
       "pass": true,
       "errors": [],
-      "volumes": 19,
-      "triangles": 1260,
+      "volumes": 24,
+      "triangles": 1320,
       "imageTextures": 0
     },
     {
@@ -267,6 +267,22 @@
       "errors": [],
       "volumes": 12,
       "triangles": 672,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/details/regular-block-final.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 27,
+      "triangles": 1356,
+      "imageTextures": 0
+    },
+    {
+      "file": "docs/details/shifted-block-final.glb",
+      "pass": true,
+      "errors": [],
+      "volumes": 34,
+      "triangles": 1440,
       "imageTextures": 0
     }
   ]

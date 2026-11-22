@@ -1,0 +1,750 @@
+{
+  "backend": "neural-netz",
+  "title": "Shifted-window Swin block",
+  "widthMm": 180,
+  "minFontPt": 8.5,
+  "depthMultiplier": 0.42,
+  "strokeThickness": 0.7,
+  "palette": "cold",
+  "fonts": [
+    "Arial",
+    "Liberation Sans",
+    "Microsoft YaHei"
+  ],
+  "showRelu": false,
+  "showLegend": false,
+  "layers": [
+    {
+      "name": "a2",
+      "type": "custom",
+      "semanticOp": "input",
+      "meaning": "Add",
+      "widths": [
+        0.13
+      ],
+      "height": 2.6,
+      "depth": 2.6,
+      "glyph": "tensor",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0.13,
+          "h": 2.6,
+          "d": 2.6,
+          "fill": "#CCD4DD"
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "Intermediate",
+        "features",
+        "C×H×W"
+      ],
+      "labelAt": [
+        3.8959,
+        -7.3923
+      ],
+      "at": [
+        3.2849,
+        -1.946
+      ],
+      "fill": "#CCD4DD",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "ln3",
+      "type": "custom",
+      "semanticOp": "norm",
+      "meaning": "LN",
+      "widths": [
+        1.9
+      ],
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#dbd8dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "LN"
+      ],
+      "labelAt": [
+        11.6355,
+        -7.1802
+      ],
+      "at": [
+        10.6393,
+        -4.007
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "sw",
+      "type": "custom",
+      "semanticOp": "attention",
+      "meaning": "SW-MSA",
+      "widths": [
+        0.63
+      ],
+      "height": 2.6,
+      "depth": 2.6,
+      "glyph": "windows",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0.035,
+          "z": 0.035,
+          "w": 0.63,
+          "h": 0.36333333333333334,
+          "d": 0.36333333333333334,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.035,
+          "z": 0.4683333333333334,
+          "w": 0.63,
+          "h": 0.36333333333333334,
+          "d": 0.7966666666666666,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.035,
+          "z": 1.335,
+          "w": 0.63,
+          "h": 0.36333333333333334,
+          "d": 0.7966666666666664,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.035,
+          "z": 2.2016666666666667,
+          "w": 0.63,
+          "h": 0.36333333333333334,
+          "d": 0.36333333333333356,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.4683333333333334,
+          "z": 0.035,
+          "w": 0.63,
+          "h": 0.7966666666666666,
+          "d": 0.36333333333333334,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.4683333333333334,
+          "z": 0.4683333333333334,
+          "w": 0.63,
+          "h": 0.7966666666666666,
+          "d": 0.7966666666666666,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.4683333333333334,
+          "z": 1.335,
+          "w": 0.63,
+          "h": 0.7966666666666666,
+          "d": 0.7966666666666664,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 0.4683333333333334,
+          "z": 2.2016666666666667,
+          "w": 0.63,
+          "h": 0.7966666666666666,
+          "d": 0.36333333333333356,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 1.335,
+          "z": 0.035,
+          "w": 0.63,
+          "h": 0.7966666666666664,
+          "d": 0.36333333333333334,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 1.335,
+          "z": 0.4683333333333334,
+          "w": 0.63,
+          "h": 0.7966666666666664,
+          "d": 0.7966666666666666,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 1.335,
+          "z": 1.335,
+          "w": 0.63,
+          "h": 0.7966666666666664,
+          "d": 0.7966666666666664,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 1.335,
+          "z": 2.2016666666666667,
+          "w": 0.63,
+          "h": 0.7966666666666664,
+          "d": 0.36333333333333356,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 2.2016666666666667,
+          "z": 0.035,
+          "w": 0.63,
+          "h": 0.36333333333333356,
+          "d": 0.36333333333333334,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 2.2016666666666667,
+          "z": 0.4683333333333334,
+          "w": 0.63,
+          "h": 0.36333333333333356,
+          "d": 0.7966666666666666,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 2.2016666666666667,
+          "z": 1.335,
+          "w": 0.63,
+          "h": 0.36333333333333356,
+          "d": 0.7966666666666664,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        },
+        {
+          "x": 0,
+          "y": 2.2016666666666667,
+          "z": 2.2016666666666667,
+          "w": 0.63,
+          "h": 0.36333333333333356,
+          "d": 0.36333333333333356,
+          "fill": "#bfbac2",
+          "tone": 0.25
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "SW-MSA"
+      ],
+      "labelAt": [
+        17.9344,
+        -8.63
+      ],
+      "at": [
+        17.0734,
+        -4.007
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive",
+        "windows"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "a3",
+      "type": "sum",
+      "semanticOp": "add",
+      "meaning": "Add",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "glyph": "operator",
+      "opacity": 1,
+      "radius": 0.45,
+      "symbol": "+",
+      "broadcast": false,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "Add"
+      ],
+      "labelAt": [
+        24.2332,
+        -4.8805
+      ],
+      "at": [
+        23.7832,
+        -1.6535
+      ],
+      "fill": "#92ACA8",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "ln4",
+      "type": "custom",
+      "semanticOp": "norm",
+      "meaning": "LN",
+      "widths": [
+        1.9
+      ],
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#dbd8dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "LN"
+      ],
+      "labelAt": [
+        30.1204,
+        -4.7292
+      ],
+      "at": [
+        29.1242,
+        -1.556
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "mlp2",
+      "type": "custom",
+      "semanticOp": "custom",
+      "meaning": "MLP",
+      "widths": [
+        1.9
+      ],
+      "height": 0.7,
+      "depth": 0.22,
+      "glyph": "operation",
+      "parts": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1.9,
+          "h": 0.7,
+          "d": 0.22,
+          "fill": "#dbd8dd",
+          "tone": 0.58
+        }
+      ],
+      "marks": [],
+      "opacity": 1,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "MLP"
+      ],
+      "labelAt": [
+        36.0077,
+        -4.7292
+      ],
+      "at": [
+        35.0115,
+        -1.556
+      ],
+      "fill": "#AAA3AE",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "name": "a4",
+      "type": "sum",
+      "semanticOp": "add",
+      "meaning": "Add",
+      "widths": [
+        0.9
+      ],
+      "height": 0.9,
+      "depth": 0.9,
+      "glyph": "operator",
+      "opacity": 1,
+      "radius": 0.45,
+      "symbol": "+",
+      "broadcast": false,
+      "channels": [
+        "",
+        ""
+      ],
+      "tensor": [
+        null,
+        null,
+        null
+      ],
+      "label": [
+        "Block 2 output",
+        "C×H×W"
+      ],
+      "labelAt": [
+        44.3132,
+        -4.8805
+      ],
+      "at": [
+        43.8632,
+        -1.6535
+      ],
+      "fill": "#92ACA8",
+      "show-connection": false,
+      "evidence": [
+        "successive"
+      ],
+      "sourceShape": [
+        "C",
+        "H",
+        "W"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "a2__ln3",
+      "from": "a2",
+      "to": "ln3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        4.5069,
+        -2.141
+      ],
+      "toPoint": [
+        10.6393,
+        -4.007
+      ],
+      "fromDepth": 2.6,
+      "toDepth": 0,
+      "via": [
+        [
+          8.1919,
+          -2.141
+        ],
+        [
+          8.1919,
+          -4.007
+        ]
+      ],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "ln3__sw",
+      "from": "ln3",
+      "to": "sw",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        12.6317,
+        -4.007
+      ],
+      "toPoint": [
+        17.0881,
+        -4.007
+      ],
+      "fromDepth": 0.22,
+      "toDepth": 0.035,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "sw__a3",
+      "from": "sw",
+      "to": "a3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        18.7807,
+        -4.007
+      ],
+      "toPoint": [
+        23.7939,
+        -1.556
+      ],
+      "fromDepth": 2.5650000000000004,
+      "via": [
+        [
+          20.7896,
+          -4.007
+        ],
+        [
+          20.7896,
+          -1.556
+        ]
+      ],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a3__ln4",
+      "from": "a3",
+      "to": "ln4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        24.6725,
+        -1.556
+      ],
+      "toPoint": [
+        29.1242,
+        -1.556
+      ],
+      "toDepth": 0,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "ln4__mlp2",
+      "from": "ln4",
+      "to": "mlp2",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        31.1166,
+        -1.556
+      ],
+      "toPoint": [
+        35.0115,
+        -1.556
+      ],
+      "fromDepth": 0.22,
+      "toDepth": 0,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "mlp2__a4",
+      "from": "mlp2",
+      "to": "a4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        37.0039,
+        -1.556
+      ],
+      "toPoint": [
+        43.8739,
+        -1.556
+      ],
+      "fromDepth": 0.22,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a2__a3",
+      "from": "a2",
+      "to": "a3",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        4.5069,
+        -1.751
+      ],
+      "toPoint": [
+        23.7939,
+        -1.751
+      ],
+      "fromDepth": 2.6,
+      "via": [],
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a3__a4",
+      "from": "a3",
+      "to": "a4",
+      "type": "direct",
+      "fromPort": "east",
+      "toPort": "west",
+      "fromPoint": [
+        24.6725,
+        -1.751
+      ],
+      "toPoint": [
+        43.8739,
+        -1.751
+      ],
+      "via": [
+        [
+          26.6768,
+          -1.751
+        ],
+        [
+          26.6768,
+          -7.4823
+        ],
+        [
+          38.4513,
+          -7.4823
+        ],
+        [
+          38.4513,
+          -1.751
+        ]
+      ],
+      "evidence": [
+        "successive"
+      ]
+    }
+  ]
+}

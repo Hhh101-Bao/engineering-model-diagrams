@@ -1,0 +1,230 @@
+{
+  "schema": "paper-model/1",
+  "title": "Shifted-window Swin block",
+  "sources": [
+    {
+      "id": "swin-paper",
+      "uri": "https://arxiv.org/abs/2103.14030",
+      "kind": "pdf",
+      "sha256": "dfdc7631fe2a35bb5892080b9c0eeadc4432d55cf1856f84bc88802efa877a7c"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "successive",
+      "source": "swin-paper",
+      "locator": "p.4, Fig.3b and Eq.3",
+      "statement": "The regular-window block precedes the shifted-window block; both include pre-normalization, attention and MLP, each with a residual addition.",
+      "status": "stated"
+    },
+    {
+      "id": "windows",
+      "source": "swin-paper",
+      "locator": "Fig.2 and section3.2, shifted-window partitioning",
+      "statement": "Consecutive attention blocks use regular and shifted window boundaries. Window geometry is schematic, not a counted feature grid.",
+      "status": "stated"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "a2",
+      "op": "input",
+      "label": "Intermediate features",
+      "meaning": "Add",
+      "axes": "CHW",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "evidence": [
+        "successive"
+      ],
+      "visual": {
+        "glyph": "tensor"
+      }
+    },
+    {
+      "id": "ln3",
+      "op": "norm",
+      "label": "LN",
+      "meaning": "LN",
+      "axes": "CHW",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "sw",
+      "op": "attention",
+      "label": "SW-MSA",
+      "meaning": "SW-MSA",
+      "axes": "CHW",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "evidence": [
+        "successive",
+        "windows"
+      ],
+      "visual": {
+        "glyph": "windows",
+        "grid": 3,
+        "shifted": true
+      }
+    },
+    {
+      "id": "a3",
+      "op": "add",
+      "label": "Add",
+      "meaning": "Add",
+      "axes": "CHW",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "ln4",
+      "op": "norm",
+      "label": "LN",
+      "meaning": "LN",
+      "axes": "CHW",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "mlp2",
+      "op": "custom",
+      "label": "MLP",
+      "meaning": "MLP",
+      "axes": "CHW",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a4",
+      "op": "add",
+      "label": "Block 2 output",
+      "meaning": "Add",
+      "axes": "CHW",
+      "shape": [
+        "C",
+        "H",
+        "W"
+      ],
+      "shapeStatus": "stated",
+      "evidence": [
+        "successive"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "a2__ln3",
+      "from": "a2",
+      "to": "ln3",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "ln3__sw",
+      "from": "ln3",
+      "to": "sw",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "sw__a3",
+      "from": "sw",
+      "to": "a3",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a3__ln4",
+      "from": "a3",
+      "to": "ln4",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "ln4__mlp2",
+      "from": "ln4",
+      "to": "mlp2",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "mlp2__a4",
+      "from": "mlp2",
+      "to": "a4",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a2__a3",
+      "from": "a2",
+      "to": "a3",
+      "evidence": [
+        "successive"
+      ]
+    },
+    {
+      "id": "a3__a4",
+      "from": "a3",
+      "to": "a4",
+      "evidence": [
+        "successive"
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Symbolic C/H/W; no numeric input size, number of heads or window count is asserted.",
+    "Window cells are schematic partitions; dropout, stochastic depth and relative-position bias are omitted.",
+    "MLP remains one named submodule. This is a source-backed redraw, not the author figure."
+  ],
+  "render": {
+    "mode": "volume",
+    "widthMm": 180,
+    "minFontPt": 8.5,
+    "direction": "RIGHT",
+    "depthMultiplier": 0.42,
+    "theme": "graphite-amber"
+  }
+}

@@ -6,6 +6,8 @@
 
 A Codex skill and deterministic drawing toolkit for evidence-led architecture figures. The host assistant reads papers, model images or code, constructs an evidence-backed graph, generates layout/code, compiles genuine feature volumes and reviews the rendered result. Users do not need to supply JSON or coordinates. Standalone CLI use still requires a model description or a gallery entry; the local scripts do not contain a language model.
 
+Version0.5 uses semantic geometry for spatial tensors, patch/window partitions, token sequences, gating and similarity matrices. Architecture-specific compositions preserve the distinguishing structure of each model. Figures use restrained technical captions and matte geometry. Repeated cells are schematic samples; annotated tensor dimensions remain authoritative. CLIP's diagonal indicates paired examples, not measured scores.
+
 The library includes14 model schematics and14 module/subnetwork schematics across vision backbones, segmentation, detection, remote sensing, change detection and vision-language learning. Every entry links its primary paper or author implementation and states its variant and abstraction scope. These are our source-backed redraws, not official author figures or executable implementations of the networks.
 
 ## Install
